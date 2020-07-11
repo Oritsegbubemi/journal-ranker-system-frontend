@@ -9,9 +9,9 @@ def user_psi_dataset():
     import pandas as pd
     
     # Read in csv file
-    journal = pd.read_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranking-system-frontend\journals\dataset\User_Dataset.csv')
+    journal = pd.read_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\user_dataset.csv')
     number = len(journal)
-    columns = journal.columns[2:]
+    columns = journal.columns[24:30]
     
     # 4 - Calculate the mean
     mean = []
@@ -43,7 +43,7 @@ def user_psi_dataset():
         journal[i] = journal.loc[:, i] * j
         
     # 9 - Creating the Ranking
-    psi_rank = journal.iloc[:, 2:]
+    psi_rank = journal.iloc[:, 24:30]
     psi = []
     for i in range(number):
         psi_sum = sum(psi_rank.loc[i])
@@ -52,21 +52,11 @@ def user_psi_dataset():
     ranked_journal = journal.sort_values('PSI', ascending=False)
     
     # 10 - Exporting to Result Ranking dataset
-    ranked_journal.to_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranking-system-frontend\journals\dataset\Result_Dataset.csv', index=False)
+    ranked_journal.to_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\result_dataset.csv', index=False)
     print("File has been created")
 
 	# Displaying the result fams
-    result_dataset = pd.read_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranking-system-frontend\journals\dataset\Result_Dataset.csv')
-    result_dataset = result_dataset.head(11)
-    print("HHHHHHHHHHHHHHH", result_dataset)
-    result_dataset.to_html(r'C:\Users\Gbubemi\Documents\#Project\journal-ranking-system-frontend\journals\dataset\UserTable.html')
-    my_output = result_dataset.to_html()
-    print("MMMMMMMMMMMMMMM", my_output)
-
-
+    result_dataset = pd.read_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\result_dataset.csv')
+    my_output = result_dataset.to_html(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\templates\user_table.html')
+    print("Ranking Table has been created")
     
-
-
-    print("End of the code")
-    
-    return (my_output)

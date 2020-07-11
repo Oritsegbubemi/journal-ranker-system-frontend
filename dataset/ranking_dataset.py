@@ -11,12 +11,13 @@ frequency = dict()
 open_access = dict()
 review_time = dict()
 
-def user_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z):
+
+def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z):
 	"""
 	This function is going to collect the user input and
 	place ranking value on them as expected.
 	"""
-	
+
 	# subject_area_function
 	def user_subject_area():
 		switcher = {
@@ -38,7 +39,6 @@ def user_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s
 		subject_area.append(my_subject_area)
 		return subject_area
 	
-	
 	# index_function
 	def user_index():
 		dict_index = {1: "Scopus", 2: "Others"}
@@ -49,7 +49,6 @@ def user_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s
 				if x == key:
 					index[dict_index[key]] = y
 		return index
-	
 	
 	# publisher_function
 	def user_publisher():
@@ -63,7 +62,6 @@ def user_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s
 					publisher[dict_publisher[key]] = y
 		return publisher
 	
-	
 	# percentile_function
 	def user_percentile():
 		dict_percentile = {1: 1, 2: 2, 3: 3, 4: 4}
@@ -74,7 +72,6 @@ def user_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s
 				if x == key:
 					percentile[dict_percentile[key]] = y
 		return percentile
-	
 	
 	# frequency_function
 	def user_frequency():
@@ -87,7 +84,6 @@ def user_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s
 					frequency[dict_frequency[key]] = y
 		return frequency
 	
-	
 	# open_access_function
 	def user_open_access():
 		dict_open_access = {1: "YES", 2: "NO"}
@@ -98,7 +94,6 @@ def user_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s
 				if x == key:
 					open_access[dict_open_access[key]] = y
 		return open_access
-	
 	
 	# review_time_function
 	def user_review_time():
@@ -111,14 +106,14 @@ def user_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s
 					review_time[dict_review_time[key]] = y1
 		return review_time
 	
-	
 	# Overall ranking_dataset return statement
-	ranking_return = (user_subject_area(), user_index(), user_publisher(), user_percentile(), user_frequency(), user_open_access(), user_review_time())
-	return ranking_return
+	user_input_ranking_return = (user_subject_area(), user_index(), user_publisher(), user_percentile(), user_frequency(), user_open_access(), user_review_time())
+	return user_input_ranking_return
+
 
 
 ###############################################################################
-def ranking_dataset():
+def user_ranking_dataset():
 	"""
 	This function is going to replace the content in Ranking Dataset.csv
 	with the ranking value of the user input
@@ -126,28 +121,28 @@ def ranking_dataset():
 	
 	# import libraries
 	import pandas as pd
-	journal = pd.read_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranking-system-frontend\journals\dataset\Ranking_Dataset.csv')
-	
+	journal = pd.read_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\ranking_dataset.csv')
+
 	# subject_area_main
-	not_suject_area = journal.loc[journal.iloc[:, 1] != subject_area[0]]
+	not_suject_area = journal.loc[journal.iloc[:, 15] != subject_area[0]]
 	journal = journal.drop(not_suject_area.index, axis=0)
 	
 	# index_main
-	rank_index = journal.iloc[:, 2]
+	rank_index = journal.iloc[:, 24]
 	for i in rank_index:
 		for key in index.keys():
 			if (i == key):
 				rank_index.replace(i, index[key], inplace=True)
 	
 	# publisher_main
-	rank_publisher = journal.iloc[:, 3]
+	rank_publisher = journal.iloc[:, 25]
 	for i in rank_publisher:
 		for key in publisher.keys():
 			if (i == key):
 				rank_publisher.replace(i, publisher[key], inplace=True)
 	
 	# percentile_main
-	percent = journal.iloc[:, 4]
+	percent = journal.iloc[:, 26]
 	for per in percent:
 		if (per >= 0 and per <= 25):
 			percent.replace(per, 4, inplace=True)
@@ -160,38 +155,36 @@ def ranking_dataset():
 	for per in percent:
 		if (per >= 75 and per <= 99):
 			percent.replace(per, 1, inplace=True)
-	rank_percentile = journal.iloc[:, 4]
+	rank_percentile = journal.iloc[:, 26]
 	for i in rank_percentile:
 		for key in percentile.keys():
 			if (i == key):
 				rank_percentile.replace(i, percentile[key], inplace=True)
 	
 	# frequency_main
-	rank_frequency = journal.iloc[:, 5]
+	rank_frequency = journal.iloc[:, 27]
 	for i in rank_frequency:
 		for key in frequency.keys():
 			if (i == key):
 				rank_frequency.replace(i, frequency[key], inplace=True)
 	
 	# open_access_main
-	rank_open_access = journal.iloc[:, 6]
+	rank_open_access = journal.iloc[:, 28]
 	for i in rank_open_access:
 		for key in open_access.keys():
 			if (i == key):
 				rank_open_access.replace(i, open_access[key], inplace=True)
 	
 	# review_time_main
-	rank_review_time = journal.iloc[:, 7]
+	rank_review_time = journal.iloc[:, 29]
 	for i in rank_review_time:
 		for key in review_time.keys():
 			if (i == key):
 				rank_review_time.replace(i, review_time[key], inplace=True)
 	
 	# outputation
-	journal.to_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranking-system-frontend\journals\dataset\User_Dataset.csv', index=False)
-	print("File has been exported")
-	print("End of the code")
-	return "Completeddddddddddddddddddddd!!!!!!!"
+	journal.to_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\user_dataset.csv', index=False)
+	print("User Dataset has been created")
     
 
     

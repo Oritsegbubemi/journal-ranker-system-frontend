@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from dataset.ranking_dataset import user_ranking_dataset, ranking_dataset
+from dataset.ranking_dataset import user_input_ranking_dataset, user_ranking_dataset
 from dataset.user_dataset import user_psi_dataset
 from .models import *
 
@@ -22,6 +22,7 @@ def card(request):
 	if request.method == 'GET':
 		return render(request, "card.html")
 		
+
 
 @login_required
 def rank(request):
@@ -62,8 +63,8 @@ def rank(request):
 		print("Save all your input")
 		
 		# call the ranking functions
-		user_ranking_dataset(int(subject_area), int(index_first), int(index_second), int(publisher_first), int(publisher_second), int(publisher_third), int(publisher_fourth), int(publisher_fifth), int(publisher_sixth), int(publisher_seventh), int(percentile_first), int(percentile_second), int(percentile_third), int(percentile_fourth), int(frequency_first), int(frequency_second), int(frequency_third), int(frequency_fourth), int(frequency_fifth), int(open_access_first), int(open_access_second), int(review_time_first), int(review_time_second), int(review_time_third), int(review_time_fourth), int(review_time_fifth))
-		ranking_dataset()
+		user_input_ranking_dataset(int(subject_area), int(index_first), int(index_second), int(publisher_first), int(publisher_second), int(publisher_third), int(publisher_fourth), int(publisher_fifth), int(publisher_sixth), int(publisher_seventh), int(percentile_first), int(percentile_second), int(percentile_third), int(percentile_fourth), int(frequency_first), int(frequency_second), int(frequency_third), int(frequency_fourth), int(frequency_fifth), int(open_access_first), int(open_access_second), int(review_time_first), int(review_time_second), int(review_time_third), int(review_time_fourth), int(review_time_fifth))
+		user_ranking_dataset()
 		return redirect("result")
 	
 	
@@ -71,12 +72,8 @@ def rank(request):
 		return render(request, "ranking.html")
 
 
-
+@login_required
 def result(request):
-	hello = user_psi_dataset()
-	#table = r'C:\Users\Gbubemi\Documents\#Project\journal-ranking-system-frontend\journals\dataset\UserTable.html'
-
-	
-	return render(request, "result.html", {'journal': hello})
-	# table = r'table.html'
-	# return render(request, ("result.html", "table.html"))
+	user_psi_dataset()
+	#return render(request, "result.html", {'journal': hello})
+	return render(request, "user_table.html")

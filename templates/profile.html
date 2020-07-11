@@ -1,0 +1,52 @@
+<!-- This is the user profile html file page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    <!-- Block Title -->
+    {% block title %}
+        User Profile
+    {% endblock %}
+
+    <!-- Block Content  -->
+    {% block content %}
+
+        <!-- Header -->
+        <div>
+            <h2>Journal Ranker</h2>
+        </div>
+
+        <!-- Content -->
+        <div>
+            <div class="card hover-translate-y-n10 hover-shadow-lg">
+                <div class="card-body">
+                    <div class="pb-4">
+                        <div class="icon bg-dark text-white rounded-circle icon-shape shadow">
+                            <i data-feather="droplet"></i>
+                        </div>
+                    </div>
+                    <div class="pt-2 pb-3">
+                        <h5 style="text-transform: capitalize">{{user.username}}</h5>
+                        <p style="text-transform: capitalize" class="text-muted mb-0">
+                            First Name: {{user.first_name}}
+                        </p>
+                        <p style="text-transform: capitalize" class="text-muted mb-0">
+                            Last Name: {{user.last_name}}
+                        </p>
+                        <p style="text-transform: ''" class="text-muted mb-0">
+                            Email Address: {{user.email}}
+                        </p>
+                    </div>
+                </div>
+            </div
+        </div>
+
+    {% endblock %}
+</body>
+</html>

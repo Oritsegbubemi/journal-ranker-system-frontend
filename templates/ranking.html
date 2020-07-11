@@ -1,0 +1,258 @@
+<!-- This is the user ranking html file page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Ranking</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    <!-- Block Title -->
+    {% block title %}
+        Rank your journals here
+    {% endblock %}
+
+    <!-- Block Content -->
+    {% block content %}
+        <!-- Header -->
+        <div>
+            <h2>{{card_name}}</h2>
+            <p>Kindly select the subject area of your research work and rank where appropraite</p>
+            <p>{{journal}}</p>
+        </div>
+
+        <!-- Content -->
+        <div>
+            <form action="{% url 'rank' %}" method="post">
+                {% csrf_token %}
+
+                <!-- 1. Subject Area (13)-->
+                <div>
+                    <h4>1. Subject Area</h4>
+                    <div>
+                        <p>Select the Sub-subject Area of interest</p>
+                        <input type="radio" name="subject-area" id="r1" value="3">
+                        Artificial Intelligence<br>
+                        <input type="radio" name="subject-area" id="r2" value="4">
+                        Computational Theory and Mathematics<br>
+                        <input type="radio" name="subject-area" id="r3" value="5">
+                        Computer Graphics and CAD<br>
+                        <input type="radio" name="subject-area" id="r4" value="6">
+                        Computer Networks and Communications<br>
+                        <input type="radio" name="subject-area" id="r5" value="2">
+                        Computer Science (Miscellaneous)<br>
+                        <input type="radio" name="subject-area" id="r6" value="7">
+                        Computer Science Applications<br>
+                        <input type="radio" name="subject-area" id="r7" value="8">
+                        Computer Vision and Pattern Recognition<br>
+                        <input type="radio" name="subject-area" id="r8" value="1">
+                        General Computer Science<br>
+                        <input type="radio" name="subject-area" id="r9" value="9">
+                        Hardware and Architecture<br>
+                        <input type="radio" name="subject-area" id="r10" value="10">
+                        Human Computer Interaction<br>
+                        <input type="radio" name="subject-area" id="r11" value="11">
+                        Information Systems<br>
+                        <input type="radio" name="subject-area" id="r12" value="12">
+                        Signal Processing<br>
+                        <input type="radio" name="subject-area" id="r13" value="13">
+                        Software<hr>
+                    </div>
+                </div>
+
+                <!-- 2. Index (2) -->
+                <div>
+                    <h4>2. Index</h4>
+                    <div>
+                        <p>Kindly input rank for the index of the journal<br>
+                            Enter <strong>"1"</strong> for <strong>Scopus</strong><br>
+                            Enter <strong>"2"</strong> for <strong>Others</strong>
+                        </p>
+                        <div class="form-group">
+                            <label class="form-control-label">First ranking number: </label>
+                            <input type='number' max='2' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-index-first" name="input-index-first" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Second ranking number: </label>
+                            <input type='number' max='2' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)'class="ml-2" id="input-index-second" name="input-index-second" placeholder=""  >
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+
+                <!-- 3. Publisher (7) -->
+                <div>
+                    <h4>3. Publisher</h4>
+                    <div>
+                        <p>Kindly input rank for the publisher of the journal<br>
+                            Enter <strong>"1"</strong> for <strong>Springer</strong><br>
+                            Enter <strong>"2"</strong> for <strong>Elsevier</strong><br>
+                            Enter <strong>"3"</strong> for <strong>IEEE</strong><br>
+                            Enter <strong>"4"</strong> for <strong>Taylor and Francis</strong><br>
+                            Enter <strong>"5"</strong> for <strong>Inderscience</strong><br>
+                            Enter <strong>"6"</strong> for <strong>ACM</strong><br>
+                            Enter <strong>"7"</strong> for <strong>Others</strong>
+                        </p>
+                        <div class="form-group">
+                            <label class="form-control-label">First ranking number: </label>
+                            <input type='number' max='7' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-pub-first" name="input-pub-first" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Second ranking number: </label>
+                            <input type='number' max='7' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-pub-second" name="input-pub-second" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Third ranking number: </label>
+                            <input type='number' max='7' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-pub-third" name="input-pub-third" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Fourth ranking number: </label>
+                            <input type='number' max='7' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-pub-fourth" name="input-pub-fourth" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Fifth ranking number: </label>
+                            <input type='number' max='7' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-pub-fifth" name="input-pub-fifth" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Sixth ranking number: </label>
+                            <input type='number' max='7' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-pub-sixth" name="input-pub-sixth" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Seventh ranking number: </label>
+                            <input type='number' max='7' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-pub-seventh" name="input-pub-seventh" placeholder=""  >
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+
+                <!-- 4. Percentile (4) -->
+                <div>
+                    <h4>4. Percentile</h4>
+                    <div>
+                        <p>Kindly input range for the percentile of the journal<br>
+                            Enter <strong>"1"</strong> for <strong>99-75</strong><br>
+                            Enter <strong>"2"</strong> for <strong>74-50</strong><br>
+                            Enter <strong>"3"</strong> for <strong>49-25</strong><br>
+                            Enter <strong>"4"</strong> for <strong>24-0</strong>
+                        </p>
+                        <div class="form-group">
+                            <label class="form-control-label">First ranking number: </label>
+                            <input type='number' max='4' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-percent-first" name="input-percent-first" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Second ranking number: </label>
+                            <input type='number' max='4' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-percent-second" name="input-percent-second" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Third ranking number: </label>
+                            <input type='number' max='4' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-percent-third" name="input-percent-third" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Fourth ranking number: </label>
+                            <input type='number' max='4' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-percent-fourth" name="input-percent-fourth" placeholder=""  >
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+
+                <!-- 5. Frequency (5) -->
+                <div>
+                    <h4>5. Frequency</h4>
+                    <div>
+                        <p>Kindly input rank for the frequency of the journal<br>
+                            Enter <strong>"1"</strong> for <strong>Monthly</strong><br>
+                            Enter <strong>"2"</strong> for <strong>Bi-monthly</strong><br>
+                            Enter <strong>"3"</strong> for <strong>Quarterly</strong><br>
+                            Enter <strong>"4"</strong> for <strong>Bi-annually</strong><br>
+                            Enter <strong>"5"</strong> for <strong>Annually</strong>
+                        </p>
+                        <div class="form-group">
+                            <label class="form-control-label">First ranking number: </label>
+                            <input type='number' max='5' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-freq-first" name="input-freq-first" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Second ranking number: </label>
+                            <input type='number' max='5' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-freq-second" name="input-freq-second" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Third ranking number: </label>
+                            <input type='number' max='5' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-freq-third" name="input-freq-third" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Fourth ranking number: </label>
+                            <input type='number' max='5' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-freq-fourth" name="input-freq-fourth" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Fifth ranking number: </label>
+                            <input type='number' max='5' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-freq-fifth" name="input-freq-fifth" placeholder=""  >
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+
+                 <!-- 6. Open Access (2) -->
+                <div>
+                    <h4>6. Open Access</h4>
+                    <div>
+                        <p>Kindly input rank for the open access of the journal<br>
+                            Enter <strong>"1"</strong> for <strong>Yes</strong><br>
+                            Enter <strong>"2"</strong> for <strong>No</strong>
+                        </p>
+                        <div class="form-group">
+                            <label class="form-control-label">First ranking number: </label>
+                            <input type='number' max='2' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-access-first" name="input-access-first" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Second ranking number: </label>
+                            <input type='number' max='2' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-access-second" name="input-access-second" placeholder=""  >
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+
+                <!-- 7. Review Time (5)-->
+                <div>
+                    <h4>7. Review Time</h4>
+                    <div>
+                        <p>Kindly input rank for the review time of the journal<br>
+                            Enter <strong>"1"</strong> for <strong>4 weeks</strong><br>
+                            Enter <strong>"2"</strong> for <strong>6 weeks</strong><br>
+                            Enter <strong>"3"</strong> for <strong>10 weeks</strong><br>
+                            Enter <strong>"4"</strong> for <strong>12 weeks</strong><br>
+                            Enter <strong>"5"</strong> for <strong>18 weeks</strong>
+                        </p>
+                        <div class="form-group">
+                            <label class="form-control-label">First ranking number: </label>
+                            <input type='number' max='5' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-review-first" name="input-review-first" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Second ranking number: </label>
+                            <input type='number' max='5' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-review-second" name="input-review-second" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Third ranking number: </label>
+                            <input type='number' max='5' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-review-third" name="input-review-third" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Fourth ranking number: </label>
+                            <input type='number' max='5' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-review-fourth" name="input-review-fourth" placeholder=""  >
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Fifth ranking number: </label>
+                            <input type='number' max='5' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class='ml-2' id='input-review-fifth' name='input-review-fifth' placeholder=""  >
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+
+                <!-- Sumbit Button -->
+                <div>
+                    <button type="submit" class="btn btn-primary float-left">Submit Input</button>
+                </div>
+         </form>
+    </div>
+    {% endblock %}
+</body>
+</html>

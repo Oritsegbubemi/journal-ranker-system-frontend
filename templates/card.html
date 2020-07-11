@@ -1,0 +1,75 @@
+<!-- This is the card ranking html file page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ranking Card</title>
+</head>
+
+<body>
+    {% extends 'base.html' %}
+
+    <!-- Block Title -->
+    {% block title %}
+        Create a ranking Card here
+    {% endblock %}
+
+    <!-- Block Content -->
+    {% block content %}
+
+        <!-- Create Card Form -->
+        <div>
+            <form action="{% url 'card' %}" method="post">
+                {% csrf_token %}
+                <section class="align-items-center mb-6">
+                    <div>
+                        <h5>New Card Details</h5>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="input-card-name" name="card_name" placeholder="Enter card name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <textarea class="form-control" id="input-card-descr" name="card_descr" rows="3" placeholder="Enter card description" required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <button type="submit" class="btn btn-primary float-right">Proceed</button>
+                    </div>
+                </section>
+            </form>
+        </div>
+
+        <!-- View Previous Card -->
+        <section>
+            <div>
+                <h5>Previous Rankings</h5>
+            </div>
+
+            {% for card in user.ranking_card.all %}
+                <a href="{% url 'rank' %}">
+                    <div class="card hover-translate-y-n10 hover-shadow-lg">
+                        <div class="p-3 d-flex">
+                            <div>
+                                <div class="icon bg-dark icon-shape rounded-circle text-white mr-4">
+                                    <i data-feather="droplet"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="h6">{{card.name}}</span>
+                                <p class="text-sm text-muted mb-0">{{card.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+
+        </section>
+    {% endblock %}
+</body>
+</html>

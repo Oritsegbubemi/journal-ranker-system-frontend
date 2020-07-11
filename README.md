@@ -1,2 +1,3 @@
-# journal-ranker
-Journal Ranking System for Computer Science Journals
+# journal-ranking-system-frontend
+
+Built with Django

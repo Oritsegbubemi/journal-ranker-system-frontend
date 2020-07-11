@@ -1,0 +1,32 @@
+<!-- This is the user ranking html file page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Result</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    <!-- Block Title -->
+    {% block title %}
+        View your result here
+    {% endblock %}
+
+    <!-- Block Content -->
+    {% block content %}
+        <!-- Header -->
+        <div>
+            <h2>Journal Ranker</h2>
+            <p>View Result Page</p>
+            <p>{{journal}}</p>
+        </div>
+
+        <!-- Content -->
+        <div>
+            <p>Hello World</p>
+        </div>
+    {% endblock %}
+</body>
+</html>

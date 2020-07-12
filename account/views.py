@@ -15,7 +15,7 @@ def login(request):
 		try:
 			user = auth.authenticate(username=User.objects.get(email=email), password=password)
 		except:
-			messages.info(request, 'Invalid credentials')
+			messages.info(request, 'Invalid username or password')
 			return redirect("login")
 		
 		if user is not None:
@@ -23,7 +23,7 @@ def login(request):
 			return redirect("/ranking/card")
 		
 		else:
-			messages.info(request, 'Invalid credentials')
+			messages.info(request, 'Invalid username or password')
 			return redirect("login")
 		
 	if request.method == 'GET':
@@ -39,9 +39,15 @@ def signup(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
         if password1 == password2:
+
             if User.objects.filter(email=email.lower()).exists():
                 messages.info(request, 'Email Address Alreasy Exist')
                 return redirect('signup')
+
+            elif User.objects.filter(username=user_name.lower()).exists():
+                messages.info(request, 'Username Alreasy Exist')
+                return redirect('signup')
+
             else:
                 user = User.objects.create_user(
                     username=user_name.lower(),

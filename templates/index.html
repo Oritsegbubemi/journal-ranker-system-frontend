@@ -88,14 +88,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'about' %}">About Us</a>
                     </li>
-
+                    
                      <!-- Authenticated -->
                     {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'card' %}">Ranking</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'result' %}">Result</a>
+                            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
@@ -108,6 +108,9 @@
 
                     <!-- Not Authenticated -->
                     {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">Login</a>
                         </li>

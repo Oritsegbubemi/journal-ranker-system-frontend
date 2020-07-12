@@ -52,6 +52,24 @@
             </div>
 
             {% for card in user.ranking_card.all %}
+                <a href="{% url 'viewrank' %}">
+                    <div class="card hover-translate-y-n10 hover-shadow-lg">
+                        <div class="p-3 d-flex">
+                            <div>
+                                <div class="icon bg-dark icon-shape rounded-circle text-white mr-4">
+                                    <i data-feather="droplet"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="h6">{{card.name}}</span>
+                                <p class="text-sm text-muted mb-0">{{card.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+
+            {% for card in user.ranking_card.all %}
                 <a href="{% url 'rank' %}">
                     <div class="card hover-translate-y-n10 hover-shadow-lg">
                         <div class="p-3 d-flex">

@@ -77,3 +77,9 @@ def result(request):
 	user_psi_dataset()
 	#return render(request, "result.html", {'journal': hello})
 	return render(request, "user_table.html")
+
+
+
+@login_required
+def viewrank(request):
+	return render(request, "base.html")

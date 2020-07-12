@@ -57,6 +57,10 @@ def user_psi_dataset():
 
 	# Displaying the result fams
     result_dataset = pd.read_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\result_dataset.csv')
+
+    drop_columns = [result_dataset.columns[0], result_dataset.columns[10], result_dataset.columns[12], result_dataset.columns[14], result_dataset.columns[24], result_dataset.columns[25], result_dataset.columns[26], result_dataset.columns[27], result_dataset.columns[28], result_dataset.columns[29]]
+    result_dataset = result_dataset.drop(drop_columns, axis=1)
+
     my_output = result_dataset.to_html(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\templates\user_table.html')
     print("Ranking Table has been created")
     

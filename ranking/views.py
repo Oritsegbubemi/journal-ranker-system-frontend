@@ -23,7 +23,6 @@ def card(request):
 		return render(request, "card.html")
 		
 
-
 @login_required
 def rank(request):
 	if request.method == 'POST':
@@ -54,19 +53,12 @@ def rank(request):
 		# open_access (2)
 		open_access_first = request.POST['input-access-first']
 		open_access_second = request.POST['input-access-second']
-		# review_time (5)
-		review_time_first = request.POST['input-review-first']
-		review_time_second = request.POST['input-review-second']
-		review_time_third = request.POST['input-review-third']
-		review_time_fourth = request.POST['input-review-fourth']
-		review_time_fifth = request.POST['input-review-fifth']
 		print("Save all your input")
 		
 		# call the ranking functions
-		user_input_ranking_dataset(int(subject_area), int(index_first), int(index_second), int(publisher_first), int(publisher_second), int(publisher_third), int(publisher_fourth), int(publisher_fifth), int(publisher_sixth), int(publisher_seventh), int(percentile_first), int(percentile_second), int(percentile_third), int(percentile_fourth), int(frequency_first), int(frequency_second), int(frequency_third), int(frequency_fourth), int(frequency_fifth), int(open_access_first), int(open_access_second), int(review_time_first), int(review_time_second), int(review_time_third), int(review_time_fourth), int(review_time_fifth))
+		user_input_ranking_dataset(int(subject_area), int(index_first), int(index_second), int(publisher_first), int(publisher_second), int(publisher_third), int(publisher_fourth), int(publisher_fifth), int(publisher_sixth), int(publisher_seventh), int(percentile_first), int(percentile_second), int(percentile_third), int(percentile_fourth), int(frequency_first), int(frequency_second), int(frequency_third), int(frequency_fourth), int(frequency_fifth), int(open_access_first), int(open_access_second))
 		user_ranking_dataset()
 		return redirect("result")
-	
 	
 	if request.method == 'GET':
 		return render(request, "ranking.html")
@@ -79,7 +71,33 @@ def result(request):
 	return render(request, "user_table.html")
 
 
+def viewrank(request): 
+	import csv
+	import psycopg2
+	conn = psycopg2.connect("host=localhost dbname=journals user=postgres password=gbubemi")
+	cur = conn.cursor()
+	cur.execute(
+		"""CREATE TABLE IF NOT EXISTS user_journal1 (scopus_source_id varchar(30), title varchar(200), citesore varchar(20), percentile varchar(20), citation_count varchar(20), scholarly_output varchar(20), percent_cited varchar(20), snip varchar(20), sjr varchar(20), rank_ varchar(20), rank_outof varchar(20), publisher varchar(20), type_ varchar(20), open_access varchar(20), scopus_asjc_code varchar(20), subject_area varchar(100), quartile varchar(20), top_10 varchar(20), scopus_link varchar(200), print_issn varchar(20), e_issn varchar(20), index varchar(20), frequency varchar(20), review_time varchar(20), user_index varchar(20), user_publisher varchar(20), user_percentile varchar(20), user_frequency varchar(20), user_open_access varchar(20), psi varchar(20))"""
+	)
+	csv_file = r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\short_dataset.csv'
+	with open(csv_file, 'r') as f:
+		reader = csv.reader(f)
+		next(reader) # Skip the header row.
+		for row in reader:
+			cur.execute("INSERT INTO user_journal1 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", row)
+	conn.commit()
 
-@login_required
-def viewrank(request):
-	return render(request, "base.html")
+
+	conn = psycopg2.connect("host=localhost dbname=journals user=postgres password=gbubemi")
+	cur = conn.cursor()
+	postgreSQL_select_Query = "select * from user_journal1"
+	cur.execute(postgreSQL_select_Query)
+	details = cur.fetchall()
+	print("################################################")
+	print("################################################")
+	print("################################################")
+	conn.commit()
+
+	return render(request, "viewrank.html", {'success':'Table created', 'content': details})
+
+

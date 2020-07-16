@@ -1,0 +1,89 @@
+<!-- This is the user ranking html file page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Result</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    <!-- Block Title -->
+    {% block title %}
+        View your result here
+    {% endblock %}
+
+    <!-- Block Content -->
+    {% block content %}
+        <!-- Header -->
+        <div>
+            <h2>Journal Ranker</h2>
+            <h3>{{success}}</h3>
+        </div>
+
+        <!-- Content -->
+        <div>
+            <h1>Hello World</h1>
+
+            <table border="1" class="dataframe">
+                <thead>
+                    <tr style="text-align: right;">
+                        <th></th>
+                        <th>title</th>
+                        <th>citescore</th>
+                        <th>percentile</th>
+                        <th>citation_count</th>
+                        <th>scholarly_output</th>
+                        <th>percent_cited</th>
+                        <th>snip</th>
+                        <th>sjr</th>
+                        <th>rank</th>
+                        <th>publisher</th>
+                        <th>open_access</th>
+                        <th>subject_area</th>
+                        <th>quartile</th>
+                        <th>top_10%</th>
+                        <th>scopus_link</th>
+                        <th>print_issn</th>
+                        <th>e_issn</th>
+                        <th>index</th>
+                        <th>frequency</th>
+                        <th>review_time</th>
+                        <th>PSI</th>
+                    </tr>
+                </thead>
+                
+                {% for feature in content %}
+                    <tbody>
+                        <tr>
+                            <th>{{feature.0}}</th>
+                            <td>{{feature.1}}</td>
+                            <td>{{feature.2}}</td>
+                            <td>{{feature.3}}</td>
+                            <td>{{feature.4}}</td>
+                            <td>{{feature.5}}</td>
+                            <td>{{feature.6}}</td>
+                            <td>{{feature.7}}</td>
+                            <td>{{feature.8}}</td>
+                            <td>{{feature.9}}</td>
+                            <td>{{feature.10}}</td>
+                            <td>{{feature.11}}</td>
+                            <td>{{feature.12}}</td>
+                            <td>{{feature.13}}</td>
+                            <td>{{feature.14}}</td>
+                            <td>{{feature.15}}</td>
+                            <td>{{feature.16}}</td>
+                            <td>{{feature.17}}</td>
+                            <td>{{feature.18}}</td>
+                            <td>{{feature.19}}</td>
+                            <td>{{feature.20}}</td>
+                            <td>{{feature.21}}</td>
+                        </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    {% endblock %}
+</body>
+</html>

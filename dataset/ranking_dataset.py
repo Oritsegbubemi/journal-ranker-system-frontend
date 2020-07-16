@@ -9,10 +9,9 @@ publisher = dict()
 percentile = dict() 
 frequency = dict()
 open_access = dict()
-review_time = dict()
 
 
-def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z):
+def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u):
 	"""
 	This function is going to collect the user input and
 	place ranking value on them as expected.
@@ -95,19 +94,8 @@ def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q
 					open_access[dict_open_access[key]] = y
 		return open_access
 	
-	# review_time_function
-	def user_review_time():
-		dict_review_time = {1: "4 weeks", 2: "6 weeks", 3: "10 weeks", 4: "12 weeks", 5: "18 weeks"}
-		list_review_time = [v, w, x, y, z]
-		rank_review_time = [1.0, 0.8, 0.6, 0.4, 0.2]
-		for (x1, y1) in zip(list_review_time, rank_review_time):
-			for key in dict_review_time.keys():
-				if x1 == key:
-					review_time[dict_review_time[key]] = y1
-		return review_time
-	
 	# Overall ranking_dataset return statement
-	user_input_ranking_return = (user_subject_area(), user_index(), user_publisher(), user_percentile(), user_frequency(), user_open_access(), user_review_time())
+	user_input_ranking_return = (user_subject_area(), user_index(), user_publisher(), user_percentile(), user_frequency(), user_open_access())
 	return user_input_ranking_return
 
 
@@ -174,13 +162,6 @@ def user_ranking_dataset():
 		for key in open_access.keys():
 			if (i == key):
 				rank_open_access.replace(i, open_access[key], inplace=True)
-	
-	# review_time_main
-	rank_review_time = journal.iloc[:, 29]
-	for i in rank_review_time:
-		for key in review_time.keys():
-			if (i == key):
-				rank_review_time.replace(i, review_time[key], inplace=True)
 	
 	# outputation
 	journal.to_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\user_dataset.csv', index=False)

@@ -57,13 +57,15 @@ def user_psi_dataset():
 
 	# Displaying the result fams
     result_dataset = pd.read_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\result_dataset.csv')
+    
+    drop_columns = [result_dataset.columns[0], result_dataset.columns[9], result_dataset.columns[10], result_dataset.columns[12], result_dataset.columns[14], result_dataset.columns[15], result_dataset.columns[17], result_dataset.columns[21], result_dataset.columns[24], result_dataset.columns[25], result_dataset.columns[26], result_dataset.columns[27], result_dataset.columns[28]]
+    dataset = result_dataset.drop(drop_columns, axis=1)
+    dataset = dataset.head(11)
+    dataset.to_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\short_dataset.csv', index=False)
 
-    short_dataset = result_dataset.head(11)
-    short_dataset.to_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\short_dataset.csv', index=False)
 
-    drop_columns = [result_dataset.columns[0], result_dataset.columns[10], result_dataset.columns[12], result_dataset.columns[14], result_dataset.columns[24], result_dataset.columns[25], result_dataset.columns[26], result_dataset.columns[27], result_dataset.columns[28]]
-    result_dataset = result_dataset.drop(drop_columns, axis=1)
-
+    drop_columns1 = [result_dataset.columns[0], result_dataset.columns[9], result_dataset.columns[10], result_dataset.columns[12], result_dataset.columns[14], result_dataset.columns[15], result_dataset.columns[17], result_dataset.columns[21], result_dataset.columns[24], result_dataset.columns[25], result_dataset.columns[26], result_dataset.columns[27], result_dataset.columns[28]]
+    result_dataset = result_dataset.drop(drop_columns1, axis=1)
     my_output = result_dataset.to_html(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\templates\user_table.html')
     print("Ranking Table has been created")
     

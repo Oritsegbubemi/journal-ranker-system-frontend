@@ -14,10 +14,7 @@ def card(request):
 		#card_exists = Card.objects.filter(name=card_name).exists()
 		card_details.save()
 		request.user.ranking_card.add(card_details)
-		print("Card Created")
 		return render(request, "ranking.html", {'card_name': card_name})
-		
-		#return redirect("/ranking/card")
 
 	if request.method == 'GET':
 		return render(request, "card.html")
@@ -77,25 +74,22 @@ def viewrank(request):
 	conn = psycopg2.connect("host=localhost dbname=journals user=postgres password=gbubemi")
 	cur = conn.cursor()
 	cur.execute(
-		"""CREATE TABLE IF NOT EXISTS user_journal1 (scopus_source_id varchar(30), title varchar(200), citesore varchar(20), percentile varchar(20), citation_count varchar(20), scholarly_output varchar(20), percent_cited varchar(20), snip varchar(20), sjr varchar(20), rank_ varchar(20), rank_outof varchar(20), publisher varchar(20), type_ varchar(20), open_access varchar(20), scopus_asjc_code varchar(20), subject_area varchar(100), quartile varchar(20), top_10 varchar(20), scopus_link varchar(200), print_issn varchar(20), e_issn varchar(20), index varchar(20), frequency varchar(20), review_time varchar(20), user_index varchar(20), user_publisher varchar(20), user_percentile varchar(20), user_frequency varchar(20), user_open_access varchar(20), psi varchar(20))"""
+		"""CREATE TABLE IF NOT EXISTS user_journal (title varchar(200), citesore varchar(20), percentile varchar(20), citation_count varchar(20), scholarly_output varchar(20), percent_cited varchar(20), snip varchar(20), sjr varchar(20), publisher varchar(20), open_access varchar(20), quartile varchar(20), scopus_link varchar(200), print_issn varchar(20), e_issn varchar(20), frequency varchar(20), review_time varchar(20), psi varchar(20))"""
 	)
 	csv_file = r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\short_dataset.csv'
 	with open(csv_file, 'r') as f:
 		reader = csv.reader(f)
 		next(reader) # Skip the header row.
 		for row in reader:
-			cur.execute("INSERT INTO user_journal1 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", row)
+			cur.execute("INSERT INTO user_journal VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", row)
 	conn.commit()
 
 
 	conn = psycopg2.connect("host=localhost dbname=journals user=postgres password=gbubemi")
 	cur = conn.cursor()
-	postgreSQL_select_Query = "select * from user_journal1"
+	postgreSQL_select_Query = "select * from user_journal"
 	cur.execute(postgreSQL_select_Query)
 	details = cur.fetchall()
-	print("################################################")
-	print("################################################")
-	print("################################################")
 	conn.commit()
 
 	return render(request, "viewrank.html", {'success':'Table created', 'content': details})

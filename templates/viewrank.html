@@ -19,13 +19,10 @@
         <!-- Header -->
         <div>
             <h2>Journal Ranker</h2>
-            <h3>{{success}}</h3>
         </div>
 
         <!-- Content -->
         <div>
-            <h1>Hello World</h1>
-
             <table border="1" class="dataframe">
                 <thead>
                     <tr style="text-align: right;">
@@ -38,16 +35,12 @@
                         <th>percent_cited</th>
                         <th>snip</th>
                         <th>sjr</th>
-                        <th>rank</th>
                         <th>publisher</th>
                         <th>open_access</th>
-                        <th>subject_area</th>
                         <th>quartile</th>
-                        <th>top_10%</th>
                         <th>scopus_link</th>
                         <th>print_issn</th>
                         <th>e_issn</th>
-                        <th>index</th>
                         <th>frequency</th>
                         <th>review_time</th>
                         <th>PSI</th>
@@ -57,7 +50,8 @@
                 {% for feature in content %}
                     <tbody>
                         <tr>
-                            <th>{{feature.0}}</th>
+                            <th></th>
+                            <td>{{feature.0}}</td>
                             <td>{{feature.1}}</td>
                             <td>{{feature.2}}</td>
                             <td>{{feature.3}}</td>
@@ -75,10 +69,6 @@
                             <td>{{feature.15}}</td>
                             <td>{{feature.16}}</td>
                             <td>{{feature.17}}</td>
-                            <td>{{feature.18}}</td>
-                            <td>{{feature.19}}</td>
-                            <td>{{feature.20}}</td>
-                            <td>{{feature.21}}</td>
                         </tr>
                     </tbody>
                 {% endfor %}

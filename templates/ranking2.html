@@ -1,0 +1,53 @@
+<!-- This is the user ranking html file page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Ranking</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    <!-- Block Title -->
+    {% block title %}
+        Rank your journals here
+    {% endblock %}
+
+    <!-- Block Content -->
+    {% block content %}
+        <!-- Header -->
+        <div>
+            <h2>{{card_name}}</h2>
+            <p>Kindly select the subject area of your research work and rank where appropraite</p>
+            <p>{{journal}}</p>
+        </div>
+
+        <!-- Content -->
+        <div>
+            <form action="{% url 'rank' %}" method="post">
+                {% csrf_token %}
+
+                <!-- 2. Index (2) -->
+                <div>
+                    <h4>2. Index</h4>
+                    <div class="container_drag fixed_drag">
+                        <!-- <p class="text-style_drag coloured_drag">Select field here</p> -->
+                        <p class="draggable text-style_drag" id="1" name="index" draggable="true">Scopus</p>
+                        <p class="draggable text-style_drag" id="2" name="index" draggable="true">Others</p>
+                    </div>
+                    <div class="container_drag drag_drag" id="collect">
+                        <!-- <p class="text-style_drag coloured_drag">Drag field here</p> -->
+                    </div>
+                    <hr>
+                </div>
+
+                <!-- Sumbit Button -->
+                <div>
+                    <button type="submit" class="btn btn-primary float-left">Submit Input</button>
+                </div>
+         </form>
+    </div>
+    {% endblock %}
+</body>
+</html>

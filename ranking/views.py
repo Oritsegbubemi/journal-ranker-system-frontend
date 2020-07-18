@@ -51,7 +51,7 @@ def rank(request):
 		open_access_first = request.POST['input-access-first']
 		open_access_second = request.POST['input-access-second']
 		print("Save all your input")
-		
+
 		# call the ranking functions
 		user_input_ranking_dataset(int(subject_area), int(index_first), int(index_second), int(publisher_first), int(publisher_second), int(publisher_third), int(publisher_fourth), int(publisher_fifth), int(publisher_sixth), int(publisher_seventh), int(percentile_first), int(percentile_second), int(percentile_third), int(percentile_fourth), int(frequency_first), int(frequency_second), int(frequency_third), int(frequency_fourth), int(frequency_fifth), int(open_access_first), int(open_access_second))
 		user_ranking_dataset()
@@ -59,39 +59,59 @@ def rank(request):
 	
 	if request.method == 'GET':
 		return render(request, "ranking.html")
+		
+
+@login_required
+def result(request): 
+	if request.method == 'GET':
+		import csv
+		import psycopg2
+		conn = psycopg2.connect("host=localhost dbname=journals user=postgres password=gbubemi")
+		cur = conn.cursor()
+		cur.execute(
+			"""CREATE TABLE IF NOT EXISTS user_journal (title varchar(200), citesore varchar(20), percentile varchar(20), citation_count varchar(20), scholarly_output varchar(20), percent_cited varchar(20), snip varchar(20), sjr varchar(20), publisher varchar(20), open_access varchar(20), quartile varchar(20), scopus_link varchar(200), print_issn varchar(20), e_issn varchar(20), frequency varchar(20), review_time varchar(20), psi varchar(20))"""
+		)
+		csv_file = r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\short_dataset.csv'
+		with open(csv_file, 'r') as f:
+			reader = csv.reader(f)
+			next(reader) # Skip the header row.
+			for row in reader:
+				cur.execute("INSERT INTO user_journal VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", row)
+		conn.commit()
+
+		import psycopg2
+		conn = psycopg2.connect("host=localhost dbname=journals user=postgres password=gbubemi")
+		cur = conn.cursor()
+		postgreSQL_select_Query = "select * from user_journal"
+		cur.execute(postgreSQL_select_Query)
+		details = cur.fetchall()
+		conn.commit()
+		return render(request, "viewrank.html", {'success':'Table created', 'content': details})
 
 
 @login_required
-def result(request):
-	user_psi_dataset()
-	#return render(request, "result.html", {'journal': hello})
-	return render(request, "user_table.html")
-
-
 def viewrank(request): 
-	import csv
-	import psycopg2
-	conn = psycopg2.connect("host=localhost dbname=journals user=postgres password=gbubemi")
-	cur = conn.cursor()
-	cur.execute(
-		"""CREATE TABLE IF NOT EXISTS user_journal (title varchar(200), citesore varchar(20), percentile varchar(20), citation_count varchar(20), scholarly_output varchar(20), percent_cited varchar(20), snip varchar(20), sjr varchar(20), publisher varchar(20), open_access varchar(20), quartile varchar(20), scopus_link varchar(200), print_issn varchar(20), e_issn varchar(20), frequency varchar(20), review_time varchar(20), psi varchar(20))"""
-	)
-	csv_file = r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\short_dataset.csv'
-	with open(csv_file, 'r') as f:
-		reader = csv.reader(f)
-		next(reader) # Skip the header row.
-		for row in reader:
-			cur.execute("INSERT INTO user_journal VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", row)
-	conn.commit()
+	if request.method == 'GET':
+    
+		import psycopg2
+		conn = psycopg2.connect("host=localhost dbname=journals user=postgres password=gbubemi")
+		cur = conn.cursor()
+		postgreSQL_select_Query = "select * from user_journal"
+		cur.execute(postgreSQL_select_Query)
+		details = cur.fetchall()
+		conn.commit()
+		return render(request, "viewrank.html", {'success':'Table created', 'content': details})
 
 
-	conn = psycopg2.connect("host=localhost dbname=journals user=postgres password=gbubemi")
-	cur = conn.cursor()
-	postgreSQL_select_Query = "select * from user_journal"
-	cur.execute(postgreSQL_select_Query)
-	details = cur.fetchall()
-	conn.commit()
 
-	return render(request, "viewrank.html", {'success':'Table created', 'content': details})
+# def dragndrop(request):
+# 	if request.method == 'POST':
+# 		ax = request.POST.get('index')
+# 		print(ax)
+# 		return render(request, "ranking2.html")
+# 	if request.method == 'GET':
+# 		return render(request, "ranking2.html")
 
 
+# def download(request):
+#     return render(request, "download.html")

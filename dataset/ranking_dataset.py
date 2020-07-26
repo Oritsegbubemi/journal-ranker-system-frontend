@@ -1,7 +1,6 @@
 """
 This is a function of the ranking dataset used in Django project
 """
-
 #Initialization of ranking features
 subject_area = []
 index = dict()
@@ -11,7 +10,7 @@ frequency = dict()
 open_access = dict()
 
 
-def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u):
+def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y):
 	"""
 	This function is going to collect the user input and
 	place ranking value on them as expected.
@@ -52,7 +51,7 @@ def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q
 	# publisher_function
 	def user_publisher():
 		dict_publisher = {1: "Springer", 2: "Elsevier", 3: "IEEE", 4: "Taylor and Francis", 5: "Inderscience", 6: "ACM",
-		                  7: "Others"}
+						  7: "Others"}
 		list_publisher = [d, e, f, g, h, i, j]
 		rank_publisher = [1.0, 0.85, 0.7, 0.55, 0.4, 0.25, 0.1]
 		for (x, y) in zip(list_publisher, rank_publisher):
@@ -74,9 +73,9 @@ def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q
 	
 	# frequency_function
 	def user_frequency():
-		dict_frequency = {1: "Monthly", 2: "Bi-monthly", 3: "Quarterly", 4: "Bi-annually", 5: "Annually"}
-		list_frequency = [o, p, q, r, s]
-		rank_frequency = [1.0, 0.8, 0.6, 0.4, 0.2]
+		dict_frequency = { 1: "Weekly", 2: "Fortnightly", 3: "Semi-monthly", 4: "Monthly", 5: "Bi-monthly", 6: "Quarterly", 7: "Tri-annual", 8: "Semi-annual", 9: "Annual" }
+		list_frequency = [o, p, q, r, s, t, u, v, w]
+		rank_frequency = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2]
 		for (x, y) in zip(list_frequency, rank_frequency):
 			for key in dict_frequency.keys():
 				if x == key:
@@ -85,13 +84,13 @@ def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q
 	
 	# open_access_function
 	def user_open_access():
-		dict_open_access = {1: "YES", 2: "NO"}
-		list_open_access = [t, u]
+		dict_open_access = {1: "Yes", 2: "No"}
+		list_open_access = [x, y]
 		rank_open_access = [1.0, 0.5]
-		for (x, y) in zip(list_open_access, rank_open_access):
+		for (x_, y_) in zip(list_open_access, rank_open_access):
 			for key in dict_open_access.keys():
-				if x == key:
-					open_access[dict_open_access[key]] = y
+				if x_ == key:
+					open_access[dict_open_access[key]] = y_
 		return open_access
 	
 	# Overall ranking_dataset return statement
@@ -116,48 +115,35 @@ def user_ranking_dataset():
 	journal = journal.drop(not_suject_area.index, axis=0)
 	
 	# index_main
-	rank_index = journal.iloc[:, 24]
+	rank_index = journal.iloc[:, 28]
 	for i in rank_index:
 		for key in index.keys():
 			if (i == key):
 				rank_index.replace(i, index[key], inplace=True)
 	
 	# publisher_main
-	rank_publisher = journal.iloc[:, 25]
+	rank_publisher = journal.iloc[:, 29]
 	for i in rank_publisher:
 		for key in publisher.keys():
 			if (i == key):
 				rank_publisher.replace(i, publisher[key], inplace=True)
 	
 	# percentile_main
-	percent = journal.iloc[:, 26]
-	for per in percent:
-		if (per >= 0 and per <= 25):
-			percent.replace(per, 4, inplace=True)
-	for per in percent:
-		if (per >= 25 and per <= 49):
-			percent.replace(per, 3, inplace=True)
-	for per in percent:
-		if (per >= 50 and per <= 74):
-			percent.replace(per, 2, inplace=True)
-	for per in percent:
-		if (per >= 75 and per <= 99):
-			percent.replace(per, 1, inplace=True)
-	rank_percentile = journal.iloc[:, 26]
+	rank_percentile = journal.iloc[:, 30]
 	for i in rank_percentile:
 		for key in percentile.keys():
 			if (i == key):
 				rank_percentile.replace(i, percentile[key], inplace=True)
 	
 	# frequency_main
-	rank_frequency = journal.iloc[:, 27]
+	rank_frequency = journal.iloc[:, 31]
 	for i in rank_frequency:
 		for key in frequency.keys():
 			if (i == key):
 				rank_frequency.replace(i, frequency[key], inplace=True)
 	
 	# open_access_main
-	rank_open_access = journal.iloc[:, 28]
+	rank_open_access = journal.iloc[:, 32]
 	for i in rank_open_access:
 		for key in open_access.keys():
 			if (i == key):
@@ -166,6 +152,3 @@ def user_ranking_dataset():
 	# outputation
 	journal.to_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\user_dataset.csv', index=False)
 	print("User Dataset has been created")
-    
-
-    

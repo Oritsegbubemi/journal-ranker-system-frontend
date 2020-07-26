@@ -1,12 +1,12 @@
-title,citescore,percentile,citation_count,scholarly_output,percent_cited,snip,sjr,publisher,open_access,quartile,scopus_link,print_issn,e_issn,frequency,review_time,PSI
-Ocean Modelling,3.27,87,1093,334,82,1.392,1.899,Elsevier,NO,Quartile1,https://www.scopus.com/sourceid/28352,14635003,14635011,Monthly,18 weeks,0.8556880956717052
-Journal of Computer Virology and Hacking Techniques,1.84,67,138,75,53,1.1,0.279,Springer,NO,Quartile2,https://www.scopus.com/sourceid/21100405702,,22638733,Monthly,18 weeks,0.8201299095489589
-"Journal of Logic, Language and Information",0.91,37,40,44,50,1.514,0.342,Springer,NO,Quartile3,https://www.scopus.com/sourceid/145095,9258531,,Monthly,18 weeks,0.7644630607661022
-IEEE/ACM Transactions on Audio Speech and Language Processing,5.06,95,2388,472,85,2.382,1.045,IEEE,NO,Quartile1,https://www.scopus.com/sourceid/21100368801,23299290,23299304,Bi-monthly,12 weeks,0.7385661385297154
-Symmetry,2.28,75,1140,501,69,1.046,0.287,Others,YES,Quartile1,https://www.scopus.com/sourceid/21100201542,20738994,,Monthly,18 weeks,0.7123474776907668
-"Law, Innovation and Technology",1.54,57,43,28,64,0.913,0.612,Taylor and Francis,NO,Quartile2,https://www.scopus.com/sourceid/21100824892,17579961,1757997X,Monthly,18 weeks,0.6763036483943422
-npj Quantum Information,8.53,99,503,59,95,2.5,3.929,Others,YES,Quartile1,https://www.scopus.com/sourceid/21100827946,,20566387,Bi-monthly,12 weeks,0.6431676076003157
-International Journal of Prognostics and Health Management,1.36,52,99,73,59,0.6859999999999999,0.242,Others,YES,Quartile2,https://www.scopus.com/sourceid/21100283367,21532648,,Monthly,18 weeks,0.6288472045164815
-Journal of Systems Science and Complexity,1.05,43,296,283,43,0.647,0.281,Springer,NO,Quartile3,https://www.scopus.com/sourceid/4900152803,10096124,,Bi-annually,6 weeks,0.5569234504947491
-International Journal of Information Technology and Decision Making,2.49,81,474,190,59,0.95,0.552,Others,NO,Quartile1,https://www.scopus.com/sourceid/4700152646,2196220,,Bi-monthly,12 weeks,0.5467977903235598
-International Journal of Computing,2.07,71,87,42,57,1.337,0.29100000000000004,Others,NO,Quartile2,https://www.scopus.com/sourceid/21100820054,17276209,23125381,Monthly,18 weeks,0.5324773872397256
+title,citescore,percentile,citation_count,scholarly_output,percent_cited,snip,sjr,publisher,open_access,quartile,scopus_link,frequency,review_time,print_issn,PSI
+Ocean Modelling,3.27,87,1093,334,82,1.392,1.899,Elsevier BV,NO,Quartile1,https://www.scopus.com/sourceid/28352,Monthly,,1463-5003,0.7782135826771652
+Journal of Computer Virology and Hacking Techniques,1.84,67,138,75,53,1.1,0.279,Springer Science + Business Media,NO,Quartile2,https://www.scopus.com/sourceid/21100405702,Bi-monthly,,,0.7305905511811024
+IEEE Transactions on Emerging Topics in Computing,4.36,91,659,151,74,1.83,0.659,IEEE Computer Society,NO,Quartile1,https://www.scopus.com/sourceid/21100338508,Quarterly,,2168-6750,0.7086122047244094
+IEEE/ACM Transactions on Audio Speech and Language Processing,5.06,95,2388,472,85,2.382,1.045,IEEE Advancing Technology for Humanity,NO,Quartile1,https://www.scopus.com/sourceid/21100368801,Monthly,,2329-9290,0.7004822834645669
+"Journal of Logic, Language and Information",0.91,37,40,44,50,1.514,0.342,Springer Netherlands,NO,Quartile3,https://www.scopus.com/sourceid/145095,Quarterly,,0925-8531,0.6483759842519685
+Journal of Systems Science and Complexity,1.05,43,296,283,43,0.647,0.281,Springer New York,NO,Quartile3,https://www.scopus.com/sourceid/4900152803,Bi-monthly,,1009-6124,0.6443110236220473
+Journal of Artificial Societies and Social Simulation,2.42,79,404,167,69,1.493,1.097,University of Surrey,YES,Quartile1,https://www.scopus.com/sourceid/15591,Quarterly,21 weeks,1460-7425,0.5539370078740157
+Journal of Cybersecurity,2.3,77,92,40,65,1.712,0.469,Oxford University Press,YES,Quartile1,https://www.scopus.com/sourceid/21100855505,Bi-monthly,,,0.5498720472440943
+npj Quantum Information,8.53,99,503,59,95,2.5,3.929,Nature Partner Journals,YES,Quartile1,https://www.scopus.com/sourceid/21100827946,Bi-monthly,,,0.5498720472440943
+Symmetry,2.28,75,1140,501,69,1.046,0.287,Multidisciplinary Digital Publishing Institute,YES,Quartile1,https://www.scopus.com/sourceid/21100201542,Monthly,11 weeks,2073-8994,0.5458070866141731
+"Law, Innovation and Technology",1.54,57,43,28,64,0.913,0.612,Taylor and Francis Ltd.,NO,Quartile2,https://www.scopus.com/sourceid/21100824892,Bi-monthly,,1757-9961,0.497396653543307

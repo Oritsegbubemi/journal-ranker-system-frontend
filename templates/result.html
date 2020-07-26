@@ -5,69 +5,87 @@
 <head>
     <meta charset="UTF-8">
     <title>User Result</title>
+    <style>
+        table, td, th {  
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        tr:hover { 
+            background-color: #f5f5f5;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        .scrolling-wrapper {
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
     {% extends 'base.html' %}
 
     <!-- Block Title -->
     {% block title %}
-        View your result here
+    <div class="">
+            <p>View your result here</p>                                       
+        
+        <div class="">
+            <a href="#"><button type="submit" class="btn btn-primary">Download File</button></a>
+        </div>
+
+    </div>
     {% endblock %}
 
     <!-- Block Content -->
     {% block content %}
-    
+
         <!-- Content -->
-        <div>
-
-            <!-- Download File Button -->
-            <a href="">
-                <div>
-                    <button type="submit" class="btn btn-primary float-right mb-3">Download File</button>
-                </div>
-            </a>
-
-            <!-- Journal Table -->
-            <table border="1" class="dataframe">
+        <!-- Journal Table -->
+        <div class="scrolling-wrapper">
+            <table class="dataframe">
                 <thead>
-                    <tr style="text-align: right;">
+                    <tr>
                         <th></th>
                         <th>Title</th>
                         <th>Citescore</th>
-                        <th>SNIP</th>
-                        <th>SJR</th>
+                        <th>Percentile</th>
                         <th>Publisher</th>
                         <th>Open Access</th>
                         <th>Scopus Link</th>
                         <th>ISSN</th>      
                         <th>Frequency</th>
-                        <th>Review Time</th>
-                        <th>PSI</th>
+                        <th>Ranking Value</th>
                     </tr>
                 </thead>
                 
                 {% for feature in content %}
-                    <tbody>
-                        <tr>
-                            <th></th>
-                            <td>{{feature.0}}</td>
-                            <td>{{feature.1}}</td>
-                            <td>{{feature.3}}</td>
-                            <td>{{feature.7}}</td>
-                            <td>{{feature.8}}</td>
-                            <td>{{feature.9}}</td>
-                            <td>{{feature.10}}</td>
-                            <td>{{feature.12}}</td>
-                            <td>{{feature.13}}</td>
-                            <td>{{feature.15}}</td>
-                            <td>{{feature.16}}</td>
-                            <td>{{feature.17}}</td>
-                        </tr>
-                    </tbody>
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <td class=>{{feature.0}}</td>
+                        <td class=>{{feature.1}}</td>
+                        <td class=>{{feature.3}}</td>
+                        <td class=>{{feature.8}}</td>
+                        <td class=>{{feature.9}}</td>
+                        <td class=><a href={{feature.11}} target="_blank">{{feature.11}}</a></td>
+                        <td class=>{{feature.14}}</td>
+                        <td class=>{{feature.12}}</td>
+                        <td class=>{{feature.15}}</td>
+                    </tr>
+                </tbody>
                 {% endfor %}
             </table>
         </div>
-
     {% endblock %}
 </body>
 </html>

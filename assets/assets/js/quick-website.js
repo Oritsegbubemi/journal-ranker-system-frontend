@@ -1,7 +1,6 @@
 //
-// DRAG AND DROP
 //
-
+//
 const draggables = document.querySelectorAll('.draggable')
 const containers = document.querySelectorAll('.container_drag.drag_drag')
 
@@ -22,14 +21,18 @@ containers.forEach(container => {
     const draggable = document.querySelector('.dragging')
     if (afterElement == null) {
       container.appendChild(draggable)
+      //console.log()
     } else {
       container.insertBefore(draggable, afterElement)
+      //console.log(container)
     }
   })
 })
 
 function getDragAfterElement(container, y) {
   const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')]
+  //console.log(draggableElements)
+
   return draggableElements.reduce((closest, child) => {
     const box = child.getBoundingClientRect()
     const offset = y - box.top - box.height / 2
@@ -43,13 +46,13 @@ function getDragAfterElement(container, y) {
 
 function myButtonFunction() {
   var childDivs = document.getElementById('collect').getElementsByTagName('p');
+
   for( i=0; i< childDivs.length; i++ )
   {
     var childDiv = childDivs[i];
+    //console.log(childDiv.id)
   }
 }
-
-
 //
 // END
 

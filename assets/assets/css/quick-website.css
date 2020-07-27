@@ -28116,60 +28116,26 @@ section
     cursor: pointer;
 }
 
-
-/* NEW FOR DRAG AND DROP */
+/*-----------*/
 
 .container_drag {
-    background-color: #FFFFFF;
-    border-width: 3px;
-    border-color: #52CB96;
-    float: left;
-    width: 20%; 
-    height:320px;
-    padding: 20px
-  }
-  
-  .fixed_drag {
-    margin-right: 1rem;
-    border-style: dotted;
-  }
-  
-  .drag_drag {
-    border-style: solid;
-  }
-  
-  .draggable {
-    padding: 1rem;
+}
+ 
+.drag_drag {
+}
+
+.draggable {
     cursor: move;
-    height: 10px;
-    background: #52CB96;
-    border-radius: 10px;
-    margin-top: 0;
-    margin: 0.5em;
-  }
-  
-  .draggable.dragging {
+}
+
+.draggable.dragging {
     opacity: .5;
     transform: scale(.8);
-  }
-  
-  .draggable:active {
+}
+
+.draggable:active {
     cursor: grabbing;
-  }
-  
-  .text-style_drag {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    text-align: center;
-    color: #FFFFFF;
-    line-height: 14px;
-  }
-  
-  .coloured_drag {
-    color: #52CB96;
-  }
+}
 
 
 /*# sourceMappingURL=quick-website.css.map */

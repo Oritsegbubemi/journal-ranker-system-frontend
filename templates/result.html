@@ -1,4 +1,4 @@
-<!-- This is the user ranking html file page -->
+<!-- This is the user result html file page -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +40,7 @@
             <p>View your result here</p>                                       
         
         <div class="">
-            <a href="#"><button type="submit" class="btn btn-primary">Download File</button></a>
+            <a href=""><button type="submit" class="btn btn-primary">Download File</button></a>
         </div>
 
     </div>
@@ -55,7 +55,7 @@
             <table class="dataframe">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>Serial No.</th>
                         <th>Title</th>
                         <th>Citescore</th>
                         <th>Percentile</th>
@@ -71,16 +71,16 @@
                 {% for feature in content %}
                 <tbody>
                     <tr>
-                        <th></th>
-                        <td class=>{{feature.0}}</td>
-                        <td class=>{{feature.1}}</td>
-                        <td class=>{{feature.3}}</td>
-                        <td class=>{{feature.8}}</td>
-                        <td class=>{{feature.9}}</td>
-                        <td class=><a href={{feature.11}} target="_blank">{{feature.11}}</a></td>
-                        <td class=>{{feature.14}}</td>
-                        <td class=>{{feature.12}}</td>
-                        <td class=>{{feature.15}}</td>
+                        <th>{{forloop.counter}}</th>
+                        <td>{{feature.0}}</td>
+                        <td>{{feature.1}}</td>
+                        <td>{{feature.3}}</td>
+                        <td>{{feature.8}}</td>
+                        <td>{{feature.9}}</td>
+                        <td><a href={{feature.11}} target="_blank">{{feature.11}}</a></td>
+                        <td>{{feature.14}}</td>
+                        <td>{{feature.12}}</td>
+                        <td>{{feature.15}}</td>
                     </tr>
                 </tbody>
                 {% endfor %}

@@ -107,15 +107,11 @@ def viewrank(request):
 		return render(request, "viewrank.html", {'success':'Table created', 'content': details})
 
 
+#ranking2
+@login_required
+def ranking2(request):
+	if request.method=='POST':
+		return render(request, "ranking2.html")
 
-# def dragndrop(request):
-# 	if request.method == 'POST':
-# 		ax = request.POST.get('index')
-# 		print(ax)
-# 		return render(request, "ranking2.html")
-# 	if request.method == 'GET':
-# 		return render(request, "ranking2.html")
-
-
-# def download(request):
-#     return render(request, "download.html")
+	if request.method=='GET':
+		return render(request, "ranking2.html")

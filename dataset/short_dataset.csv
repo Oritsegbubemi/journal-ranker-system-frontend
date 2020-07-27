@@ -1,12 +1,12 @@
 title,citescore,percentile,citation_count,scholarly_output,percent_cited,snip,sjr,publisher,open_access,quartile,scopus_link,frequency,review_time,print_issn,PSI
-Ocean Modelling,3.27,87,1093,334,82,1.392,1.899,Elsevier BV,NO,Quartile1,https://www.scopus.com/sourceid/28352,Monthly,,1463-5003,0.7782135826771652
-Journal of Computer Virology and Hacking Techniques,1.84,67,138,75,53,1.1,0.279,Springer Science + Business Media,NO,Quartile2,https://www.scopus.com/sourceid/21100405702,Bi-monthly,,,0.7305905511811024
-IEEE Transactions on Emerging Topics in Computing,4.36,91,659,151,74,1.83,0.659,IEEE Computer Society,NO,Quartile1,https://www.scopus.com/sourceid/21100338508,Quarterly,,2168-6750,0.7086122047244094
-IEEE/ACM Transactions on Audio Speech and Language Processing,5.06,95,2388,472,85,2.382,1.045,IEEE Advancing Technology for Humanity,NO,Quartile1,https://www.scopus.com/sourceid/21100368801,Monthly,,2329-9290,0.7004822834645669
-"Journal of Logic, Language and Information",0.91,37,40,44,50,1.514,0.342,Springer Netherlands,NO,Quartile3,https://www.scopus.com/sourceid/145095,Quarterly,,0925-8531,0.6483759842519685
-Journal of Systems Science and Complexity,1.05,43,296,283,43,0.647,0.281,Springer New York,NO,Quartile3,https://www.scopus.com/sourceid/4900152803,Bi-monthly,,1009-6124,0.6443110236220473
-Journal of Artificial Societies and Social Simulation,2.42,79,404,167,69,1.493,1.097,University of Surrey,YES,Quartile1,https://www.scopus.com/sourceid/15591,Quarterly,21 weeks,1460-7425,0.5539370078740157
-Journal of Cybersecurity,2.3,77,92,40,65,1.712,0.469,Oxford University Press,YES,Quartile1,https://www.scopus.com/sourceid/21100855505,Bi-monthly,,,0.5498720472440943
-npj Quantum Information,8.53,99,503,59,95,2.5,3.929,Nature Partner Journals,YES,Quartile1,https://www.scopus.com/sourceid/21100827946,Bi-monthly,,,0.5498720472440943
-Symmetry,2.28,75,1140,501,69,1.046,0.287,Multidisciplinary Digital Publishing Institute,YES,Quartile1,https://www.scopus.com/sourceid/21100201542,Monthly,11 weeks,2073-8994,0.5458070866141731
-"Law, Innovation and Technology",1.54,57,43,28,64,0.913,0.612,Taylor and Francis Ltd.,NO,Quartile2,https://www.scopus.com/sourceid/21100824892,Bi-monthly,,1757-9961,0.497396653543307
+Cognitive Computation,5.05,90,1021,202,83,1.898,1.06,Springer New York,NO,Quartile1,https://www.scopus.com/sourceid/19400158515,Quarterly,,1866-9956,0.9657060149331851
+International Journal of Machine Learning and Cybernetics,3.72,79,1173,315,80,1.325,0.786,Springer Science + Business Media,NO,Quartile1,https://www.scopus.com/sourceid/19700177336,Bi-monthly,,1868-8071,0.96271083243428
+International Journal of Computer Vision,15.78,95,4370,277,83,7.965,3.595,Springer Netherlands,NO,Quartile1,https://www.scopus.com/sourceid/72242,Monthly,,0920-5691,0.9597156499353748
+Visualization in Engineering,2.92,74,140,48,65,1.407,0.537,Springer Open,YES,Quartile2,https://www.scopus.com/sourceid/21100856541,Bi-monthly,,,0.92992832498371
+Machine Vision and Applications,2.22,61,491,221,65,1.018,0.375,Springer Verlag,NO,Quartile2,https://www.scopus.com/sourceid/12984,Annual,,0932-8092,0.8926391574179899
+Pattern Analysis and Applications,1.78,54,388,218,66,1.046,0.358,Springer London,NO,Quartile2,https://www.scopus.com/sourceid/24822,Quarterly,,1433-7541,0.8836536099212747
+International Journal on Document Analysis and Recognition,2.9,73,174,60,80,1.212,0.419,Springer Verlag,NO,Quartile2,https://www.scopus.com/sourceid/130138,Quarterly,,1433-2833,0.8836536099212747
+Visual Computer,1.74,51,692,398,64,1.119,0.375,Springer Verlag,NO,Quartile2,https://www.scopus.com/sourceid/26146,Bi-monthly,,0178-2789,0.8806584274223697
+International journal of computer assisted radiology and surgery,2.34,65,1427,610,70,1.128,0.625,Springer Verlag,NO,Quartile2,https://www.scopus.com/sourceid/4700152490,Bi-monthly,,1861-6410,0.8806584274223697
+Journal of Mathematical Imaging and Vision,1.89,57,420,222,61,1.329,0.669,Springer Netherlands,NO,Quartile2,https://www.scopus.com/sourceid/28501,Monthly,,0924-9907,0.8776632449234645
+Computerized Medical Imaging and Graphics,3.7,78,799,216,77,1.666,0.805,Elsevier Ltd,NO,Quartile1,https://www.scopus.com/sourceid/23607,Bi-monthly,,0895-6111,0.8528093188202996

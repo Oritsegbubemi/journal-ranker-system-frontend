@@ -4,7 +4,6 @@ from dataset.ranking_dataset import user_input_ranking_dataset, user_ranking_dat
 from dataset.user_dataset import user_psi_dataset
 from .models import *
 
-
 @login_required
 def card(request):
 	if request.method == 'POST':
@@ -110,8 +109,10 @@ def viewrank(request):
 #ranking2
 @login_required
 def ranking2(request):
-	if request.method=='POST':
-		return render(request, "ranking2.html")
-
 	if request.method=='GET':
 		return render(request, "ranking2.html")
+
+	if request.method=='POST':
+		hello = request.POST.get('collect')
+		print(hello)
+		return render(request, 'ranking2.html')

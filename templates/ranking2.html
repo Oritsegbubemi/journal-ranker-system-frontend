@@ -3,11 +3,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <title>User Ranking</title>
 </head>
 <body>
     {% extends 'base.html' %}
+    {% load static %}
 
     <!-- Block Title -->
     {% block title %}
@@ -24,8 +26,10 @@
 
         <!-- Content -->
         <div>
-            <form action="" method="post">
+            <form action="{% url 'ranking2' %}" method="post">
                 {% csrf_token %}
+
+                <input type="radio" name="subject" id="r13" value="13">Software<hr>
 
                 <!-- Index (2) -->
                 <div class="row">
@@ -34,17 +38,29 @@
                             <div class="card-body">
                                 <h5 class="card-title">Index</h5>
                                 <div class="">
-                                    <div class="alert alert-modern alert-outline-success draggable1"
-                                        id="1" name="index" draggable="true">
+                                    <p class="alert alert-modern alert-outline-success draggable"
+                                        id="scopus" name="index" value="1" draggable="true">
                                         <span class="badge badge-success badge-pill">Index</span>
                                         <span class="alert-content">Scopus</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
-                                        id="2" name="index" draggable="true">
+                                    </p>
+                                   
+                                    <p class="alert alert-modern alert-outline-success draggable"
+                                        id="others1" name="index" value="2" draggable="true">
                                         <span class="badge badge-success badge-pill">Index</span>
-                                        <span class="alert-content">Others</span>
-                                    </div>
+                                        <span class="alert-content">Others1</span>
+                                    </p>
+
+                                    <p class="alert alert-modern alert-outline-success draggable"
+                                        id="others2" name="index" value="3" draggable="true">
+                                        <span class="badge badge-success badge-pill">Index</span>
+                                        <span class="alert-content">Others2</span>
+                                    </p>
+
+                                    <p class="alert alert-modern alert-outline-success draggable"
+                                        id="others3" name="index" value="4" draggable="true">
+                                        <span class="badge badge-success badge-pill">Index</span>
+                                        <span class="alert-content">Others3</span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +69,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Index</h5>
-                                <div class="container_drag1 drag_drag1" id="collect">
+                                <div class="container_drag drag_drag" id="collect">
+                                    
                                 </div>
                             </div>
                         </div>
@@ -61,49 +78,49 @@
                 </div>
 
                 <!-- Publisher (7) -->
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Publisher</h5>
                                 <div class="">
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="1" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Publisher</span>
                                         <span class="alert-content">Springer</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="2" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Publisher</span>
                                         <span class="alert-content">Elsevier</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="3" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Publisher</span>
                                         <span class="alert-content">IEEE</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="4" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Publisher</span>
                                         <span class="alert-content">Taylor & Francis</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="5" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Publisher</span>
                                         <span class="alert-content">Inderscience</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="6" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Publisher</span>
                                         <span class="alert-content">ACM</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="7" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Publisher</span>
                                         <span class="alert-content">Others</span>
@@ -116,39 +133,39 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Publisher</h5>
-                                <div class="container_drag1 drag_drag1" id="collect">
+                                <div class="container_drag drag_drag" id="collect">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                  <!-- Percentile (4) -->
-                 <div class="row">
+                 <!-- <div class="row">
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Percentile</h5>
                                 <div class="">
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="1" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Percentile</span>
                                         <span class="alert-content">0-24</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="2" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Percentile</span>
                                         <span class="alert-content">25-49</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="3" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Percentile</span>
                                         <span class="alert-content">50-74</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="4" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Percentile</span>
                                         <span class="alert-content">75-99</span>
@@ -161,69 +178,69 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Percentile</h5>
-                                <div class="container_drag1 drag_drag1" id="collect">
+                                <div class="container_drag drag_drag" id="collect">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Frequency (9) -->
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Frequency</h5>
                                 <div class="">
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="1" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Frequency</span>
                                         <span class="alert-content">Weekly</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="2" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Frequency</span>
                                         <span class="alert-content">Fortnighty</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="3" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Frequency</span>
                                         <span class="alert-content">Semi-monthly</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="4" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Frequency</span>
                                         <span class="alert-content">Monthly</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="5" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Frequency</span>
                                         <span class="alert-content">Bi-monthly</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="6" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Frequency</span>
                                         <span class="alert-content">Quarterly</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="7" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Frequency</span>
                                         <span class="alert-content">Tri-annual</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="8" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Frequency</span>
                                         <span class="alert-content">Semi-annual</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="9" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Frequency</span>
                                         <span class="alert-content">Annual</span>
@@ -236,27 +253,27 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Frequency</h5>
-                                <div class="container_drag1 drag_drag1" id="collect">
+                                <div class="container_drag drag_drag" id="collect">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Open Access (2) -->
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-sm-6">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Open Access</h5>
                                 <div class="">
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="1" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Open Access</span>
                                         <span class="alert-content">Yes</span>
                                     </div>
                                     <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable1"
+                                    <div class="alert alert-modern alert-outline-success draggable"
                                         id="2" name="index" draggable="true">
                                         <span class="badge badge-success badge-pill">Open Access</span>
                                         <span class="alert-content">No</span>
@@ -269,16 +286,16 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Open Access</h5>
-                                <div class="container_drag1 drag_drag1" id="collect">
+                                <div class="container_drag drag_drag" id="collect">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Sumbit Button -->
                 <div>
-                    <button onclick="myButtonFunction()" type="submit" class="btn btn-primary float-left">Submit Input</button>
+                    <button type="submit" class="btn btn-primary float-left">Submit Input</button>
                 </div>
 
          </form>

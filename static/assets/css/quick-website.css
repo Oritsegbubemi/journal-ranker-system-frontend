@@ -28119,6 +28119,7 @@ section
 /*-----------*/
 
 .container_drag {
+     height:100px;
 }
  
 .drag_drag {

@@ -1,5 +1,5 @@
 //
-//
+// DRAG AND DROP
 //
 const draggables = document.querySelectorAll('.draggable')
 const containers = document.querySelectorAll('.container_drag.drag_drag')
@@ -50,7 +50,7 @@ function myButtonFunction() {
   for( i=0; i< childDivs.length; i++ )
   {
     var childDiv = childDivs[i];
-    //console.log(childDiv.id)
+    console.log(childDiv.id)
   }
 }
 //

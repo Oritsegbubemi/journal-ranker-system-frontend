@@ -1,4 +1,4 @@
-<!-- This is the user ranking html file page -->
+<!-- This is the user result html file page -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,15 +33,11 @@
 </head>
 <body>
     {% extends 'base.html' %}
-
+    {% load static %}
     <!-- Block Title -->
     {% block title %}
     <div class="">
-            <p>View your result here</p>                                       
-        
-        <div class="">
-            <a href="#" download><button type="submit" class="btn btn-primary">Download File</button></a>
-        </div>
+            <p>View your result</p>                                       
 
     </div>
     {% endblock %}
@@ -61,9 +57,9 @@
                         <th>Percentile</th>
                         <th>Publisher</th>
                         <th>Open Access</th>
-                        <th>Scopus Link</th>
-                        <th>ISSN</th>      
                         <th>Frequency</th>
+                        <th>ISSN</th>      
+                        <th>Scopus Link</th>
                         <th>Ranking Value</th>
                     </tr>
                 </thead>
@@ -72,15 +68,15 @@
                 <tbody>
                     <tr>
                         <th>{{forloop.counter}}</th>
-                        <td>{{feature.0}}</td>
                         <td>{{feature.1}}</td>
+                        <td>{{feature.2}}</td>
                         <td>{{feature.3}}</td>
-                        <td>{{feature.8}}</td>
-                        <td>{{feature.9}}</td>
-                        <td><a href={{feature.11}} target="_blank">{{feature.11}}</a></td>
-                        <td>{{feature.14}}</td>
-                        <td>{{feature.12}}</td>
-                        <td>{{feature.15}}</td>
+                        <td>{{feature.11}}</td>
+                        <td>{{feature.13}}</td>
+                        <td>{{feature.22}}</td>
+                        <td>{{feature.26}}</td>
+                        <td><a href={{feature.18}} target="_blank">{{feature.18}}</a></td>
+                        <td>{{feature.33}}</td>
                     </tr>
                 </tbody>
                 {% endfor %}

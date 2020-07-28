@@ -108,7 +108,7 @@ def user_ranking_dataset():
 	
 	# import libraries
 	import pandas as pd
-	journal = pd.read_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\ranking_dataset.csv')
+	journal = pd.read_csv('dataset/ranking_dataset.csv')
 
 	# subject_area_main
 	not_suject_area = journal.loc[journal.iloc[:, 15] != subject_area[0]]
@@ -150,5 +150,5 @@ def user_ranking_dataset():
 				rank_open_access.replace(i, open_access[key], inplace=True)
 	
 	# outputation
-	journal.to_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\user_dataset.csv', index=False)
+	journal.to_csv('dataset/user_dataset.csv', index=False)
 	print("User Dataset has been created")

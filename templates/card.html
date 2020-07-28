@@ -38,6 +38,13 @@
                         </div>
                     </div>
 
+                    <!-- Show Message -->
+                    <div>
+                        {% for message in messages %}
+                        <h6 class="text-center" style="color: red;">{{message}}</h6>
+                        {% endfor %}
+                    </div>
+
                     <div class="">
                         <button type="submit" class="btn btn-primary float-right">Proceed</button>
                     </div>
@@ -52,7 +59,7 @@
             </div>
 
             {% for card in user.ranking_card.all %}
-                <a href="{% url 'viewrank' %}">
+                <a href="{% url 'viewrank' card.name %}">
                     <div class="card hover-translate-y-n10 hover-shadow-lg">
                         <div class="p-3 d-flex">
                             <div>

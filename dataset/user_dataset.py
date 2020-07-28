@@ -7,10 +7,9 @@ def user_psi_dataset():
     # Import libraries
     import numpy as np
     import pandas as pd
-    import pdfkit as pdf
     
     # Read in csv file
-    journal = pd.read_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\user_dataset.csv')
+    journal = pd.read_csv('dataset/user_dataset.csv')
     number = len(journal)
     columns = journal.columns[28:33]
     
@@ -53,26 +52,8 @@ def user_psi_dataset():
     ranked_journal = journal.sort_values('PSI', ascending=False)
     
     # 10 - Exporting to Result Ranking dataset
-    ranked_journal.to_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\result_dataset.csv', index=False)
+    ranked_journal.to_csv('dataset/result_dataset.csv', index=False)
+    ranked_journal.to_html('dataset/user_table.html')
     print("File has been created")
-
-	# Displaying the result fams
-    result_dataset = pd.read_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\result_dataset.csv')
-    
-
-    # Create Short dataset
-    drop_columns = [result_dataset.columns[0], result_dataset.columns[9], result_dataset.columns[10], result_dataset.columns[12], result_dataset.columns[14], result_dataset.columns[15], result_dataset.columns[17], result_dataset.columns[19], result_dataset.columns[20], result_dataset.columns[21], result_dataset.columns[23], result_dataset.columns[25], result_dataset.columns[27], result_dataset.columns[28], result_dataset.columns[29], result_dataset.columns[30], result_dataset.columns[31], result_dataset.columns[32]]
-    dataset = result_dataset.drop(drop_columns, axis=1)
-    dataset = dataset.head(11)
-    dataset.to_csv(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\short_dataset.csv', index=False)
-
-
-    # Create HTML File dataset
-    drop_columns1 = [result_dataset.columns[0], result_dataset.columns[9], result_dataset.columns[10], result_dataset.columns[12], result_dataset.columns[14], result_dataset.columns[15], result_dataset.columns[17], result_dataset.columns[19], result_dataset.columns[20], result_dataset.columns[21], result_dataset.columns[23], result_dataset.columns[25], result_dataset.columns[27], result_dataset.columns[28], result_dataset.columns[29], result_dataset.columns[30], result_dataset.columns[31], result_dataset.columns[32]]
-    result_dataset = result_dataset.drop(drop_columns1, axis=1)
-    html_file = result_dataset.to_html(r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\user_table.html')
-    pdf_name = r'C:\Users\Gbubemi\Documents\#Project\journal-ranker\dataset\user_table_pdf.pdf'
-    pdf.from_file(html_file, pdf_name)
-
     print("Ranking Table has been created")
     

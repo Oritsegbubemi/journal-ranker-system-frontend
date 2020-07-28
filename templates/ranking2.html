@@ -1,305 +1,91 @@
-<!-- This is the user ranking html file page -->
+<!-- This is the user result html file page -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
-    <title>User Ranking</title>
+    <title>User Result</title>
+    <style>
+        table, td, th {  
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        tr:hover { 
+            background-color: #f5f5f5;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        .scrolling-wrapper {
+            overflow-x: scroll;
+            overflow-y: hidden;
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
     {% extends 'base.html' %}
     {% load static %}
-
     <!-- Block Title -->
     {% block title %}
-        Rank your journals here
+    <div class="">
+            <p>View your result here</p>                                       
+        
+        <div class="">
+            <a href="{% static 'user_table.html' %}" download><button type="submit" class="btn btn-primary">Download File</button></a>
+        </div>
+
+    </div>
     {% endblock %}
 
     <!-- Block Content -->
     {% block content %}
-        <!-- Header -->
-        <div>
-            <h2>{{card_name}}</h2>
-            <p>Kindly select the subject area of your research work and rank where appropraite</p>
-        </div>
 
         <!-- Content -->
-        <div>
-            <form action="{% url 'ranking2' %}" method="post">
-                {% csrf_token %}
-
-                <input type="radio" name="subject" id="r13" value="13">Software<hr>
-
-                <!-- Index (2) -->
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Index</h5>
-                                <div class="">
-                                    <p class="alert alert-modern alert-outline-success draggable"
-                                        id="scopus" name="index" value="1" draggable="true">
-                                        <span class="badge badge-success badge-pill">Index</span>
-                                        <span class="alert-content">Scopus</span>
-                                    </p>
-                                   
-                                    <p class="alert alert-modern alert-outline-success draggable"
-                                        id="others1" name="index" value="2" draggable="true">
-                                        <span class="badge badge-success badge-pill">Index</span>
-                                        <span class="alert-content">Others1</span>
-                                    </p>
-
-                                    <p class="alert alert-modern alert-outline-success draggable"
-                                        id="others2" name="index" value="3" draggable="true">
-                                        <span class="badge badge-success badge-pill">Index</span>
-                                        <span class="alert-content">Others2</span>
-                                    </p>
-
-                                    <p class="alert alert-modern alert-outline-success draggable"
-                                        id="others3" name="index" value="4" draggable="true">
-                                        <span class="badge badge-success badge-pill">Index</span>
-                                        <span class="alert-content">Others3</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Index</h5>
-                                <div class="container_drag drag_drag" id="collect">
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Publisher (7) -->
-                <!-- <div class="row">
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Publisher</h5>
-                                <div class="">
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="1" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Publisher</span>
-                                        <span class="alert-content">Springer</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="2" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Publisher</span>
-                                        <span class="alert-content">Elsevier</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="3" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Publisher</span>
-                                        <span class="alert-content">IEEE</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="4" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Publisher</span>
-                                        <span class="alert-content">Taylor & Francis</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="5" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Publisher</span>
-                                        <span class="alert-content">Inderscience</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="6" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Publisher</span>
-                                        <span class="alert-content">ACM</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="7" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Publisher</span>
-                                        <span class="alert-content">Others</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Publisher</h5>
-                                <div class="container_drag drag_drag" id="collect">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-                 <!-- Percentile (4) -->
-                 <!-- <div class="row">
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Percentile</h5>
-                                <div class="">
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="1" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Percentile</span>
-                                        <span class="alert-content">0-24</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="2" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Percentile</span>
-                                        <span class="alert-content">25-49</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="3" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Percentile</span>
-                                        <span class="alert-content">50-74</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="4" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Percentile</span>
-                                        <span class="alert-content">75-99</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Percentile</h5>
-                                <div class="container_drag drag_drag" id="collect">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- Frequency (9) -->
-                <!-- <div class="row">
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Frequency</h5>
-                                <div class="">
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="1" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Frequency</span>
-                                        <span class="alert-content">Weekly</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="2" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Frequency</span>
-                                        <span class="alert-content">Fortnighty</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="3" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Frequency</span>
-                                        <span class="alert-content">Semi-monthly</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="4" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Frequency</span>
-                                        <span class="alert-content">Monthly</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="5" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Frequency</span>
-                                        <span class="alert-content">Bi-monthly</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="6" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Frequency</span>
-                                        <span class="alert-content">Quarterly</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="7" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Frequency</span>
-                                        <span class="alert-content">Tri-annual</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="8" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Frequency</span>
-                                        <span class="alert-content">Semi-annual</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="9" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Frequency</span>
-                                        <span class="alert-content">Annual</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Frequency</h5>
-                                <div class="container_drag drag_drag" id="collect">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- Open Access (2) -->
-                <!-- <div class="row">
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Open Access</h5>
-                                <div class="">
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="1" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Open Access</span>
-                                        <span class="alert-content">Yes</span>
-                                    </div>
-                                    <div></div>
-                                    <div class="alert alert-modern alert-outline-success draggable"
-                                        id="2" name="index" draggable="true">
-                                        <span class="badge badge-success badge-pill">Open Access</span>
-                                        <span class="alert-content">No</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Open Access</h5>
-                                <div class="container_drag drag_drag" id="collect">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- Sumbit Button -->
-                <div>
-                    <button type="submit" class="btn btn-primary float-left">Submit Input</button>
-                </div>
-
-         </form>
-    </div>
+        <!-- Journal Table -->
+        <div class="scrolling-wrapper">
+            <table class="dataframe">
+                <thead>
+                    <tr>
+                        <th>Serial No.</th>
+                        <th>Title</th>
+                        <th>Citescore</th>
+                        <th>Percentile</th>
+                        <th>Publisher</th>
+                        <th>Open Access</th>
+                        <th>Scopus Link</th>
+                        <th>ISSN</th>      
+                        <th>Frequency</th>
+                        <th>Ranking Value</th>
+                    </tr>
+                </thead>
+                
+                {% for feature in content %}
+                <tbody>
+                    <tr>
+                        <th>{{forloop.counter}}</th>
+                        <td>{{feature.1}}</td>
+                        <td>{{feature.2}}</td>
+                        <td>{{feature.3}}</td>
+                        <td>{{feature.11}}</td>
+                        <td>{{feature.13}}</td>
+                        <td><a href={{feature.18}} target="_blank">{{feature.18}}</a></td>
+                        <td>{{feature.22}}</td>
+                        <td>{{feature.26}}</td>
+                        <td>{{feature.33}}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
     {% endblock %}
 </body>
 </html>

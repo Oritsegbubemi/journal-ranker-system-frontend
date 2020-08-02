@@ -28118,13 +28118,6 @@ section
 
 /*-----------*/
 
-.container_drag {
-     height:100px;
-}
- 
-.drag_drag {
-}
-
 .draggable {
     cursor: move;
 }
@@ -28136,6 +28129,22 @@ section
 
 .draggable:active {
     cursor: grabbing;
+}
+
+.drag_length2 {
+    height:100px;
+}
+
+.drag_length4 {
+    height:200px;
+}
+
+.drag_length7 {
+    height:350px;
+}
+
+.drag_length9 {
+    height:450px;
 }
 
 

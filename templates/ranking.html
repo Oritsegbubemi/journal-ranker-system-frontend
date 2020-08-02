@@ -8,6 +8,7 @@
 </head>
 <body>
     {% extends 'base.html' %}
+    {% load static %}
 
     <!-- Block Title -->
     {% block title %}
@@ -24,10 +25,10 @@
 
         <!-- Content -->
         <div>
-            <form action="{% url 'rank' %}" method="post">
+            <form id="orderingForm" method="post" action="{% url 'rank' %}">
                 {% csrf_token %}
 
-                <!-- 1. Subject Area (13)-->
+                <!-- Subject Area (13)-->
                 <div>
                     <h4>1. Subject Area</h4>
                     <div>
@@ -60,183 +61,335 @@
                         Software<hr>
                     </div>
                 </div>
-
-                <!-- 2. Index (2) -->
-                <div>
-                    <h4>2. Index</h4>
-                    <div>
-                        <p>Kindly input rank for the index of the journal<br>
-                            Enter <strong>"1"</strong> for <strong>Scopus</strong><br>
-                            Enter <strong>"2"</strong> for <strong>Others</strong>
-                        </p>
-                        <div class="form-group">
-                            <label class="form-control-label">First ranking number: </label>
-                            <input type='number' max='2' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-index-first" name="input-index-first" placeholder=""  >
+                
+                <!-- Index (2) -->
+                <input type="hidden" id="user_index_id" name="user_index_name" value="">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Index</h5>
+                                <div class="">
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="1" name="index" draggable="true">
+                                        <span class="badge badge-success badge-pill">Index</span>
+                                        <span class="alert-content">Scopus</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="2" name="index" draggable="true">
+                                        <span class="badge badge-success badge-pill">Index</span>
+                                        <span class="alert-content">Others</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Second ranking number: </label>
-                            <input type='number' max='2' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)'class="ml-2" id="input-index-second" name="input-index-second" placeholder=""  >
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Index</h5>
+                                <div class="container_drag drag_drag drag_length2" id="index_id">
+                                </div>
+                            </div>
                         </div>
-                        <hr>
                     </div>
                 </div>
 
-                <!-- 3. Publisher (7) -->
-                <div>
-                    <h4>3. Publisher</h4>
-                    <div>
-                        <p>Kindly input rank for the publisher of the journal<br>
-                            Enter <strong>"1"</strong> for <strong>Springer</strong><br>
-                            Enter <strong>"2"</strong> for <strong>Elsevier</strong><br>
-                            Enter <strong>"3"</strong> for <strong>IEEE</strong><br>
-                            Enter <strong>"4"</strong> for <strong>Taylor and Francis</strong><br>
-                            Enter <strong>"5"</strong> for <strong>Inderscience</strong><br>
-                            Enter <strong>"6"</strong> for <strong>ACM</strong><br>
-                            Enter <strong>"7"</strong> for <strong>Others</strong>
-                        </p>
-                        <div class="form-group">
-                            <label class="form-control-label">First ranking number: </label>
-                            <input type='number' max='7' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-pub-first" name="input-pub-first" placeholder=""  >
+                <!-- Publisher (7) -->
+                <input type="hidden" id="user_publisher_id" name="user_publisher_name" value="">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Publisher</h5>
+                                <div class="">
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="1" name="publisher" draggable="true">
+                                        <span class="badge badge-success badge-pill">Publisher</span>
+                                        <span class="alert-content">Springer</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="2" name="publisher" draggable="true">
+                                        <span class="badge badge-success badge-pill">Publisher</span>
+                                        <span class="alert-content">Elsevier</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="3" name="publisher" draggable="true">
+                                        <span class="badge badge-success badge-pill">Publisher</span>
+                                        <span class="alert-content">IEEE</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="4" name="publisher" draggable="true">
+                                        <span class="badge badge-success badge-pill">Publisher</span>
+                                        <span class="alert-content">Taylor & Francis</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="5" name="publisher" draggable="true">
+                                        <span class="badge badge-success badge-pill">Publisher</span>
+                                        <span class="alert-content">Inderscience</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="6" name="publisher" draggable="true">
+                                        <span class="badge badge-success badge-pill">Publisher</span>
+                                        <span class="alert-content">ACM</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="7" name="publisher" draggable="true">
+                                        <span class="badge badge-success badge-pill">Publisher</span>
+                                        <span class="alert-content">Others</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Second ranking number: </label>
-                            <input type='number' max='7' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-pub-second" name="input-pub-second" placeholder=""  >
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Publisher</h5>
+                                <div class="container_drag drag_drag drag_length7" id="publisher_id">
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Third ranking number: </label>
-                            <input type='number' max='7' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-pub-third" name="input-pub-third" placeholder=""  >
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Fourth ranking number: </label>
-                            <input type='number' max='7' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-pub-fourth" name="input-pub-fourth" placeholder=""  >
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Fifth ranking number: </label>
-                            <input type='number' max='7' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-pub-fifth" name="input-pub-fifth" placeholder=""  >
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Sixth ranking number: </label>
-                            <input type='number' max='7' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-pub-sixth" name="input-pub-sixth" placeholder=""  >
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Seventh ranking number: </label>
-                            <input type='number' max='7' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-pub-seventh" name="input-pub-seventh" placeholder=""  >
-                        </div>
-                        <hr>
                     </div>
                 </div>
 
-                <!-- 4. Percentile (4) -->
-                <div>
-                    <h4>4. Percentile</h4>
-                    <div>
-                        <p>Kindly input range for the percentile of the journal<br>
-                            Enter <strong>"1"</strong> for <strong>0-24</strong><br>
-                            Enter <strong>"2"</strong> for <strong>25-49</strong><br>
-                            Enter <strong>"3"</strong> for <strong>50-74</strong><br>
-                            Enter <strong>"4"</strong> for <strong>75-99</strong>
-                        </p>
-                        <div class="form-group">
-                            <label class="form-control-label">First ranking number: </label>
-                            <input type='number' max='4' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-percent-first" name="input-percent-first" placeholder=""  >
+                <!-- Percentile (4) -->
+                <input type="hidden" id="user_percentile_id" name="user_percentile_name" value="">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Percentile</h5>
+                                <div class="">
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="1" name="percentile" draggable="true">
+                                        <span class="badge badge-success badge-pill">Percentile</span>
+                                        <span class="alert-content">0-24</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="2" name="percentile" draggable="true">
+                                        <span class="badge badge-success badge-pill">Percentile</span>
+                                        <span class="alert-content">25-49</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="3" name="percentile" draggable="true">
+                                        <span class="badge badge-success badge-pill">Percentile</span>
+                                        <span class="alert-content">50-74</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="4" name="percentile" draggable="true">
+                                        <span class="badge badge-success badge-pill">Percentile</span>
+                                        <span class="alert-content">75-99</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Second ranking number: </label>
-                            <input type='number' max='4' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-percent-second" name="input-percent-second" placeholder=""  >
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Percentile</h5>
+                                <div class="container_drag drag_drag drag_length4" id="percentile_id">
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Third ranking number: </label>
-                            <input type='number' max='4' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-percent-third" name="input-percent-third" placeholder=""  >
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Fourth ranking number: </label>
-                            <input type='number' max='4' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-percent-fourth" name="input-percent-fourth" placeholder=""  >
-                        </div>
-                        <hr>
                     </div>
                 </div>
 
-                <!-- 5. Frequency (9) -->
-                <div>
-                    <h4>5. Frequency</h4>
-                    <div>
-                        <p>Kindly input rank for the frequency of the journal<br>
-                            Enter <strong>"1"</strong> for <strong>Weekly</strong><br>
-                            Enter <strong>"2"</strong> for <strong>Fortnighty</strong><br>
-                            Enter <strong>"3"</strong> for <strong>Semi-monthly</strong><br>
-                            Enter <strong>"4"</strong> for <strong>Monthly</strong><br>
-                            Enter <strong>"5"</strong> for <strong>Bi-monthly</strong><br>
-                            Enter <strong>"6"</strong> for <strong>Quaterly</strong><br>
-                            Enter <strong>"7"</strong> for <strong>Tri-annual</strong><br>
-                            Enter <strong>"8"</strong> for <strong>Semi-annual</strong><br>
-                            Enter <strong>"9"</strong> for <strong>Annual</strong>
-                        </p>
-                        <div class="form-group">
-                            <label class="form-control-label">First ranking number: </label>
-                            <input type='number' max='9' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-freq-first" name="input-freq-first" placeholder=""  >
+                <!-- Frequency (9) -->
+                <input type="hidden" id="user_frequency_id" name="user_frequency_name" value="">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Frequency</h5>
+                                <div class="">
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="1" name="frequency" draggable="true">
+                                        <span class="badge badge-success badge-pill">Frequency</span>
+                                        <span class="alert-content">Weekly</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="2" name="frequency" draggable="true">
+                                        <span class="badge badge-success badge-pill">Frequency</span>
+                                        <span class="alert-content">Fortnighty</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="3" name="frequency" draggable="true">
+                                        <span class="badge badge-success badge-pill">Frequency</span>
+                                        <span class="alert-content">Semi-monthly</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="4" name="frequency" draggable="true">
+                                        <span class="badge badge-success badge-pill">Frequency</span>
+                                        <span class="alert-content">Monthly</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="5" name="frequency" draggable="true">
+                                        <span class="badge badge-success badge-pill">Frequency</span>
+                                        <span class="alert-content">Bi-monthly</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="6" name="frequency" draggable="true">
+                                        <span class="badge badge-success badge-pill">Frequency</span>
+                                        <span class="alert-content">Quarterly</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="7" name="frequency" draggable="true">
+                                        <span class="badge badge-success badge-pill">Frequency</span>
+                                        <span class="alert-content">Tri-annual</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="8" name="frequency" draggable="true">
+                                        <span class="badge badge-success badge-pill">Frequency</span>
+                                        <span class="alert-content">Semi-annual</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="9" name="frequency" draggable="true">
+                                        <span class="badge badge-success badge-pill">Frequency</span>
+                                        <span class="alert-content">Annual</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Second ranking number: </label>
-                            <input type='number' max='9' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-freq-second" name="input-freq-second" placeholder=""  >
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Frequency</h5>
+                                <div class="container_drag drag_drag drag_length9" id="frequency_id">
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Third ranking number: </label>
-                            <input type='number' max='9' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-freq-third" name="input-freq-third" placeholder=""  >
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Fourth ranking number: </label>
-                            <input type='number' max='9' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-freq-fourth" name="input-freq-fourth" placeholder=""  >
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Fifth ranking number: </label>
-                            <input type='number' max='9' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-freq-fifth" name="input-freq-fifth" placeholder=""  >
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Sixth ranking number: </label>
-                            <input type='number' max='9' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-freq-sixth" name="input-freq-sixth" placeholder=""  >
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Seventh ranking number: </label>
-                            <input type='number' max='9' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-freq-seventh" name="input-freq-seventh" placeholder=""  >
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Eighth ranking number: </label>
-                            <input type='number' max='9' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-freq-eighth" name="input-freq-eighth" placeholder=""  >
-                        </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Ninth ranking number: </label>
-                            <input type='number' max='9' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-freq-ninth" name="input-freq-ninth" placeholder=""  >
-                        </div>
-                        <hr>
                     </div>
                 </div>
 
-                 <!-- 6. Open Access (2) -->
-                <div>
-                    <h4>6. Open Access</h4>
-                    <div>
-                        <p>Kindly input rank for the open access of the journal<br>
-                            Enter <strong>"1"</strong> for <strong>Yes</strong><br>
-                            Enter <strong>"2"</strong> for <strong>No</strong>
-                        </p>
-                        <div class="form-group">
-                            <label class="form-control-label">First ranking number: </label>
-                            <input type='number' max='2' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-access-first" name="input-access-first" placeholder=""  >
+                <!-- Open Access (2) -->
+                <input type="hidden" id="user_openaccess_id" name="user_openaccess_name" value="">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Open Access</h5>
+                                <div class="">
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="1" name="openaccess" draggable="true">
+                                        <span class="badge badge-success badge-pill">Open Access</span>
+                                        <span class="alert-content">Yes</span>
+                                    </div>
+                                    <div></div>
+                                    <div class="alert alert-modern alert-outline-success draggable"
+                                        id="2" name="openaccess" draggable="true">
+                                        <span class="badge badge-success badge-pill">Open Access</span>
+                                        <span class="alert-content">No</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-control-label">Second ranking number: </label>
-                            <input type='number' max='2' ondrop='return false;' onpaste='return false;' onkeypress='return (event.charCode>=48 && event.charCode<=57) || (event.keyCode>=48 && event.keyCode<=57)' class="ml-2" id="input-access-second" name="input-access-second" placeholder=""  >
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Open Access</h5>
+                                <div class="container_drag drag_drag drag_length2" id="openaccess_id">
+                                </div>
+                            </div>
                         </div>
-                        <hr>
                     </div>
                 </div>
+
+                <!-- Show Message -->
+                <div>
+                    {% for message in messages %}
+                    <h6 class="text-center py-1" style="color: red;">{{message}}</h6>
+                    {% endfor %}
+                </div>
+                
+                <!-- Submit Button -->
+                <button id="saveOrdering" class="btn btn-outline-primary btn-lg float-right mr-2">Save Ranking</button>
 
                 <!-- Sumbit Button -->
-                <div>
-                    <button type="submit" class="btn btn-primary float-left">Submit Input</button>
-                </div>
+                <!-- <div>
+                    <button onclick="myButtonFunction()" type="submit" class="btn btn-primary float-left">Submit Input</button>
+                </div> -->
          </form>
     </div>
+
+    <script>
+        const saveOrderingButton = document.getElementById('saveOrdering');
+        const orderingForm = document.getElementById('orderingForm');
+        const user_index_value = orderingForm.querySelector('#user_index_id');
+        const user_publisher_value = orderingForm.querySelector('#user_publisher_id');
+        const user_percentile_value = orderingForm.querySelector('#user_percentile_id');
+        const user_frequency_value = orderingForm.querySelector('#user_frequency_id');
+        const user_openaccess_value = orderingForm.querySelector('#user_openaccess_id');
+        
+        function saveOrdering() {
+
+            //index
+            const indexs = document.getElementById("index_id").querySelectorAll('div');
+            let user_index = [];
+            for (let index of indexs) {
+                user_index.push(index.id);
+            }
+            user_index_value.value = user_index.join(',');
+
+            //publisher
+            const publishers = document.getElementById("publisher_id").querySelectorAll('div');
+            let user_publisher = [];
+            for (let publisher of publishers) {
+                user_publisher.push(publisher.id);
+            }
+            user_publisher_value.value = user_publisher.join(',');
+
+            //percentile
+            const percentiles = document.getElementById("percentile_id").querySelectorAll('div');
+            let user_percentile = [];
+            for (let percentile of percentiles) {
+                user_percentile.push(percentile.id);
+            }
+            user_percentile_value.value = user_percentile.join(',');
+
+            //frequency
+            const frequencys = document.getElementById("frequency_id").querySelectorAll('div');
+            let user_frequency = [];
+            for (let frequency of frequencys) {
+                user_frequency.push(frequency.id);
+            }
+            user_frequency_value.value = user_frequency.join(',');
+
+            //openaccess
+            const openaccesss = document.getElementById("openaccess_id").querySelectorAll('div');
+            let user_openaccess = [];
+            for (let openaccess of openaccesss) {
+                user_openaccess.push(openaccess.id);
+            }
+            user_openaccess_value.value = user_openaccess.join(',');
+
+            orderingForm.submit();
+        }
+        saveOrderingButton.addEventListener('click', saveOrdering);
+
+    </script>
+
     {% endblock %}
 </body>
 </html>

@@ -4,7 +4,8 @@ from django.contrib.auth.decorators import login_required
 from dataset.ranking_dataset import user_input_ranking_dataset, user_ranking_dataset
 from dataset.user_dataset import user_psi_dataset
 from .models import *
-from django.shortcuts import render, redirect
+from .forms import OrderingForm
+from django.http import HttpResponseRedirect
 
 
 @login_required
@@ -25,9 +26,8 @@ def card(request):
 		return render(request, "card.html")
 
 
-
 @login_required
-def rank(request):
+def rank2(request):
 	if request.method == 'POST':
 		# subject_area (1)
 		subject_area = request.POST.get('subject-area')
@@ -123,14 +123,85 @@ def viewrank(request, pk):
 		return render(request, "viewrank.html", {'content': details})
 
 
-
 #ranking2
 @login_required
-def ranking2(request):
+def rank(request):
 	if request.method=='GET':
-		return render(request, "ranking2.html")
-
+		return render(request, "ranking.html")
+	
 	if request.method=='POST':
-		hello = request.POST.get('collect')
-		print(hello)
-		return render(request, 'ranking2.html')
+		# index (2)
+		index_first, index_second  = [], []
+		# publisher (7)
+		publisher_first, publisher_second, publisher_third, publisher_fourth, publisher_fifth, publisher_sixth, publisher_seventh = [], [], [], [], [], [], []
+		# percentile (4)
+		percentile_first, percentile_second, percentile_third, percentile_fourth = [], [], [], []
+		# frequency (9)
+		frequency_first, frequency_second, frequency_third, frequency_fourth, frequency_fifth, frequency_sixth, frequency_seventh, frequency_eighth, frequency_ninth  = [], [], [], [], [], [], [], [], []
+		# open_access (2)
+		open_access_first, open_access_second = [], []
+
+		#real_values
+		subject_area = request.POST.get('subject-area')
+		index = request.POST['user_index_name'].split(',')
+		publisher = request.POST['user_publisher_name'].split(',')
+		percentile = request.POST['user_percentile_name'].split(',')
+		frequency = request.POST['user_frequency_name'].split(',')
+		openaccess = request.POST['user_openaccess_name'].split(',')
+
+		print("Index:", index)
+		print("Publisher:", publisher)
+		print("Percentile:", percentile)
+		print("Frequency:", frequency)
+		print("Open Access:", openaccess)
+
+		if (len(index) == 2):
+			index_first, index_second = int(index[0]), int(index[1])
+		else:
+			messages.info(request, 'Complete the Index Ranking')
+
+		if (len(publisher) == 7):
+			publisher_first, publisher_second, publisher_third, publisher_fourth, publisher_fifth, publisher_sixth, publisher_seventh = int(publisher[0]), int(publisher[1]), int(publisher[2]), int(publisher[3]), int(publisher[4]), int(publisher[5]), int(publisher[6])
+		else:
+			messages.info(request, 'Complete the Publisher Ranking')
+
+		if (len(percentile) == 4):
+			percentile_first, percentile_second, percentile_third, percentile_fourth = int(percentile[0]), int(percentile[1]), int(percentile[2]), int(percentile[3])
+		else:
+			messages.info(request, 'Complete the Percentile Ranking')
+
+		if (len(frequency) == 9):
+			frequency_first, frequency_second, frequency_third, frequency_fourth, frequency_fifth, frequency_sixth, frequency_seventh, frequency_eighth, frequency_ninth  = int(frequency[0]), int(frequency[1]), int(frequency[2]), int(frequency[3]), int(frequency[4]), int(frequency[5]), int(frequency[6]), int(frequency[7]), int(frequency[8])
+		else:
+			messages.info(request, 'Complete the Frequency Ranking')
+
+		if (len(openaccess) == 2):
+			openaccess_first, openaccess_second = int(openaccess[0]), int(openaccess[1])
+		else:
+			messages.info(request, 'Complete the Open Access Ranking')
+
+		print('index_first1', index_first)
+		print('frequency_first1', frequency_first)
+		print('openaccess_first1', openaccess_first)
+		
+		user_input_ranking_dataset(int(subject_area), index_first, index_second, publisher_first, publisher_second, publisher_third, publisher_fourth, publisher_fifth, publisher_sixth, publisher_seventh, percentile_first, percentile_second, percentile_third, percentile_fourth, frequency_first, frequency_second, frequency_third, frequency_fourth, frequency_fifth, frequency_sixth, frequency_seventh, frequency_eighth, frequency_ninth, openaccess_first, openaccess_second)
+		
+		user_ranking_dataset()
+		return redirect("result")
+
+
+
+
+
+# if request.method=='POST':
+	# form = OrderingForm(request.POST)
+	# if form.is_valid():
+	# 	ordered_ids = form.cleaned_data["ordering"].split(',')
+
+	# 	with transaction.atomic():
+	# 		current_order = 1
+	# 		for lookup_id in ordered_ids:
+	# 			group = Group.objects.get(lookup_id__exact=lookup_id)
+	# 			group.order = current_order
+	# 			group.save()
+	# 			current_order += 1

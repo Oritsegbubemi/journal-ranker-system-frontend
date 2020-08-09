@@ -37,6 +37,7 @@ pip-delete-this-directory.txt
 
 # Unit test / coverage reports
 htmlcov/
+.vscode/
 .tox/
 .coverage
 .coverage.*
@@ -110,5 +111,3 @@ media/
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py
-
-.vscode/

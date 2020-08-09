@@ -148,18 +148,10 @@
 
                     <!-- Buttons -->
                     <div class="text-center text-md-left mt-5">
-                        {% if user.is_authenticated %}
                             <a href="{% url 'card' %}" class="btn btn-primary btn-icon">
                                 <span class="btn-inner--text">Get started</span>
                                 <span class="btn-inner--icon"><i data-feather="chevron-right"></i></span>
                             </a>
-
-                        {% else %}
-                            <a href="{% url 'login' %}" class="btn btn-primary btn-icon" target="_blank">
-                                <span class="btn-inner--text">Get started</span>
-                                <span class="btn-inner--icon"><i data-feather="chevron-right"></i></span>
-                            </a>
-                        {% endif %}
                         <a href="{% url 'about' %}" class="btn btn-neutral btn-icon d-none d-lg-inline-block" target="_blank">Find out More</a>
                     </div>
                 </div>
@@ -183,19 +175,23 @@
                 </div>
             </div>
             <!-- Card -->
-            <div class="row mt-5">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body pb-5">
-                            <div class="pt-4 pb-5">
-                                <img src="{% static 'assets/img/svg/illustrations/illustration-5.svg' %}" class="img-fluid img-center" style="height: 150px;" alt="Illustration" />
+                <div class="row mt-5">
+                    <a href="{% url 'card' %}">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body pb-5">
+                                <div class="pt-4 pb-5">
+                                    <img src="{% static 'assets/img/svg/illustrations/illustration-5.svg' %}" class="img-fluid img-center" style="height: 150px;" alt="Illustration" />
+                                </div>
+                                <h5 class="h4 lh-130 mb-3">Create Cards</h5>
+                                <p class="text-muted mb-0">Support users to create ranking cards that would store the results of the journal features.</p>
                             </div>
-                            <h5 class="h4 lh-130 mb-3">Create Cards</h5>
-                            <p class="text-muted mb-0">Support users to create ranking cards that would store the results of the journal features.</p>
                         </div>
+                    </a>
                     </div>
-                </div>
+                
                 <div class="col-md-4">
+                    <a href="{% url 'card' %}">
                     <div class="card">
                         <div class="card-body pb-5">
                             <div class="pt-4 pb-5">
@@ -205,8 +201,10 @@
                             <p class="text-muted mb-0">Journal Features included for ranking inlcude Index, Publisher, Frequency, Percentile, etc.</p>
                         </div>
                     </div>
+                    </a>
                 </div>
                 <div class="col-md-4">
+                    <a href="{% url 'card' %}">
                     <div class="card">
                         <div class="card-body pb-5">
                             <div class="pt-4 pb-5">
@@ -216,6 +214,7 @@
                             <p class="text-muted mb-0">Supports the user to view and download the result of the journal rankings for later access.</p>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
         </div>

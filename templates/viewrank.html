@@ -37,8 +37,7 @@
     <!-- Block Title -->
     {% block title %}
     <div class="">
-            <p>View your result</p>                                       
-
+            <p>View your result</p>   
     </div>
     {% endblock %}
 
@@ -60,11 +59,12 @@
                         <th>Frequency</th>
                         <th>ISSN</th>      
                         <th>Scopus Link</th>
-                        <th>Ranking Value</th>
+                        <th>Ranking Percentage</th>
                     </tr>
                 </thead>
                 
-                {% for feature in content %}
+                
+                {% for feature, psi in content %}
                 <tbody>
                     <tr>
                         <th>{{forloop.counter}}</th>
@@ -76,11 +76,12 @@
                         <td>{{feature.22}}</td>
                         <td>{{feature.26}}</td>
                         <td><a href={{feature.18}} target="_blank">{{feature.18}}</a></td>
-                        <td>{{feature.33}}</td>
-                    </tr>
+                        <td>{{psi}}</td>
+                    </tr>                    
                 </tbody>
                 {% endfor %}
             </table>
+            
         </div>
     {% endblock %}
 </body>

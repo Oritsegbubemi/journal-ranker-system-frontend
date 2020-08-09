@@ -11,16 +11,11 @@
 
     <!-- Block Title -->
     {% block title %}
-        User Profile
+        {{username}} Journal Ranker Profile
     {% endblock %}
 
     <!-- Block Content  -->
     {% block content %}
-
-        <!-- Header -->
-        <div>
-            <h2>Journal Ranker</h2>
-        </div>
 
         <!-- Content -->
         <div>
@@ -32,7 +27,7 @@
                         </div>
                     </div>
                     <div class="pt-2 pb-3">
-                        <h5 style="text-transform: capitalize">{{user.username}}</h5>
+                        <h4 style="text-transform: capitalize">{{user.username}}</h4>
                         <p style="text-transform: capitalize" class="text-muted mb-0">
                             First Name: {{user.first_name}}
                         </p>

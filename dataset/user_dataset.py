@@ -53,7 +53,7 @@ def user_psi_dataset():
     
     # 10 - Exporting to Result Ranking dataset
     ranked_journal.to_csv('dataset/result_dataset.csv', index=False)
-    ranked_journal.to_html('dataset/user_table.html')
+    ranked_journal.to_html('static/user_table.html')
     print("File has been created")
     print("Ranking Table has been created")
     

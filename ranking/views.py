@@ -105,7 +105,14 @@ def result(request):
 		cur.execute(postgreSQL_select_Query)
 		details = cur.fetchall()
 		conn.commit()
-		return render(request, "result.html", {'card_name': table_name, 'content': details})
+
+		psi_percent = []
+		for i in details:
+			x = "{:0.3f}%".format(float(i[-1])*100)
+			psi_percent.append(x)
+
+		foo = zip(details, psi_percent)
+		return render(request, "result.html", {'card_name': table_name, 'content': foo})
 
 
 @login_required
@@ -120,10 +127,17 @@ def viewrank(request, pk):
 		cur.execute(postgreSQL_select_Query)
 		details = cur.fetchall()
 		conn.commit()
-		return render(request, "viewrank.html", {'content': details})
+
+		psi_percent = []
+		for i in details:
+			x = "{:0.3f}%".format(float(i[-1])*100)
+			psi_percent.append(x)
+
+		foo = zip(details, psi_percent)
+		return render(request, "viewrank.html", {'content': foo})
 
 
-#ranking2
+#main - ranking
 @login_required
 def rank(request):
 	if request.method=='GET':
@@ -179,29 +193,8 @@ def rank(request):
 			openaccess_first, openaccess_second = int(openaccess[0]), int(openaccess[1])
 		else:
 			messages.info(request, 'Complete the Open Access Ranking')
-
-		print('index_first1', index_first)
-		print('frequency_first1', frequency_first)
-		print('openaccess_first1', openaccess_first)
 		
 		user_input_ranking_dataset(int(subject_area), index_first, index_second, publisher_first, publisher_second, publisher_third, publisher_fourth, publisher_fifth, publisher_sixth, publisher_seventh, percentile_first, percentile_second, percentile_third, percentile_fourth, frequency_first, frequency_second, frequency_third, frequency_fourth, frequency_fifth, frequency_sixth, frequency_seventh, frequency_eighth, frequency_ninth, openaccess_first, openaccess_second)
 		
 		user_ranking_dataset()
 		return redirect("result")
-
-
-
-
-
-# if request.method=='POST':
-	# form = OrderingForm(request.POST)
-	# if form.is_valid():
-	# 	ordered_ids = form.cleaned_data["ordering"].split(',')
-
-	# 	with transaction.atomic():
-	# 		current_order = 1
-	# 		for lookup_id in ordered_ids:
-	# 			group = Group.objects.get(lookup_id__exact=lookup_id)
-	# 			group.order = current_order
-	# 			group.save()
-	# 			current_order += 1

@@ -28120,6 +28120,7 @@ section
 
 .draggable {
     cursor: move;
+    min-width: 100%;
 }
 
 .draggable.dragging {

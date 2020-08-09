@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
 
 
 def index(request):
@@ -70,7 +72,23 @@ def about(request):
 
 
 def contact(request):
-    return render(request, "contact.html")
+    if request.method == "POST":
+        contact_name = request.POST['contact_name']
+        contact_email = request.POST['contact_email']
+        contact_phone = request.POST['contact_phone']
+        contact_message = request.POST['contact_message']
+        subject = 'Journal Ranker Message from ' + contact_name
+        recipients = ['gbubemimakpokpomi@gmail.com']
+        try:
+            send_mail(subject, contact_message, contact_email, recipients, fail_silently=True)
+        except BadHeaderError:
+            messages.info(request, 'Invalid header found')
+            return HttpResponse('Invalid header found')
+
+        return render(request, "contact.html", {'contact_name': contact_name})
+
+    if request.method == "GET":
+        return render(request, "contact.html")
 
 
 def logout(request):

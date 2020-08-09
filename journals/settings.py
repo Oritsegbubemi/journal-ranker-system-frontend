@@ -21,6 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '62ubed8lgn$a+94-+xg&hc1vm&py@z@ifewnnm)t$x-6a%4(07'
+# SECRET_KEY = os.environ.get('SECRET_KEY_JOURNAL')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account.apps.AccountConfig',
-    'ranking.apps.RankingConfig',
+    'ranking.apps.RankingConfig'
 ]
 
 MIDDLEWARE = [
@@ -80,9 +81,9 @@ WSGI_APPLICATION = 'journals.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'journals',
-        'USER': 'postgres',
-        'PASSWORD': 'gbubemi',
+        'NAME': os.environ.get('DB_JOURNAL_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': 'localhost'
     }
 }
@@ -132,8 +133,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 LOGIN_URL = 'login'
 
-#reset password
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#send email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 #authentication backend
 # AUTHENTICATION_BACKENDS = (

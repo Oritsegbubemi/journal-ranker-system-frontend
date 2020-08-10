@@ -1,4 +1,4 @@
-<!-- This is the user result html file page -->
+<!-- This is the all journals html file page -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="journal">
     <meta name="author" content="Gbubemi">
-    <title>User Result</title>
+    <title>All Journals</title>
     <style>
         table, td, th {  
             border: 1px solid #ddd;
@@ -37,11 +37,10 @@
     {% load static %}
 </head>
 <body>
-    {% load static %}
     <!-- Block Title -->
     {% block title %}
     <div class="">
-            <p>View your result</p>   
+            <p>View all our journals</p>                                       
     </div>
     {% endblock %}
 
@@ -67,7 +66,6 @@
                     </tr>
                 </thead>
                 
-                
                 {% for feature, psi in content %}
                 <tbody>
                     <tr>
@@ -81,11 +79,10 @@
                         <td>{{feature.26}}</td>
                         <td><a href={{feature.18}} target="_blank">{{feature.18}}</a></td>
                         <td>{{psi}}</td>
-                    </tr>                    
+                    </tr>
                 </tbody>
                 {% endfor %}
             </table>
-            
         </div>
     {% endblock %}
 </body>

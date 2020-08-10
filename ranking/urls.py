@@ -7,5 +7,6 @@ urlpatterns = [
     path('result/', views.result, name='result'),
     path('viewrank/<str:pk>/', views.viewrank, name='viewrank'),
     path('rank2/', views.rank2, name='rank2'),
+    path('journals/', views.journals, name='journals'),
 ]
 

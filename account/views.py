@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import EmailMultiAlternatives
 from django.http import HttpResponse
 
 
@@ -85,6 +86,8 @@ def contact(request):
             # messages.info(request, 'Invalid header found')
             return HttpResponse('Invalid header found')
 
+       
+    
         return render(request, "contact.html", {'contact_name': contact_name})
 
     if request.method == "GET":

@@ -50,7 +50,7 @@
                     </div>
 
                     <div class="">
-                        <button type="submit" class="btn btn-primary float-right">Proceed</button>
+                        <button type="submit" class="btn btn-outline-primary float-right">Proceed</button>
                     </div>
                 </section>
             </form>
@@ -59,71 +59,68 @@
 
         <!-- View Previous Card -->
         <section>
-            <div>
+            <div class="py-3">
                 <h5>Previous Rankings</h5>
             </div>
 
+
             {% for card in user.ranking_card.all %}
-                
 
-                    <!-- Content View -->
-                    <section class="slice slice-lg">
-                        <div class="container">
-                            <div class="row">
+                <!-- Content View -->
+                <section class="">
+                    <div class="container">
+                        <div class="card hover-translate-y-n10 hover-shadow-lg py-2" style="flex-direction: row;">
 
-                                <div class="col-lg-10">
-                                    <a href="{% url 'viewrank' card.name %}">
-                                        <div class="card hover-translate-y-n10 hover-shadow-lg">
-                                            <div class="p-3 d-flex">
-                                                <div>
-                                                    <div class="icon bg-dark icon-shape rounded-circle text-white mr-4">
-                                                        <i data-feather="droplet"></i>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <span class="h6">{{card.name}}</span>
-                                                    <p class="text-sm text-muted mb-0">{{card.description}}</p>
-                                                </div>
-                                            </div>
+                            <div class="col-lg-10 float-left">
+                                <a href="{% url 'viewrank' card.name %}">
+                                    <div class="p-3 d-flex">
+                                        <div class="icon bg-dark icon-shape rounded-circle text-white mr-4">
+                                            <i data-feather="droplet"></i>
                                         </div>
-                                    </a>
-                                </div>
+                                        <div>
+                                            <span class="h6">{{card.name}}</span>
+                                            <p class="text-sm text-muted mb-0">{{card.description}}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
 
-                                <div class="col-lg-2 mt-2">
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_5">
-                                        Delete
-                                    </button>
+                            <div class="col-lg-2 mt-3 float-right">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_5">
+                                    Delete
+                                </button>
 
-                                    <!-- Modal -->
-                                    <div class="modal modal-danger fade" id="modal_5" tabindex="-1" role="dialog" aria-labelledby="modal_5" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                    </button>
+                                <!-- Modal -->
+                                <div class="modal modal-danger fade" id="modal_5" role="dialog" aria-labelledby="modal_5" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="py-1 text-center">
+                                                    <i class="fas fa-exclamation-circle fa-4x"></i>
+                                                    <h6 class="heading h5 mt-4">Are you sure you want to delete {{card.name}} ?</h6>
+                                                    <p>
+                                                        Once deleted card cannot be retrieved
+                                                    </p>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <div class="py-1 text-center">
-                                                        <i class="fas fa-exclamation-circle fa-4x"></i>
-                                                        <h6 class="heading h5 mt-4">Are you sure you want to delete {{card.name}} ?</h6>
-                                                        <p>
-                                                            Once deleted card cannot be retrieved
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Yes, Delete</button>
-                                                </div>
+                                            </div>                                                                                              
+                                            <div class="modal-footer">
+                                                <a class="btn btn-sm btn-white" href="{% url 'deletecard' card.name %}">
+                                                    Yes, Delete
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                                    
-                            </div>
+                            </div>                      
                         </div>
-                    </section>
+                    </div>
+                </section>
                
             {% endfor %}
 

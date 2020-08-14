@@ -115,35 +115,45 @@ def user_ranking_dataset():
 	journal = journal.drop(not_suject_area.index, axis=0)
 	
 	# index_main
-	rank_index = journal.iloc[:, 28]
+	journal['my_index'] = journal.iloc[:, 19]
+
+	rank_index = journal['my_index']
 	for i in rank_index:
 		for key in index.keys():
 			if (i == key):
 				rank_index.replace(i, index[key], inplace=True)
 	
 	# publisher_main
-	rank_publisher = journal.iloc[:, 29]
+	journal['my_publisher'] = journal.iloc[:, 20]
+
+	rank_publisher = journal['my_publisher']
 	for i in rank_publisher:
 		for key in publisher.keys():
 			if (i == key):
 				rank_publisher.replace(i, publisher[key], inplace=True)
 	
 	# percentile_main
-	rank_percentile = journal.iloc[:, 30]
+	journal['my_percentile'] = journal.iloc[:, 21]
+
+	rank_percentile = journal['my_percentile']
 	for i in rank_percentile:
 		for key in percentile.keys():
 			if (i == key):
 				rank_percentile.replace(i, percentile[key], inplace=True)
 	
 	# frequency_main
-	rank_frequency = journal.iloc[:, 31]
+	journal['my_frequency'] = journal.iloc[:, 22]
+
+	rank_frequency = journal['my_frequency'] 
 	for i in rank_frequency:
 		for key in frequency.keys():
 			if (i == key):
 				rank_frequency.replace(i, frequency[key], inplace=True)
 	
 	# open_access_main
-	rank_open_access = journal.iloc[:, 32]
+	journal['my_open_access'] = journal.iloc[:, 25]
+
+	rank_open_access = journal['my_open_access']
 	for i in rank_open_access:
 		for key in open_access.keys():
 			if (i == key):

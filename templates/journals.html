@@ -7,32 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="journal">
     <meta name="author" content="Gbubemi">
-    <title>All Journals</title>
-    <style>
-        table, td, th {  
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            text-align: left;
-            padding: 8px;
-        }
-        tr:hover { 
-            background-color: #f5f5f5;
-        }
-        th {
-            background-color: #f5f5f5;
-        }
-        .scrolling-wrapper {
-            overflow-x: scroll;
-            overflow-y: hidden;
-            white-space: nowrap;
-        }
-    </style>
+    <title>All Journals | Journal Ranker</title>
     {% extends 'base.html' %}
     {% load static %}
 </head>
@@ -47,7 +22,53 @@
     <!-- Block Content -->
     {% block content %}
 
+        <div class="ml-3">
+            <h5>{{subject_area}}</h5>
+        </div>
+
         <!-- Content -->
+        <form method="post" action="{% url 'journals' %}">
+            {% csrf_token %}
+            
+            <div class="container">
+                <div class="card hover-translate-y-n10 hover-shadow-lg py-3 mt-2" style="flex-direction: row;">
+                   
+                    <div class="col-lg-10 float-left">
+                        <select class="dropdown btn btn-soft-primary btn-lg dropdown-toggle" name="subject-area" id="r1">
+                            <option class="dropdown-item" value="none" selected hidden>Select Subject Area</option>
+                            <option class="dropdown-item" value="Artificial Intelligence">Artificial Intelligence</option>
+                            <option class="dropdown-item" value="Computational Theory and Mathematics">Computational Theory and Mathematics</option>
+                            <option class="dropdown-item" value="Computer Graphics and Computer-Aided Design">Computer Graphics and CAD</option>
+                            <option class="dropdown-item" value="Computer Networks and Communications">Computer Networks and Communications</option>
+                            <option class="dropdown-item" value="Computer Science (miscellaneous)">Computer Science (Miscellaneous)</option>
+                            <option class="dropdown-item" value="Computer Science Applications">Computer Science Applications</option>
+                            <option class="dropdown-item" value="Computer Vision and Pattern Recognition">Computer Vision and Pattern Recognition</option>
+                            <option class="dropdown-item" value="General Computer Science">General Computer Science</option>
+                            <option class="dropdown-item" value="Hardware and Architecture">Hardware and Architecture</option>
+                            <option class="dropdown-item" value="Human-Computer Interaction">Human Computer Interaction</option>
+                            <option class="dropdown-item" value="Information Systems">Information Systems</option>
+                            <option class="dropdown-item" value="Signal Processing">Signal Processing</option>
+                            <option class="dropdown-item" value="Software">Software</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-2 float-right">
+                        <button type="submit" class="btn btn-outline-success float-right">Proceed</button>
+                    </div>
+                </div>
+
+                <!-- Show Message -->
+                <div>
+                    {% for message in messages %}
+                    <h6 class="text-center" style="color: red;">{{message}}</h6>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </form>
+   
+
+
         <!-- Journal Table -->
         <div class="scrolling-wrapper">
             <table class="dataframe">
@@ -62,23 +83,21 @@
                         <th>Frequency</th>
                         <th>ISSN</th>      
                         <th>Scopus Link</th>
-                        <th>Ranking Percentage</th>
                     </tr>
                 </thead>
                 
-                {% for feature, psi in content %}
+                {% for feature in content %}
                 <tbody>
                     <tr>
                         <th>{{forloop.counter}}</th>
+                        <td>{{feature.0}}</td>
                         <td>{{feature.1}}</td>
-                        <td>{{feature.2}}</td>
                         <td>{{feature.3}}</td>
-                        <td>{{feature.11}}</td>
-                        <td>{{feature.13}}</td>
-                        <td>{{feature.22}}</td>
-                        <td>{{feature.26}}</td>
-                        <td><a href={{feature.18}} target="_blank">{{feature.18}}</a></td>
-                        <td>{{psi}}</td>
+                        <td>{{feature.4}}</td>
+                        <td>{{feature.5}}</td>
+                        <td>{{feature.6}}</td>
+                        <td>{{feature.7}}</td>
+                        <td>{{feature.8}}</td>
                     </tr>
                 </tbody>
                 {% endfor %}

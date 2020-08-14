@@ -22,54 +22,18 @@
         <!-- Header -->
         <div>
             <h2>{{card_name}}</h2>
-            <p>Kindly select the subject area of your research work and rank where appropraite</p>
+            <h6>Kindly select the subject area of your research work and rank where appropraite</h6>
         </div>
 
         <!-- Content -->
         <div>
             <form id="orderingForm" method="post" action="{% url 'rank' %}">
                 {% csrf_token %}
-
-                <!-- Subject Area (13)-->
-                <!-- <div>
-                    <h4>Subject Area</h4>
-                    <div>
-                        <p>Select the Sub-subject Area of interest</p>
-                        <input type="radio" name="subject-area" id="r1" value="3">
-                        Artificial Intelligence<br>
-                        <input type="radio" name="subject-area" id="r2" value="4">
-                        Computational Theory and Mathematics<br>
-                        <input type="radio" name="subject-area" id="r3" value="5">
-                        Computer Graphics and CAD<br>
-                        <input type="radio" name="subject-area" id="r4" value="6">
-                        Computer Networks and Communications<br>
-                        <input type="radio" name="subject-area" id="r5" value="2">
-                        Computer Science (Miscellaneous)<br>
-                        <input type="radio" name="subject-area" id="r6" value="7">
-                        Computer Science Applications<br>
-                        <input type="radio" name="subject-area" id="r7" value="8">
-                        Computer Vision and Pattern Recognition<br>
-                        <input type="radio" name="subject-area" id="r8" value="1">
-                        General Computer Science<br>
-                        <input type="radio" name="subject-area" id="r9" value="9">
-                        Hardware and Architecture<br>
-                        <input type="radio" name="subject-area" id="r10" value="10">
-                        Human Computer Interaction<br>
-                        <input type="radio" name="subject-area" id="r11" value="11">
-                        Information Systems<br>
-                        <input type="radio" name="subject-area" id="r12" value="12">
-                        Signal Processing<br>
-                        <input type="radio" name="subject-area" id="r13" value="13">
-                        Software<hr>
-                    </div>
-                </div> -->
-                
-                <hr>
-
                 <div>
-                    <h4>Subject Area</h4>
+                    <h5>Subject Area</h5>
                     <div class="mb-5">
                         <select class="dropdown btn btn-outline-primary btn-lg dropdown-toggle" name="subject-area" id="r1">
+                            <option class="dropdown-item" value="none" selected hidden>Select Subject Area</option>
                             <option class="dropdown-item" value="3"> Artificial Intelligence</option>
                             <option class="dropdown-item" value="4">Computational Theory and Mathematics</option>
                             <option class="dropdown-item" value="5">Computer Graphics and CAD</option>
@@ -195,25 +159,25 @@
                                 <h5 class="card-title">Percentile Cards</h5>
                                 <div class="">
                                     <div class="alert alert-modern alert-outline-success draggable"
-                                        id="1" name="percentile" draggable="true">
+                                        id="4" name="percentile" draggable="true">
                                         <span class="badge badge-success badge-pill">Percentile</span>
                                         <span class="alert-content">0-24</span>
                                     </div>
                                     <div></div>
                                     <div class="alert alert-modern alert-outline-success draggable"
-                                        id="2" name="percentile" draggable="true">
+                                        id="3" name="percentile" draggable="true">
                                         <span class="badge badge-success badge-pill">Percentile</span>
                                         <span class="alert-content">25-49</span>
                                     </div>
                                     <div></div>
                                     <div class="alert alert-modern alert-outline-success draggable"
-                                        id="3" name="percentile" draggable="true">
+                                        id="2" name="percentile" draggable="true">
                                         <span class="badge badge-success badge-pill">Percentile</span>
                                         <span class="alert-content">50-74</span>
                                     </div>
                                     <div></div>
                                     <div class="alert alert-modern alert-outline-success draggable"
-                                        id="4" name="percentile" draggable="true">
+                                        id="1" name="percentile" draggable="true">
                                         <span class="badge badge-success badge-pill">Percentile</span>
                                         <span class="alert-content">75-99</span>
                                     </div>

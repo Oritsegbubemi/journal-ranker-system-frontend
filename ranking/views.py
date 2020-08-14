@@ -52,6 +52,9 @@ def rank(request):
 		frequency = request.POST['user_frequency_name'].split(',')
 		openaccess = request.POST['user_openaccess_name'].split(',')
 
+		if subject_area == "none":
+			messages.info(request, 'No Subject Area Selected')
+
 		if (len(index) == 2):
 			index_first, index_second = int(index[0]), int(index[1])
 		else:
@@ -195,9 +198,48 @@ def viewrank(request, pk):
 		return render(request, "viewrank.html", {'content': foo})
 
 
-def journals(request):
+@login_required
+def deletecard(request, pk): 
 	if request.method == 'GET':
-		return render(request, "journals.html")
+		import psycopg2
+		from psycopg2 import sql
+		conn = psycopg2.connect("host=localhost dbname=journals user=postgres password=gbubemi")
+		cur = conn.cursor()
+		table_name = pk
+		postgreSQL_select_Query = sql.SQL("DROP TABLE IF EXISTS {}").format(sql.Identifier(table_name))
+		cur.execute(postgreSQL_select_Query)
+		conn.commit()
+
+		instance = Card.objects.get(name=pk)
+		instance.delete()
+		return render(request, "card.html")
+
+
+def journals(request):
+	import psycopg2
+	from psycopg2 import sql
+	conn = psycopg2.connect("host=localhost dbname=journals user=postgres password=gbubemi")
+	cur = conn.cursor()
+	table_name = 'journals'
+	
+	if request.method == 'GET':
+		postgreSQL_select_Query = sql.SQL("SELECT * FROM {}").format(sql.Identifier(table_name))
+		cur.execute(postgreSQL_select_Query)
+		details = cur.fetchall()
+		conn.commit()
+		return render(request, "journals.html", {'content': details})
+
 
 	if request.method == 'POST':
-		return render(request, "journals.html")
+		subject_area = request.POST.get('subject-area')
+
+		if subject_area == "none":
+			messages.info(request, 'No Subject Area Selected')
+			return render(request, "journals.html")
+
+		else:
+			postgreSQL_select_Query = sql.SQL("SELECT * FROM journals WHERE subject_area='{}'".format(subject_area))
+			cur.execute(postgreSQL_select_Query)
+			details = cur.fetchall()
+			conn.commit()
+			return render(request, "journals.html", {'content': details, 'subject_area': subject_area })

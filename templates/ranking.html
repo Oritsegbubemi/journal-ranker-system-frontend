@@ -20,7 +20,7 @@
     <!-- Block Content -->
     {% block content %}
         <!-- Header -->
-        <div>
+        <div class="mb-5"> 
             <h2>{{card_name}}</h2>
             <h6>Kindly select the subject area of your research work and rank where appropraite</h6>
         </div>
@@ -29,6 +29,15 @@
         <div>
             <form id="orderingForm" method="post" action="{% url 'rank' %}">
                 {% csrf_token %}
+                
+                <!-- Show Message -->
+                <div>
+                    {% for message in messages %}
+                    <h6 class="text-center py-1" style="color: red;">{{message}}</h6>
+                    {% endfor %}
+                </div>
+
+               
                 <div>
                     <h5>Subject Area</h5>
                     <div class="mb-5">
@@ -304,14 +313,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Show Message -->
-                <div>
-                    {% for message in messages %}
-                    <h6 class="text-center py-1" style="color: red;">{{message}}</h6>
-                    {% endfor %}
-                </div>
+                </div>  
                 
                 <!-- Submit Button -->
                 <button id="saveOrdering" class="btn btn-outline-primary btn-lg float-right mr-2">Save Ranking</button>

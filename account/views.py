@@ -83,10 +83,8 @@ def contact(request):
         try:
             send_mail(subject, contact_message, contact_email, recipients, fail_silently=True)
         except BadHeaderError:
-            # messages.info(request, 'Invalid header found')
+            messages.info(request, 'Invalid header found')
             return HttpResponse('Invalid header found')
-
-       
     
         return render(request, "contact.html", {'contact_name': contact_name})
 
@@ -94,13 +92,16 @@ def contact(request):
         return render(request, "contact.html")
 
 
+@login_required
+def profile(request):
+	return render(request, "profile.html")
+
+
+@login_required  
 def logout(request):
     auth.logout(request)
     return redirect("/")
 
 
-@login_required
-def profile(request):
-	return render(request, "profile.html")
 
 

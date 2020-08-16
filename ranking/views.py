@@ -6,7 +6,6 @@ from dataset.user_dataset import user_psi_dataset
 from .models import *
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-
 import csv
 import psycopg2
 from psycopg2 import sql

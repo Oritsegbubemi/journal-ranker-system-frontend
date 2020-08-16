@@ -140,22 +140,22 @@
                                 <div class="row align-items-center justify-content-center py-2">
                                     <!-- Password -->
                                     <div class="px-md-3">
-                                         <div class="form-group mb-0">
-                                             <div class="d-flex align-items-center justify-content-between">
+                                        <div class="form-group mb-0">
+                                            <div class="d-flex align-items-center justify-content-between">
                                                 <div>
                                                     <label class="form-control-label">Password</label>
                                                 </div>
                                                 <div class="mb-2">
                                                     <p class="small text-muted text-underline--dashed border-primary pointer" onclick="ShowPassword()">Show password</p>
                                                 </div>
-                                             </div>
-                                             <div class="input-group">
-                                                 <div class="input-group-prepend">
+                                            </div>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
                                                         <span class="input-group-text"><i data-feather="key"></i></span>
-                                                 </div>
-                                                 <input type="password" class="form-control" id="input-password" name="password1" placeholder="Password" minlength="8" required>
-                                             </div>
-                                         </div>
+                                                </div>
+                                                <input type="password" class="form-control" id="input-password" name="password1" placeholder="Password" minlength="8" required>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <!-- Confirm Password -->
@@ -188,7 +188,7 @@
                             <!-- Show Message -->
                             <div>
                                 {% for message in messages %}
-                                <h6 class="text-center py-1" style="color: red;">{{message}}</h6>
+                                <h6 class="text-center mt-2" style="color: red;">{{message}}</h6>
                                 {% endfor %}
                             </div>
                         </div>

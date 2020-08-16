@@ -50,8 +50,7 @@ def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q
 	
 	# publisher_function
 	def user_publisher():
-		dict_publisher = {1: "Springer", 2: "Elsevier", 3: "IEEE", 4: "Taylor and Francis", 5: "Inderscience", 6: "ACM",
-						  7: "Others"}
+		dict_publisher = {1: "Springer", 2: "Elsevier", 3: "IEEE", 4: "Taylor and Francis", 5: "Inderscience", 6: "ACM", 7: "Others"}
 		list_publisher = [d, e, f, g, h, i, j]
 		rank_publisher = [1.0, 0.85, 0.7, 0.55, 0.4, 0.25, 0.1]
 		for (x, y) in zip(list_publisher, rank_publisher):

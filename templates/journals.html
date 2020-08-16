@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="journal">
     <meta name="author" content="Gbubemi">
-    <title>All Journals | Journal Ranker</title>
+    <title>Journals | Journal Ranker</title>
     {% extends 'base.html' %}
     {% load static %}
 </head>
@@ -32,7 +32,6 @@
             
             <div class="container">
                 <div class="card hover-translate-y-n10 hover-shadow-lg py-3 mt-2" style="flex-direction: row;">
-                   
                     <div class="col-lg-10 float-left">
                         <select class="dropdown btn btn-soft-primary btn-lg dropdown-toggle" name="subject-area" id="r1">
                             <option class="dropdown-item" value="none" selected hidden>Select Subject Area</option>
@@ -66,8 +65,6 @@
 
             </div>
         </form>
-   
-
 
         <!-- Journal Table -->
         <div class="scrolling-wrapper">
@@ -90,14 +87,14 @@
                 <tbody>
                     <tr>
                         <th>{{forloop.counter}}</th>
-                        <td>{{feature.0}}</td>
                         <td>{{feature.1}}</td>
+                        <td>{{feature.2}}</td>
                         <td>{{feature.3}}</td>
-                        <td>{{feature.4}}</td>
-                        <td>{{feature.5}}</td>
-                        <td>{{feature.6}}</td>
-                        <td>{{feature.7}}</td>
-                        <td>{{feature.8}}</td>
+                        <td>{{feature.11}}</td>
+                        <td>{{feature.13}}</td>
+                        <td>{{feature.20}}</td>
+                        <td>{{feature.23}}</td>
+                        <td><a href={{feature.18}} target="_blank">{{feature.18}}</a></td>
                     </tr>
                 </tbody>
                 {% endfor %}

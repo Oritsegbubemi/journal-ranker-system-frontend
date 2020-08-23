@@ -8,8 +8,10 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 import csv
 import psycopg2
+import os
 from psycopg2 import sql
-conn = psycopg2.connect("host=localhost dbname=journals user=postgres password=gbubemi")
+DATABASE_URL = os.environ.get('DATABASE_URL')
+conn = psycopg2.connect(DATABASE_URL)
 cur = conn.cursor()
 
 

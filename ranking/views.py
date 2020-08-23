@@ -9,7 +9,9 @@ from django.shortcuts import get_object_or_404
 import csv
 import psycopg2
 from psycopg2 import sql
-conn = psycopg2.connect("host=localhost dbname=journals user=postgres password=gbubemi")
+import os
+DATABASE_URL = os.environ.get('DATABASE_URL')
+conn = psycopg2.connect(DATABASE_URL)
 cur = conn.cursor()
 
 
@@ -170,6 +172,21 @@ def deletecard(request, pk):
 def journals(request):
 	table_name = 'journals'
 	if request.method == 'GET':
+		cur.execute(
+			sql.SQL("""CREATE TABLE IF NOT EXISTS {} (scopus_source_id varchar(20), title varchar(200), citesore varchar(5), percentile varchar(5), citation_count varchar(5), scholarly_output varchar(5), percent_cited varchar(5), snip varchar(10), sjr varchar(10), rank varchar(5), rank_outof varchar(5), publisher varchar(250), publication_type varchar(10), open_access varchar(5), scopus_asjc_code varchar(5), subject_area varchar(50),  quartile varchar(20), top_10 varchar(10), scopus_link varchar(200), index varchar(10), publisher2 varchar(20), percentile2 varchar(5), frequency varchar(20), journal_website varchar(300),  review_time varchar(15), open_access2 varchar(5), print_issn varchar(10), e_issn varchar(10))""").format(sql.Identifier(table_name))
+		)
+		cur.execute(sql.SQL("SELECT COUNT(*) FROM {}").format(sql.Identifier(table_name)))
+		result = cur.fetchone()
+		if (result[0] == 0):
+			csv_file = 'dataset/ranking_dataset.csv'
+			with open(csv_file, 'r') as f:
+				reader = csv.reader(f)
+				next(reader)
+				for row in reader:
+					cur.execute(sql.SQL("INSERT INTO {} VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)").format(sql.Identifier(table_name)),row)
+			conn.commit()
+
+		######GET
 		postgreSQL_select_Query = sql.SQL("SELECT * FROM {}").format(sql.Identifier(table_name))
 		cur.execute(postgreSQL_select_Query)
 		details = cur.fetchall()

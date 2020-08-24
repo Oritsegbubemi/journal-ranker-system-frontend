@@ -10,10 +10,6 @@ import csv
 import psycopg2
 import os
 from psycopg2 import sql
-<<<<<<< HEAD
-import os
-=======
->>>>>>> d1543cbd7cb0c02534aa11e944aef7b5abaeab2b
 DATABASE_URL = os.environ.get('DATABASE_URL')
 conn = psycopg2.connect(DATABASE_URL)
 cur = conn.cursor()

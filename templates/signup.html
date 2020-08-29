@@ -69,8 +69,8 @@
  <!--           <div class="col-md-6 col-lg-5 col-xl-5 py-6 py-md-0">-->
                 <div class="col-md-8 col-lg-8 col-xl-8 py-6 py-md-0">
                     <div class="card shadow zindex-100 mb-0">
-                        <div class="card-body px-md-5 py-4">
-                            <div class="mb-4">
+                        <div class="card-body px-md-3">
+                            <div class="mb-2">
                                 <h6 class="h3 text-center">Signup to Journal Ranker</h6>
                             </div>
                             <span class="clearfix"></span>
@@ -128,12 +128,48 @@
                                                 <label class="form-control-label">Email Address</label>
                                                 <div class="input-group">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text"><i data-feather="user"></i></span>
+                                                        <span class="input-group-text"><i data-feather="mail"></i></span>
                                                     </div>
                                                     <input type="email" class="form-control" id="input-email" name="email"  placeholder="name@example.com" required>
                                                 </div>
                                             </div>
                                         </div>
+                                </div>
+
+                                <!-- Institution & Level -->
+                                <div class="row align-items-center justify-content-around py-2 mx-4">
+                                    <!-- Institution -->
+                                    <div class="px-md-3">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Institution</label>
+                                            <div class="input-group">
+                                                <select class="dropdown btn btn-soft-primary dropdown-toggle px-5" name="institution" id="r1" required>
+                                                    <option class="dropdown-item" value="none" selected hidden>Select Institution</option>
+                                                    <option class="dropdown-item" value="Covenant University">Covenant University</option>
+                                                    <option class="dropdown-item" value="Landmark University">Landmark University</option>
+                                                    <option class="dropdown-item" value="University of Lagos">University of Lagos</option>
+                                                    <option class="dropdown-item" value="Others">Others</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Level -->
+                                    <div class="px-md-3">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Level</label>
+                                            <div class="input-group">
+                                                <select class="dropdown btn btn-soft-primary dropdown-toggle px-6" name="level" id="r2" required>
+                                                    <option class="dropdown-item" value="none" selected hidden>Select Level</option>
+                                                    <option class="dropdown-item" value="Professor">Professor</option>
+                                                    <option class="dropdown-item" value="Researcher">Researcher</option>
+                                                    <option class="dropdown-item" value="Lecturer">Lecturer</option>
+                                                    <option class="dropdown-item" value="Student">Student</option>
+                                                    <option class="dropdown-item" value="Others">Others</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <!-- Password1 & Password2 -->
@@ -160,7 +196,7 @@
 
                                     <!-- Confirm Password -->
                                     <div class="px-md-3">
-                                        <div class="form-group mb-0 py-3">
+                                        <div class="form-group ">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <div>
                                                     <label class="form-control-label">Confirm Password</label>
@@ -180,7 +216,7 @@
                                 </div>
 
                                 <!-- Submit Button -->
-                                <div class="mt-4">
+                                <div class="mt-3">
                                     <button type="submit" class="btn btn-block btn-primary">Sign up</button>
                                 </div>
                             </form>

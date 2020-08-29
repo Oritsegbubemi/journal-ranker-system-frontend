@@ -102,36 +102,57 @@ def rank(request):
 @login_required
 def result(request):
 	user_psi_dataset()
-	if request.method == 'GET':
-		latest_card = Card.objects.all().last()
-		table_name = str(latest_card)
-		cur.execute(
-			sql.SQL("""CREATE TABLE IF NOT EXISTS {} (scopus_source_id varchar(20), title varchar(200), citesore varchar(20), percentile varchar(20), citation_count varchar(20), scholarly_output varchar(20), percent_cited varchar(20), snip varchar(20), sjr varchar(20), rank varchar(5), rank_outof varchar(5), publisher varchar(250), publication_type varchar(100), open_access varchar(20), scopus_asjc_code varchar(5), subject_area varchar(50),  quartile varchar(20), top_10 varchar(10), scopus_link varchar(200), index varchar(10), publisher2 varchar(20), percentile2 varchar(5), frequency varchar(20), journal_website varchar(500),  review_time varchar(20), open_access2 varchar(5), print_issn varchar(10), e_issn varchar(10), user_index varchar(30), user_publisher varchar(30), user_percentile varchar(30), user_frequency varchar(30), user_open_access varchar(30), psi varchar(30))""").format(sql.Identifier(table_name))
-		)
-		cur.execute(sql.SQL("SELECT COUNT(*) FROM {}").format(sql.Identifier(table_name)))
-		result = cur.fetchone()
-		if (result[0] == 0):
-			csv_file = 'dataset/result_dataset.csv'
-			with open(csv_file, 'r') as f:
-				reader = csv.reader(f)
-				next(reader)
-				for row in reader:
-					cur.execute(sql.SQL("INSERT INTO {} VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)").format(sql.Identifier(table_name)),row)
-			conn.commit()
-
-		#Select Querry
-		postgreSQL_select_Query = sql.SQL("SELECT * FROM {}").format(sql.Identifier(table_name))
-		cur.execute(postgreSQL_select_Query)
-		details = cur.fetchall()
+	latest_card = Card.objects.all().last()
+	table_name = str(latest_card)
+	cur.execute(
+		sql.SQL("""CREATE TABLE IF NOT EXISTS {} (scopus_source_id varchar(20), title varchar(200), citesore varchar(20), percentile varchar(20), citation_count varchar(20), scholarly_output varchar(20), percent_cited varchar(20), snip varchar(20), sjr varchar(20), rank varchar(5), rank_outof varchar(5), publisher varchar(250), publication_type varchar(100), open_access varchar(20), scopus_asjc_code varchar(5), subject_area varchar(50),  quartile varchar(20), top_10 varchar(10), scopus_link varchar(200), index varchar(10), publisher2 varchar(20), percentile2 varchar(5), frequency varchar(20), journal_website varchar(500),  review_time varchar(20), open_access2 varchar(5), print_issn varchar(10), e_issn varchar(10), user_index varchar(30), user_publisher varchar(30), user_percentile varchar(30), user_frequency varchar(30), user_open_access varchar(30), psi varchar(30))""").format(sql.Identifier(table_name))
+	)
+	cur.execute(sql.SQL("SELECT COUNT(*) FROM {}").format(sql.Identifier(table_name)))
+	result = cur.fetchone()
+	if (result[0] == 0):
+		csv_file = 'dataset/result_dataset.csv'
+		with open(csv_file, 'r') as f:
+			reader = csv.reader(f)
+			next(reader)
+			for row in reader:
+				cur.execute(sql.SQL("INSERT INTO {} VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)").format(sql.Identifier(table_name)),row)
 		conn.commit()
 
-		psi_percent = []
-		for i in details:
-			x = "{:0.3f}%".format(float(i[-1])*100)
-			psi_percent.append(x)
+	#Select Querry
+	postgreSQL_select_Query = sql.SQL("SELECT * FROM {}").format(sql.Identifier(table_name))
+	cur.execute(postgreSQL_select_Query)
+	details = cur.fetchall()
+	conn.commit()
 
-		foo = zip(details, psi_percent)
+	psi_percent = []
+	for i in details:
+		x = "{:0.3f}%".format(float(i[-1])*100)
+		psi_percent.append(x)
+
+	show_details = details[:10]
+	foo = zip(show_details, psi_percent)
+
+	if request.method == 'GET':
 		return render(request, "result.html", {'card_name': table_name, 'content': foo})
+
+	if request.method == 'POST':
+		view_number = request.POST.get('view-number')
+
+		if view_number == "10":
+			show_details = details[:10]
+			foo = zip(show_details, psi_percent)
+			return render(request, "result.html", {'card_name': table_name, 'content': foo})
+
+
+		if view_number == "20":
+			show_details = details[:20]
+			foo = zip(show_details, psi_percent)
+			return render(request, "result.html", {'card_name': table_name, 'content': foo})
+
+
+		else:
+			foo = zip(details, psi_percent)
+			return render(request, "result.html", {'card_name': table_name, 'content': foo})
 
 
 @login_required
@@ -148,6 +169,7 @@ def viewrank(request, pk):
 			x = "{:0.3f}%".format(float(i[-1])*100)
 			psi_percent.append(x)
 
+		details = details[:10]
 		foo = zip(details, psi_percent)
 		return render(request, "viewrank.html", {'content': foo})
 

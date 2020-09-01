@@ -31,9 +31,9 @@
             {% csrf_token %}
             
             <div class="container">
-                <div class="card hover-translate-y-n10 hover-shadow-lg py-3 mt-2" style="flex-direction: row;">
-                    <div class="col-lg-10 float-left">
-                        <select class="dropdown btn btn-soft-primary btn-lg dropdown-toggle" name="subject-area" id="r1" required>
+                <div class="card hover-translate-y-n10 hover-shadow-lg py-3 px-3 mt-2 justify-content-between" style="flex-direction: row;">
+                    <div class="float-left">
+                        <select class="custom-select" name="subject-area" id="r1" required>
                             <option class="dropdown-item" value="none" selected hidden>Select Subject Area</option>
                             <option class="dropdown-item" value="Artificial Intelligence">Artificial Intelligence</option>
                             <option class="dropdown-item" value="Computational Theory and Mathematics">Computational Theory and Mathematics</option>
@@ -51,7 +51,7 @@
                         </select>
                     </div>
 
-                    <div class="col-lg-2 float-right">
+                    <div class="float-right">
                         <button type="submit" class="btn btn-outline-success float-right">Proceed</button>
                     </div>
                 </div>

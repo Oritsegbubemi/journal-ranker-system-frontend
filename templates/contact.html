@@ -81,13 +81,13 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Collapse -->
-             <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mt-4 mt-lg-0 ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'about' %}">About Us</a>
                     </li>
 
-                     <!-- Authenticated -->
+                    <!-- Authenticated -->
                     {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'card' %}">Ranking</a>
@@ -99,7 +99,7 @@
                             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-primary btn-icon mt-2" href="{% url 'index' %}">
+                            <a class="btn btn-primary btn-icon mt-2" href="{% url 'profile' %}">
                                 <span class="btn-inner--text" style="text-transform: capitalize">Hello {{user.username}}</span>
                             </a>
                         </li>

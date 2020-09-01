@@ -75,9 +75,10 @@
                             <div class="col-lg-10 float-left">
                                 <a href="{% url 'viewrank' card.name %}">
                                     <div class="p-3 d-flex">
-                                        <div class="icon bg-dark icon-shape rounded-circle text-white mr-4">
-                                            <i data-feather="droplet"></i>
+                                        <div>
+                                            <span class="avatar bg-dark text-white rounded-circle mr-4">{{card.name.0}}</span>
                                         </div>
+
                                         <div>
                                             <span class="h6">{{card.name}}</span>
                                             <p class="text-sm text-muted mb-0">{{card.description}}</p>

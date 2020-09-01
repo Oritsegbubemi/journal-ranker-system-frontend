@@ -23,7 +23,7 @@
                                                     
             
             <div class="col-lg-2 float-right p-0">
-                <a href="{% static 'user_table.html' %}" download><button type="submit" class="btn btn-outline-primary">Download File</button></a>
+                <a href="{% static 'user_table.pdf' %}" download><button type="submit" class="btn btn-outline-primary">Download File</button></a>
             </div>
 
         </div>
@@ -40,16 +40,16 @@
             {% csrf_token %}
             
             <div class="container">
-                <div class="card hover-translate-y-n10 hover-shadow-lg py-3 mt-2" style="flex-direction: row;">
-                    <div class="col-lg-10 float-right">
-                        <select class="dropdown btn btn-soft-primary btn-lg dropdown-toggle" name="view-number" id="r1" required>
+                <div class="card hover-translate-y-n10 hover-shadow-lg py-3 px-3 mt-2 justify-content-between" style="flex-direction: row;">
+                    <div class="float-left">
+                        <select class="custom-select" name="view-number" id="r1" required>
                             <option class="dropdown-item" value="10">View Top 10</option>
                             <option class="dropdown-item" value="20">View Top 20</option>
                             <option class="dropdown-item" value="All">View All</option>
                         </select>
                     </div>
 
-                    <div class="col-lg-2 float-right">
+                    <div class="float-right">
                         <button type="submit" class="btn btn-outline-success float-right">Proceed</button>
                     </div>
                 </div>

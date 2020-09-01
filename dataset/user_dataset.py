@@ -7,6 +7,7 @@ def user_psi_dataset():
     # Import libraries
     import numpy as np
     import pandas as pd
+    import pdfkit as pdf
     
     # Read in csv file
     journal = pd.read_csv('dataset/user_dataset.csv')
@@ -56,4 +57,9 @@ def user_psi_dataset():
     ranked_journal.to_html('static/user_table.html')
     print("File has been created")
     print("Ranking Table has been created")
-    
+
+    # Export to PDF
+    path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+    config = pdf.configuration(wkhtmltopdf=path_wkhtmltopdf)
+
+    pdf.from_file('static/user_table.html', 'static/user_table.pdf', configuration=config)

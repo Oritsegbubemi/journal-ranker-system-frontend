@@ -44,7 +44,7 @@ class User(AbstractUser):
         ('Obafemi', 'Obafemi Awolowo University'),
         ('Olabisi', 'Olabisi Onabanjo University'),
         ('Redeemers', 'Redeemers University'),
-        ('Benin', '"University of Benin'),
+        ('Benin', 'University of Benin'),
         ('Ibadan', 'University of Ibadan'),
         ('Ilorin', 'University of Ilorin'),
         ('Nsukka', 'University of Nigeria Nsukka'),
@@ -60,5 +60,5 @@ class User(AbstractUser):
         ('Others', 'Others'),
     )
 
-    institution = models.CharField(choices=INSTITUTION, max_length=20, default='')
-    level = models.CharField(choices=LEVEL, max_length=10, default='')
+    institution = models.CharField(choices=INSTITUTION, max_length=20, default=None)
+    level = models.CharField(choices=LEVEL, max_length=10, default=None)

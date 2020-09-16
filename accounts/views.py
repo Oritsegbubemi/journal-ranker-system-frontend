@@ -53,7 +53,7 @@ def signup(request):
                 messages.info(request, 'Email Address Alreasy Exist')
                 return redirect('signup')
 
-            elif User.objects.filter(username=user_name.lower()).exists():
+            if User.objects.filter(username=user_name.lower()).exists():
                 messages.info(request, 'Username Alreasy Exist')
                 return redirect('signup')
 
@@ -63,7 +63,9 @@ def signup(request):
                     password=password1,
                     email=email.lower(),
                     first_name=first_name.lower(),
-                    last_name=last_name.lower()
+                    last_name=last_name.lower(),
+                    institution=institution.lower(),
+                    level=level.lower()
                 )
                 user.save()
                 return redirect('login')

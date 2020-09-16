@@ -146,10 +146,10 @@
                                             <label class="form-control-label">Institution</label>
                                             <div class="input-group">
                                                 <select class="custom-select" name="institution" id="r1" required>>
-                                                    <option class="dropdown-item" value="none" selected hidden>Select Institution</option>
-                                                        {% for id, value in profile.INSTITUTION %}
-                                                            <option class="dropdown-item" value="{{ id }}">{{value}}</option>
-                                                        {% endfor %}
+                                                    <option class="dropdown-item" value="" selected hidden>Select Institution</option>
+                                                    {% for id, value in profile.INSTITUTION %}
+                                                        <option class="dropdown-item" value="{{ value }}">{{value}}</option>
+                                                    {% endfor %}
                                                 </select>
                                             </div>
                                         </div>
@@ -162,10 +162,10 @@
                                             <label class="form-control-label">Level</label>
                                             <div class="input-group">
                                                 <select class="custom-select pr-9 px-5" name="level" id="r2" required>
-                                                    <option class="dropdown-item" value="none" selected hidden>Select Level</option>
-                                                        {% for id, value in profile.LEVEL %}
-                                                            <option class="dropdown-item" value="{{ id }}">{{value}}</option>
-                                                        {% endfor %}
+                                                    <option class="dropdown-item" value="" selected hidden>Select Level</option>
+                                                    {% for id, value in profile.LEVEL %}
+                                                        <option class="dropdown-item" value="{{ value }}">{{value}}</option>
+                                                    {% endfor %}
                                                 </select>
                                             </div>
                                         </div>

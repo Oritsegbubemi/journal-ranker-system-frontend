@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account.apps.AccountConfig',
+    'accounts.apps.AccountsConfig',
     'ranking.apps.RankingConfig',
 ]
 
@@ -153,7 +153,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 LOGIN_URL = 'login'
 
-AUTH_USER_MODEL = 'account.User' 
+AUTH_USER_MODEL = 'accounts.User' 
 
 # Send Email via GSuite
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

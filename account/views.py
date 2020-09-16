@@ -2,13 +2,16 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail, BadHeaderError
-from django.core.mail import EmailMultiAlternatives
+from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
 from django.http import HttpResponse
 
 
 def index(request):
     return render(request, "index.html")
+
+
+def about(request):
+    return render(request, "about.html")
 
 
 def login(request):
@@ -18,7 +21,7 @@ def login(request):
 		try:
 			user = auth.authenticate(username=User.objects.get(email=email), password=password)
 		except:
-			messages.info(request, 'Invalid username or password')
+			messages.info(request, 'Invalid email address or password')
 			return redirect("login")
 		
 		if user is not None:
@@ -41,8 +44,8 @@ def signup(request):
         email = request.POST['email']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
-        if password1 == password2:
 
+        if password1 == password2:
             if User.objects.filter(email=email.lower()).exists():
                 messages.info(request, 'Email Address Alreasy Exist')
                 return redirect('signup')
@@ -66,10 +69,6 @@ def signup(request):
             return redirect('signup')
     else:
         return render(request, "signup.html")
-
-
-def about(request):
-    return render(request, "about.html")
 
 
 def contact(request):

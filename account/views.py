@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth.models import User, auth
+from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
 from django.http import HttpResponse
-
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 def index(request):
     return render(request, "index.html")
@@ -29,7 +30,7 @@ def login(request):
 			return redirect("/ranking/card")
 		
 		else:
-			messages.info(request, 'Invalid username or password')
+			messages.info(request, 'Invalid email address or password')
 			return redirect("login")
 		
 	if request.method == 'GET':
@@ -44,6 +45,8 @@ def signup(request):
         email = request.POST['email']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
+        institution = request.POST.get('institution')
+        level = request.POST.get('level')
 
         if password1 == password2:
             if User.objects.filter(email=email.lower()).exists():
@@ -68,7 +71,8 @@ def signup(request):
             messages.info(request, 'Password not matching')
             return redirect('signup')
     else:
-        return render(request, "signup.html")
+        profile = User.objects.all().last()
+        return render(request, "signup.html", {"profile": profile})
 
 
 def contact(request):

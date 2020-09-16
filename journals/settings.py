@@ -153,6 +153,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 LOGIN_URL = 'login'
 
+AUTH_USER_MODEL = 'account.User' 
+
 # Send Email via GSuite
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

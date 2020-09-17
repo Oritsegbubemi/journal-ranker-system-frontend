@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
 from django.http import HttpResponse
 from django.contrib.auth import get_user_model
+from django.conf import settings
 User = get_user_model()
 
 def index(request):
@@ -53,7 +54,7 @@ def signup(request):
                 messages.info(request, 'Email Address Alreasy Exist')
                 return redirect('signup')
 
-            if User.objects.filter(username=user_name.lower()).exists():
+            elif User.objects.filter(username=user_name.lower()).exists():
                 messages.info(request, 'Username Alreasy Exist')
                 return redirect('signup')
 
@@ -84,9 +85,10 @@ def contact(request):
         contact_phone = request.POST['contact_phone']
         contact_message = request.POST['contact_message']
         subject = 'Journal Ranker Message from ' + contact_name
-        recipients = ['gbubemimakpokpomi@gmail.com']
+        message = f"Name: {contact_name} \nEmail: {contact_email} \nMessaage: {contact_message}"
+        recipients = [settings.EMAIL_HOST_USER]
         try:
-            send_mail(subject, contact_message, contact_email, recipients, fail_silently=True)
+            send_mail(subject, message, contact_name, recipients, fail_silently=True)
         except BadHeaderError:
             messages.info(request, 'Invalid header found')
             return HttpResponse('Invalid header found')

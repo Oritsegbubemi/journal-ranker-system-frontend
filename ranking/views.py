@@ -10,7 +10,6 @@ import csv
 import psycopg2
 import os
 from psycopg2 import sql
-
 DATABASE_URL = os.environ.get('DATABASE_URL')
 conn = psycopg2.connect(DATABASE_URL)
 cur = conn.cursor()
@@ -218,15 +217,15 @@ def journals(request):
 
 
 	if request.method == 'POST':
-		subject_area = request.POST.get('subject-area')
+		search_title = request.POST['search-box']
+		
+		postgreSQL_select_Query = sql.SQL("SELECT * FROM journals WHERE title LIKE '%{}%'".format(search_title))
+		cur.execute(postgreSQL_select_Query)
+		details = cur.fetchall()
+		conn.commit()
 
-		if subject_area == "none":
-			messages.info(request, 'No Subject Area Selected')
-			return render(request, "journals.html")
+		if (len(details) == 0):
+			messages.info(request, 'No Search Result Found')
+			return render(request, "journals.html", {'search_title': search_title })
 
-		else:
-			postgreSQL_select_Query = sql.SQL("SELECT * FROM journals WHERE subject_area='{}'".format(subject_area))
-			cur.execute(postgreSQL_select_Query)
-			details = cur.fetchall()
-			conn.commit()
-			return render(request, "journals.html", {'content': details, 'subject_area': subject_area })
+		return render(request, "journals.html", {'content': details, 'search_title': search_title })

@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'journal-ranker.herokuapp.com']
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account.apps.AccountConfig',
-    'ranking.apps.RankingConfig'
+    'accounts.apps.AccountsConfig',
+    'ranking.apps.RankingConfig',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +50,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    #whitenoise
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
@@ -78,6 +76,7 @@ WSGI_APPLICATION = 'journals.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
 '''
 DATABASES = {
     'default': {
@@ -101,6 +100,12 @@ DATABASES = {
 import dj_database_url
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
+
+# Added 
+del DATABASES['default']['OPTIONS']['sslmode']
 
 
 # Password validation
@@ -140,6 +145,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
@@ -147,28 +153,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 LOGIN_URL = 'login'
 
+AUTH_USER_MODEL = 'accounts.User' 
 
-#send gmail
+# Send Email via GSuite
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+# EMAIL_HOST_USER = 'journalranker@gmail.com'
+# EMAIL_HOST_PASSWORD = 'PassionateJ1!'
 EMAIL_USE_TLS = True
-
-#send mailgun
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.mailgun.org'
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER = os.environ.get('MAILGUN_USER')
-# EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_PASSWORD')
-# EMAIL_USE_TLS = True
-
-# Activate Django-Heroku.
-django_heroku.settings(locals())
-
-#added 
-del DATABASES['default']['OPTIONS']['sslmode']
-
-
-

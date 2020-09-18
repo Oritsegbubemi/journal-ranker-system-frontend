@@ -66,7 +66,7 @@
     <section>
         <div class="container d-flex flex-column">
             <div class="row align-items-center justify-content-center min-vh-100">
- <!--           <div class="col-md-6 col-lg-5 col-xl-5 py-6 py-md-0">-->
+<!--           <div class="col-md-6 col-lg-5 col-xl-5 py-6 py-md-0">-->
                 <div class="col-md-8 col-lg-8 col-xl-8 py-6 py-md-0">
                     <div class="card shadow zindex-100 mb-0">
                         <div class="card-body px-md-3">
@@ -146,52 +146,10 @@
                                             <label class="form-control-label">Institution</label>
                                             <div class="input-group">
                                                 <select class="custom-select" name="institution" id="r1" required>>
-                                                    <option class="dropdown-item" value="none" selected hidden>Select Institution</option>
-                                                    <option class="dropdown-item" value="Abia State University">Abia State University</option>
-                                                    <option class="dropdown-item" value="Adamawa State University">Adamawa State University</option>
-                                                    <option class="dropdown-item" value="Adekunle Ajasin University">Adekunle Ajasin University</option>
-                                                    <option class="dropdown-item" value="Adeleke University">Adeleke University</option>
-                                                    <option class="dropdown-item" value="Afe Babalola University">Afe Babalola University</option>
-                                                    <option class="dropdown-item" value="Ahmadu Bello University">Ahmadu Bello University</option>
-                                                    <option class="dropdown-item" value="Ajayi Crowther University">Ajayi Crowther University</option>
-                                                    <option class="dropdown-item" value="Akwa Ibom State University">Akwa Ibom State University</option>
-                                                    <option class="dropdown-item" value="Ambrose Alli University">Ambrose Alli University</option>
-                                                    <option class="dropdown-item" value="American University of Nigeria">American University of Nigeria</option>
-                                                    <option class="dropdown-item" value="Anchor University">Anchor University</option>
-                                                    <option class="dropdown-item" value="Arthur Jarvis University">Arthur Jarvis University</option>
-                                                    <option class="dropdown-item" value="Atiba University">Atiba University</option>
-                                                    <option class="dropdown-item" value="Augustine University">Augustine University</option>
-                                                    <option class="dropdown-item" value="Babcock University">Babcock University</option>
-                                                    <option class="dropdown-item" value="Bauchi State University">Bauchi State University</option>
-                                                    <option class="dropdown-item" value="Bayero University">Bayero University</option>
-                                                    <option class="dropdown-item" value="Baze University">Baze University</option>
-                                                    <option class="dropdown-item" value="Bells University of Technology">Bells University of Technology</option>
-                                                    <option class="dropdown-item" value="Benson Idahosa University">Benson Idahosa University</option>
-                                                    <option class="dropdown-item" value="Benue State University">Benue State University</option>
-                                                    <option class="dropdown-item" value="Bingham University">Bingham University</option>
-                                                    <option class="dropdown-item" value="Borno State University">Borno State University</option>
-                                                    <option class="dropdown-item" value="Bowen University">Bowen University</option>
-                                                    <option class="dropdown-item" value="Caleb University">Caleb University</option>
-                                                    <option class="dropdown-item" value="Caritas University">Caritas University</option>
-                                                    <option class="dropdown-item" value="Chrisland University">Chrisland University</option>
-                                                    <option class="dropdown-item" value="Christopher University">Christopher University</option>
-                                                    <option class="dropdown-item" value="Covenant University">Covenant University</option>
-                                                    <option class="dropdown-item" value="Crawford University">Crawford University</option>
-                                                    <option class="dropdown-item" value="Delta State University">Delta State University</option>
-                                                    <option class="dropdown-item" value="Elizade University">Elizade University</option>
-                                                    <option class="dropdown-item" value="Hallmark University">Hallmark University</option>
-                                                    <option class="dropdown-item" value="Landmark University">Landmark University	</option>
-                                                    <option class="dropdown-item" value="Mountain Top University">Mountain Top University</option>
-                                                    <option class="dropdown-item" value="Nnamdi Azikiwe University">Nnamdi Azikiwe University</option>
-                                                    <option class="dropdown-item" value="Obafemi Awolowo University">Obafemi Awolowo University</option>
-                                                    <option class="dropdown-item" value="Olabisi Onabanjo University">Olabisi Onabanjo University</option>
-                                                    <option class="dropdown-item" value="Redeemer's University">Redeemer's University</option>
-                                                    <option class="dropdown-item" value="University of Benin">University of Benin</option>
-                                                    <option class="dropdown-item" value="University of Ibadan">University of Ibadan</option>
-                                                    <option class="dropdown-item" value="University of Ilorin">University of Ilorin</option>
-                                                    <option class="dropdown-item" value="University of Nigeria">University of Nigeria</option>
-                                                    <option class="dropdown-item" value="University of Port Harcourt">University of Port Harcourt</option>
-                                                    <option class="dropdown-item" value="Others">Others</option>
+                                                    <option class="dropdown-item" value="" selected hidden>Select Institution</option>
+                                                    {% for id, value in profile.INSTITUTION %}
+                                                        <option class="dropdown-item" value="{{ value }}">{{value}}</option>
+                                                    {% endfor %}
                                                 </select>
                                             </div>
                                         </div>
@@ -203,13 +161,11 @@
                                         <div class="form-group">
                                             <label class="form-control-label">Level</label>
                                             <div class="input-group">
-                                                <select class="custom-select pr-9 px-5" name="level" id="r2" required>>
-                                                    <option class="dropdown-item" value="none" selected hidden>Select Level</option>
-                                                    <option class="dropdown-item" value="Professor">Professor</option>
-                                                    <option class="dropdown-item" value="Researcher">Researcher</option>
-                                                    <option class="dropdown-item" value="Lecturer">Lecturer</option>
-                                                    <option class="dropdown-item" value="Student">Student</option>
-                                                    <option class="dropdown-item" value="Others">Others</option>
+                                                <select class="custom-select pr-9 px-5" name="level" id="r2" required>
+                                                    <option class="dropdown-item" value="" selected hidden>Select Level</option>
+                                                    {% for id, value in profile.LEVEL %}
+                                                        <option class="dropdown-item" value="{{ value }}">{{value}}</option>
+                                                    {% endfor %}
                                                 </select>
                                             </div>
                                         </div>

@@ -11,48 +11,35 @@
     {% extends 'base.html' %}
     {% load static %}
 </head>
+
 <body>
     <!-- Block Title -->
     {% block title %}
-    <div class="">
+        <div class="">
             <p>View all our journals</p>                                       
-    </div>
+        </div>
     {% endblock %}
 
     <!-- Block Content -->
     {% block content %}
 
-        <div class="ml-3">
-            <h5>{{subject_area}}</h5>
-        </div>
-
         <!-- Content -->
-        <form method="post" action="{% url 'journals' %}">
+        <form method="post" action="{% url 'journals' %}" role="search">
             {% csrf_token %}
             
+            <!-- Search bar -->
             <div class="container">
-                <div class="card hover-translate-y-n10 hover-shadow-lg py-3 px-3 mt-2 justify-content-between" style="flex-direction: row;">
+                <div class="card hover-translate-y-n10 hover-shadow-lg py-3 px-3 mt-2 justify-content-between align-items-center" style="flex-direction: row;">
                     <div class="float-left">
-                        <select class="custom-select" name="subject-area" id="r1" required>
-                            <option class="dropdown-item" value="none" selected hidden>Select Subject Area</option>
-                            <option class="dropdown-item" value="Artificial Intelligence">Artificial Intelligence</option>
-                            <option class="dropdown-item" value="Computational Theory and Mathematics">Computational Theory and Mathematics</option>
-                            <option class="dropdown-item" value="Computer Graphics and Computer-Aided Design">Computer Graphics and CAD</option>
-                            <option class="dropdown-item" value="Computer Networks and Communications">Computer Networks and Communications</option>
-                            <option class="dropdown-item" value="Computer Science (miscellaneous)">Computer Science (Miscellaneous)</option>
-                            <option class="dropdown-item" value="Computer Science Applications">Computer Science Applications</option>
-                            <option class="dropdown-item" value="Computer Vision and Pattern Recognition">Computer Vision and Pattern Recognition</option>
-                            <option class="dropdown-item" value="General Computer Science">General Computer Science</option>
-                            <option class="dropdown-item" value="Hardware and Architecture">Hardware and Architecture</option>
-                            <option class="dropdown-item" value="Human-Computer Interaction">Human Computer Interaction</option>
-                            <option class="dropdown-item" value="Information Systems">Information Systems</option>
-                            <option class="dropdown-item" value="Signal Processing">Signal Processing</option>
-                            <option class="dropdown-item" value="Software">Software</option>
-                        </select>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text form-control-emphasized"><i data-feather="search"></i></span>
+                            </div>
+                            <input type="text" class="form-control form-control-emphasized" id="input-title" name="search-box" placeholder="Search Title" value="{{ search_title }}" size=50 required>
+                        </div>
                     </div>
-
                     <div class="float-right">
-                        <button type="submit" class="btn btn-outline-success float-right">Proceed</button>
+                        <button type="submit" class="btn btn-outline-success float-right">Search</button>
                     </div>
                 </div>
 
@@ -62,44 +49,49 @@
                     <h6 class="text-center" style="color: red;">{{message}}</h6>
                     {% endfor %}
                 </div>
-
             </div>
+
         </form>
 
         <!-- Journal Table -->
-        <div class="scrolling-wrapper">
-            <table class="dataframe">
-                <thead>
-                    <tr>
-                        <th>Serial No.</th>
-                        <th>Title</th>
-                        <th>Citescore</th>
-                        <th>Percentile</th>
-                        <th>Publisher</th>
-                        <th>Open Access</th>
-                        <th>Frequency</th>
-                        <th>ISSN</th>      
-                        <th>Scopus Link</th>
-                    </tr>
-                </thead>
-                
-                {% for feature in content %}
-                <tbody>
-                    <tr>
-                        <th>{{forloop.counter}}</th>
-                        <td>{{feature.1}}</td>
-                        <td>{{feature.2}}</td>
-                        <td>{{feature.3}}</td>
-                        <td>{{feature.11}}</td>
-                        <td>{{feature.13}}</td>
-                        <td>{{feature.22}}</td>
-                        <td>{{feature.26}}</td>
-                        <td><a href={{feature.18}} target="_blank">{{feature.18}}</a></td>
-                    </tr>
-                </tbody>
-                {% endfor %}
-            </table>
-        </div>
+
+        {% if content %}
+            <div class="scrolling-wrapper">
+                <table class="dataframe">
+                    <thead>
+                        <tr>
+                            <th>Serial No.</th>
+                            <th>Title</th>
+                            <th>Citescore</th>
+                            <th>Percentile</th>
+                            <th>Publisher</th>
+                            <th>Subject Area</th>
+                            <th>Open Access</th>
+                            <th>Frequency</th>
+                            <th>ISSN</th>      
+                            <th>Scopus Link</th>
+                        </tr>
+                    </thead>
+                    
+                    {% for feature in content %}
+                    <tbody>
+                        <tr>
+                            <th>{{forloop.counter}}</th>
+                            <td>{{feature.1}}</td>
+                            <td>{{feature.2}}</td>
+                            <td>{{feature.3}}</td>
+                            <td>{{feature.11}}</td>
+                            <td>{{feature.15}}</td>
+                            <td>{{feature.13}}</td>
+                            <td>{{feature.22}}</td>
+                            <td>{{feature.26}}</td>
+                            <td><a href={{feature.18}} target="_blank">{{feature.18}}</a></td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+        {% endif %}
     {% endblock %}
 </body>
 </html>

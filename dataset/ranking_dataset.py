@@ -2,6 +2,8 @@
 This is a function of the ranking dataset used in Django project
 """
 #Initialization of ranking features
+import numpy as np
+
 subject_area = []
 index = dict()
 publisher = dict()
@@ -39,9 +41,10 @@ def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q
 	
 	# index_function
 	def user_index():
-		dict_index = {1: "Scopus", 2: "Others"}
+		# dict_index = {1: "Scopus", 2: "Others"}
+		dict_index = {2: "Scopus", 1: "Others"}
 		list_index = [b, c]
-		rank_index = [1.0, 0.5]
+		rank_index = np.linspace(1, 0.1, 2).round(2).tolist()
 		for (x, y) in zip(list_index, rank_index):
 			for key in dict_index.keys():
 				if x == key:
@@ -50,9 +53,10 @@ def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q
 	
 	# publisher_function
 	def user_publisher():
-		dict_publisher = {1: "Springer", 2: "Elsevier", 3: "IEEE", 4: "Taylor and Francis", 5: "Inderscience", 6: "ACM", 7: "Others"}
+		# dict_publisher = {1: "Springer", 2: "Elsevier", 3: "IEEE", 4: "Taylor and Francis", 5: "Inderscience", 6: "ACM", 7: "Others"}
+		dict_publisher = {7: "Springer", 6: "Elsevier", 5: "IEEE", 4: "Taylor and Francis", 3: "Inderscience", 2: "ACM", 1: "Others"}
 		list_publisher = [d, e, f, g, h, i, j]
-		rank_publisher = [1.0, 0.85, 0.7, 0.55, 0.4, 0.25, 0.1]
+		rank_publisher = np.linspace(1, 0.1, 7).round(2).tolist()
 		for (x, y) in zip(list_publisher, rank_publisher):
 			for key in dict_publisher.keys():
 				if x == key:
@@ -61,9 +65,10 @@ def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q
 	
 	# percentile_function
 	def user_percentile():
-		dict_percentile = {1: 1, 2: 2, 3: 3, 4: 4}
+		#dict_percentile = {1: 1, 2: 2, 3: 3, 4: 4}
+		dict_percentile = {4: 4, 3: 3, 2: 2, 1: 1}
 		list_percentile = [k, l, m, n]
-		rank_percentile = [1.0, 0.7, 0.5, 0.3]
+		rank_percentile = np.linspace(1, 0.1, 4).round(2).tolist()
 		for (x, y) in zip(list_percentile, rank_percentile):
 			for key in dict_percentile.keys():
 				if x == key:
@@ -72,9 +77,10 @@ def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q
 	
 	# frequency_function
 	def user_frequency():
-		dict_frequency = { 1: "Weekly", 2: "Fortnightly", 3: "Semi-monthly", 4: "Monthly", 5: "Bi-monthly", 6: "Quarterly", 7: "Tri-annual", 8: "Semi-annual", 9: "Annual" }
+		# dict_frequency = { 1: "Weekly", 2: "Fortnightly", 3: "Semi-monthly", 4: "Monthly", 5: "Bi-monthly", 6: "Quarterly", 7: "Tri-annual", 8: "Semi-annual", 9: "Annual" }
+		dict_frequency = { 9: "Weekly", 8: "Fortnightly", 7: "Semi-monthly", 6: "Monthly", 5: "Bi-monthly", 4: "Quarterly", 3: "Tri-annual", 2: "Semi-annual", 1: "Annual" }
 		list_frequency = [o, p, q, r, s, t, u, v, w]
-		rank_frequency = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2]
+		rank_frequency = np.linspace(1, 0.1, 9).round(2).tolist()
 		for (x, y) in zip(list_frequency, rank_frequency):
 			for key in dict_frequency.keys():
 				if x == key:
@@ -83,9 +89,10 @@ def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q
 	
 	# open_access_function
 	def user_open_access():
-		dict_open_access = {1: "Yes", 2: "No"}
+		# dict_open_access = {1: "Yes", 2: "No"}
+		dict_open_access = {2: "Yes", 1: "No"}
 		list_open_access = [x, y]
-		rank_open_access = [1.0, 0.5]
+		rank_open_access = np.linspace(1, 0.1, 2).round(2).tolist()
 		for (x_, y_) in zip(list_open_access, rank_open_access):
 			for key in dict_open_access.keys():
 				if x_ == key:

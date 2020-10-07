@@ -60,5 +60,5 @@ class User(AbstractUser):
         ('Others', 'Others'),
     )
 
-    institution = models.CharField(choices=INSTITUTION, max_length=20, default=None)
-    level = models.CharField(choices=LEVEL, max_length=10, default=None)
+    institution = models.CharField(choices=INSTITUTION, max_length=20, blank=True, null=True)
+    level = models.CharField(choices=LEVEL, max_length=10, blank=True, null=True)

@@ -85,7 +85,7 @@ def contact(request):
         contact_phone = request.POST['contact_phone']
         contact_message = request.POST['contact_message']
         subject = 'Journal Ranker Message from ' + contact_name
-        message = f"Name: {contact_name} \nEmail: {contact_email} \nMessaage: {contact_message}"
+        message = f"Name: {contact_name} \nEmail: {contact_email} \nMessage: {contact_message}"
         recipients = [settings.EMAIL_HOST_USER]
         try:
             send_mail(subject, message, contact_name, recipients, fail_silently=True)

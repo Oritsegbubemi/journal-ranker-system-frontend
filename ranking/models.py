@@ -4,7 +4,7 @@ from django.conf import settings
 User = settings.AUTH_USER_MODEL
 
 # Create your models here.
-class Card(models.Model):
+class RankingCard(models.Model):
 	user = models.ForeignKey(User, null=True, related_name="ranking_card", on_delete=models.CASCADE)
 	#card_name
 	name = models.CharField(max_length=100)

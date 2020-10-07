@@ -1,0 +1,465 @@
+<!-- This is the user ranking2 html file page -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="journal">
+    <meta name="author" content="Gbubemi">
+    <title>User Ranking2</title>
+    {% extends 'base.html' %}
+    {% load static %}
+</head>
+<body>  
+    <!-- Block Title -->
+    {% block title %}
+        Rank your journals here
+    {% endblock %}
+
+    <!-- Block Content -->
+    {% block content %}
+        <!-- Header -->
+        <div class="mb-5"> 
+            <h2>{{card_name}}</h2>
+            <h6>Kindly select the subject area of your research work and rank where appropraite</h6>
+        </div>
+
+        <!-- Content -->
+        <div>
+            <form id="" method="post" action="{% url 'rank2' %}">
+                {% csrf_token %}
+                
+                <!-- Show Message -->
+                <div>
+                    {% for message in messages %}
+                    <h6 class="text-center py-1" style="color: red;">{{message}}</h6>
+                    {% endfor %}
+                </div>
+
+                <!-- Subject Area -->
+                <div class="mb-5">
+                    <h5>Subject Area</h5>
+                    <select class="custom-select" name="subject-area" style="width: 40%;" required> 
+                        <option class="dropdown-item" value="none" selected hidden>Select Subject Area</option>
+                        <option class="dropdown-item" value="3"> Artificial Intelligence</option>
+                        <option class="dropdown-item" value="4">Computational Theory and Mathematics</option>
+                        <option class="dropdown-item" value="5">Computer Graphics and CAD</option>
+                        <option class="dropdown-item" value="6">Computer Networks and Communications</option>
+                        <option class="dropdown-item" value="2">Computer Science (Miscellaneous)</option>
+                        <option class="dropdown-item" value="7">Computer Science Applications</option>
+                        <option class="dropdown-item" value="8">Computer Vision and Pattern Recognition</option>
+                        <option class="dropdown-item" value="1" >General Computer Science</option>
+                        <option class="dropdown-item" value="9"> Hardware and Architecture</option>
+                        <option class="dropdown-item" value="10">Human Computer Interaction</option>
+                        <option class="dropdown-item" value="11">Information Systems</option>
+                        <option class="dropdown-item" value="12" >Signal Processing</option>
+                        <option class="dropdown-item" value="13">Software</option>
+                    </select>
+                </div>
+
+                <!-- Index (2) -->
+                <div class="card card-body">
+                    <h5 class="card-title">Index Ranking</h5>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Index</span>
+                            <span class="alert-content">Scopus</span>
+                        </div>
+                        <select class="custom-select mx-5" name="index-first" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Index</span>
+                            <span class="alert-content">Others</span>
+                        </div>
+                        <select class="custom-select mx-5" name="index-second" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Publisher (7) -->
+                <div class="card card-body">
+                    <h5 class="card-title">Publisher Ranking</h5>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Publisher</span>
+                            <span class="alert-content">Springer</span>
+                        </div>
+                        <select class="custom-select mx-5" name="publisher-first" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Publisher</span>
+                            <span class="alert-content">Elsevier</span>
+                        </div>
+                        <select class="custom-select mx-5" name="publisher-second" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Publisher</span>
+                            <span class="alert-content">IEEE</span>
+                        </div>
+                        <select class="custom-select mx-5" name="publisher-third" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Publisher</span>
+                            <span class="alert-content">Taylor & Francis</span>
+                        </div>
+                        <select class="custom-select mx-5" name="publisher-fourth" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Publisher</span>
+                            <span class="alert-content">Inderscience</span>
+                        </div>
+                        <select class="custom-select mx-5" name="publisher-fifth" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Publisher</span>
+                            <span class="alert-content">ACM</span>
+                        </div>
+                        <select class="custom-select mx-5" name="publisher-sixth" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Publisher</span>
+                            <span class="alert-content">Others</span>
+                        </div>
+                        <select class="custom-select mx-5" name="publisher-seventh" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>   
+                </div>
+
+                <!-- Percentile (4) -->
+                <div class="card card-body">
+                    <h5 class="card-title">Percentile Ranking</h5>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Percentile</span>
+                            <span class="alert-content">0 - 24</span>
+                        </div>
+                        <select class="custom-select mx-5" name="percentile-first" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Percentile</span>
+                            <span class="alert-content">25 - 49</span>
+                        </div>
+                        <select class="custom-select mx-5" name="percentile-second" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Percentile</span>
+                            <span class="alert-content">50 - 74</span>
+                        </div>
+                        <select class="custom-select mx-5" name="percentile-third" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Percentile</span>
+                            <span class="alert-content">75 - 99</span>
+                        </div>
+                        <select class="custom-select mx-5" name="percentile-fourth" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Frequency (9) -->
+                <div class="card card-body">
+                    <h5 class="card-title">Frequency Ranking</h5>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Frequency</span>
+                            <span class="alert-content">Weekly</span>
+                        </div>
+                        <select class="custom-select mx-5" name="frequency-first" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="9">9</option>
+                            <option class="dropdown-item" value="8">8</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Frequency</span>
+                            <span class="alert-content">Fortnighty</span>
+                        </div>
+                        <select class="custom-select mx-5" name="frequency-second" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="9">9</option>
+                            <option class="dropdown-item" value="8">8</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Frequency</span>
+                            <span class="alert-content">Semi-monthly</span>
+                        </div>
+                        <select class="custom-select mx-5" name="frequency-third" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="9">9</option>
+                            <option class="dropdown-item" value="8">8</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Frequency</span>
+                            <span class="alert-content">Monthly</span>
+                        </div>
+                        <select class="custom-select mx-5" name="frequency-fourth" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="9">9</option>
+                            <option class="dropdown-item" value="8">8</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Frequency</span>
+                            <span class="alert-content">Bi-monthly</span>
+                        </div>
+                        <select class="custom-select mx-5" name="frequency-fifth" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="9">9</option>
+                            <option class="dropdown-item" value="8">8</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Frequency</span>
+                            <span class="alert-content">Quarterly</span>
+                        </div>
+                        <select class="custom-select mx-5" name="frequency-sixth" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="9">9</option>
+                            <option class="dropdown-item" value="8">8</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Frequency</span>
+                            <span class="alert-content">Tri-annual</span>
+                        </div>
+                        <select class="custom-select mx-5" name="frequency-seventh" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="9">9</option>
+                            <option class="dropdown-item" value="8">8</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Frequency</span>
+                            <span class="alert-content">Semi-annual</span>
+                        </div>
+                        <select class="custom-select mx-5" name="frequency-eighth" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="9">9</option>
+                            <option class="dropdown-item" value="8">8</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Frequency</span>
+                            <span class="alert-content">Annual</span>
+                        </div>
+                        <select class="custom-select mx-5" name="frequency-ninth" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="9">9</option>
+                            <option class="dropdown-item" value="8">8</option>
+                            <option class="dropdown-item" value="7">7</option>
+                            <option class="dropdown-item" value="6">6</option>
+                            <option class="dropdown-item" value="5">5</option>
+                            <option class="dropdown-item" value="4">4</option>
+                            <option class="dropdown-item" value="3">3</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Open Access (2) -->
+                <div class="card card-body">
+                    <h5 class="card-title">Open Access Ranking</h5>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Open Access</span>
+                            <span class="alert-content">Yes</span>
+                        </div>
+                        <select class="custom-select mx-5" name="open-access-first" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                    <div class="row pl-2">
+                        <div class="alert alert-modern alert-outline-success mt-2" style="width: 30%;">
+                            <span class="badge badge-success badge-pill">Open Access</span>
+                            <span class="alert-content">No</span>
+                        </div>
+                        <select class="custom-select mx-5" name="open-access-second" style="width: 45%;" required> 
+                            <option class="dropdown-item" value="" selected hidden>Select Rank</option>
+                            <option class="dropdown-item" value="2">2</option>
+                            <option class="dropdown-item" value="1">1</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="float-right">
+                    <button type="submit" class="btn btn-outline-primary float-right">Proceed</button>
+                </div>  
+                
+            </form>  
+        </div>  
+    {% endblock %}
+</body>
+</html>

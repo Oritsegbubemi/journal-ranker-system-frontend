@@ -10,7 +10,9 @@ import csv
 import psycopg2
 import os
 from psycopg2 import sql
-
+from django.conf import settings
+from ranking.models import RankingCard
+User = settings.AUTH_USER_MODEL
 DATABASE_URL = os.environ.get('DATABASE_URL')
 conn = psycopg2.connect(DATABASE_URL)
 cur = conn.cursor()
@@ -21,25 +23,27 @@ def card(request):
 	if request.method == 'POST':
 		card_name = request.POST.get('card_name')
 		card_descr = request.POST.get('card_descr')
-		card_details = Card(name=card_name, description=card_descr)
-		if (Card.objects.filter(name=card_name).exists()):
-			messages.info(request, 'Ranking Card Already Exist')
-			return redirect('card')
-		else:
-			card_details.save()
-			request.user.ranking_card.add(card_details)
-			return redirect("rank")
+		card_details = RankingCard(name=card_name, description=card_descr)
+		# if (RankingCard.objects.filter(name=card_name).exists()):
+		# 	messages.info(request, 'Ranking Card Already Exist')
+		# 	return redirect('card')
+		# else:
+		card_details.save()
+		request.user.ranking_card.add(card_details)
+		return redirect("rank2")
 	
 	if request.method == 'GET':
+		# userh = User.username
+		# print(userh)
 		return render(request, "card.html")
 
 
 @login_required
-def rank(request):
-	latest_card = Card.objects.all().last()
+def rank1(request):
+	latest_card = RankingCard.objects.all().last()
 	latest_card = str(latest_card)
 	if request.method=='GET':
-		return render(request, "ranking.html", {'card_name': latest_card})
+		return render(request, "ranking1.html", {'card_name': latest_card})
 	
 	if request.method=='POST':
 		# index (2)
@@ -101,9 +105,61 @@ def rank(request):
 
 
 @login_required
+def rank2(request):
+	latest_card = RankingCard.objects.all().last()
+	latest_card = str(latest_card)
+	if request.method=='GET':
+		return render(request, "ranking2.html", {'card_name': latest_card})
+	
+	if request.method == 'POST':
+		#subject area
+		subject_area = request.POST.get('subject-area')
+
+		#index 
+		index_first = request.POST.get('index-first')
+		index_second = request.POST.get('index-second')
+		if (index_first == index_second):
+			messages.info(request, 'The index rankings cannot have equal values')
+
+		#publisher
+		publisher_first = request.POST.get('publisher-first')
+		publisher_second = request.POST.get('publisher-second')
+		publisher_third = request.POST.get('publisher-third')
+		publisher_fourth = request.POST.get('publisher-fourth')
+		publisher_fifth = request.POST.get('publisher-fifth')
+		publisher_sixth = request.POST.get('publisher-sixth')
+		publisher_seventh = request.POST.get('publisher-seventh')
+
+		#percentile
+		percentile_first = request.POST.get('percentile-first')
+		percentile_second = request.POST.get('percentile-second')
+		percentile_third = request.POST.get('percentile-third')
+		percentile_fourth = request.POST.get('percentile-fourth')
+
+		#frequency
+		frequency_first = request.POST.get('frequency-first')
+		frequency_second = request.POST.get('frequency-second')
+		frequency_third = request.POST.get('frequency-third')
+		frequency_fourth = request.POST.get('frequency-fourth')
+		frequency_fifth = request.POST.get('frequency-fifth')
+		frequency_sixth = request.POST.get('frequency-sixth')
+		frequency_seventh = request.POST.get('frequency-seventh')
+		frequency_eighth = request.POST.get('frequency-eighth')
+		frequency_ninth = request.POST.get('frequency-ninth')
+
+		#open access
+		open_access_first = request.POST.get('open-access-first')
+		open_access_second = request.POST.get('open-access-second')
+
+		user_input_ranking_dataset(int(subject_area), int(index_first), int(index_second), int(publisher_first), int(publisher_second), int(publisher_third), int(publisher_fourth), int(publisher_fifth), int(publisher_sixth), int(publisher_seventh), int(percentile_first), int(percentile_second), int(percentile_third), int(percentile_fourth), int(frequency_first), int(frequency_second), int(frequency_third), int(frequency_fourth), int(frequency_fifth), int(frequency_sixth), int(frequency_seventh), int(frequency_eighth), int(frequency_ninth), int(open_access_first), int(open_access_second))
+		user_ranking_dataset()
+		return redirect("result")
+
+
+@login_required
 def result(request):
 	user_psi_dataset()
-	latest_card = Card.objects.all().last()
+	latest_card = RankingCard.objects.all().last()
 	table_name = str(latest_card)
 	cur.execute(
 		sql.SQL("""CREATE TABLE IF NOT EXISTS {} (scopus_source_id varchar(20), title varchar(200), citesore varchar(20), percentile varchar(20), citation_count varchar(20), scholarly_output varchar(20), percent_cited varchar(20), snip varchar(20), sjr varchar(20), rank varchar(5), rank_outof varchar(5), publisher varchar(250), publication_type varchar(100), open_access varchar(20), scopus_asjc_code varchar(5), subject_area varchar(50),  quartile varchar(20), top_10 varchar(10), scopus_link varchar(200), index varchar(10), publisher2 varchar(20), percentile2 varchar(5), frequency varchar(20), journal_website varchar(500),  review_time varchar(20), open_access2 varchar(5), print_issn varchar(10), e_issn varchar(10), user_index varchar(30), user_publisher varchar(30), user_percentile varchar(30), user_frequency varchar(30), user_open_access varchar(30), psi varchar(30))""").format(sql.Identifier(table_name))
@@ -129,7 +185,6 @@ def result(request):
 	for i in details:
 		x = "{:0.3f}%".format(float(i[-1])*100)
 		psi_percent.append(x)
-
 	show_details = details[:10]
 	foo = zip(show_details, psi_percent)
 
@@ -138,19 +193,14 @@ def result(request):
 
 	if request.method == 'POST':
 		view_number = request.POST.get('view-number')
-
 		if view_number == "10":
 			show_details = details[:10]
 			foo = zip(show_details, psi_percent)
 			return render(request, "result.html", {'card_name': table_name, 'content': foo})
-
-
 		if view_number == "20":
 			show_details = details[:20]
 			foo = zip(show_details, psi_percent)
 			return render(request, "result.html", {'card_name': table_name, 'content': foo})
-
-
 		else:
 			foo = zip(details, psi_percent)
 			return render(request, "result.html", {'card_name': table_name, 'content': foo})
@@ -179,7 +229,7 @@ def viewrank(request, pk):
 def deletecard(request, pk): 
 	if request.method == 'GET':
 		try:
-			instance = Card.objects.get(name=pk)
+			instance = RankingCard.objects.get(name=pk)
 			instance.delete()
 			table_name = pk
 			postgreSQL_select_Query = sql.SQL("DROP TABLE IF EXISTS {}").format(sql.Identifier(table_name))
@@ -187,7 +237,7 @@ def deletecard(request, pk):
 			conn.commit()
 			return redirect('card')
 
-		except Card.DoesNotExist:
+		except RankingCard.DoesNotExist:
 			instance = None
 			return redirect('card')
 
@@ -218,15 +268,15 @@ def journals(request):
 
 
 	if request.method == 'POST':
-		subject_area = request.POST.get('subject-area')
+		search_title = request.POST['search-box']
+		
+		postgreSQL_select_Query = sql.SQL("SELECT * FROM journals WHERE title LIKE '%{}%'".format(search_title))
+		cur.execute(postgreSQL_select_Query)
+		details = cur.fetchall()
+		conn.commit()
 
-		if subject_area == "none":
-			messages.info(request, 'No Subject Area Selected')
-			return render(request, "journals.html")
+		if (len(details) == 0):
+			messages.info(request, 'No Search Result Found')
+			return render(request, "journals.html", {'search_title': search_title })
 
-		else:
-			postgreSQL_select_Query = sql.SQL("SELECT * FROM journals WHERE subject_area='{}'".format(subject_area))
-			cur.execute(postgreSQL_select_Query)
-			details = cur.fetchall()
-			conn.commit()
-			return render(request, "journals.html", {'content': details, 'subject_area': subject_area })
+		return render(request, "journals.html", {'content': details, 'search_title': search_title })

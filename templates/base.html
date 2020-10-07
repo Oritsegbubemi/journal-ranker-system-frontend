@@ -82,25 +82,44 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Collapse -->
-             <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mt-4 mt-lg-0 ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'about' %}">About Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'card' %}">Ranking</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary btn-icon mt-2" href="{% url 'profile' %}">
-                            <span class="btn-inner--text" style="text-transform: capitalize">Hello {{user.username}}</span>
-                        </a>
-                    </li>
+                    
+                    <!-- Authenticated -->
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'card' %}">Ranking</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary btn-icon mt-2" href="{% url 'profile' %}">
+                                <span class="btn-inner--text" style="text-transform: capitalize">Hello {{user.username}}</span>
+                            </a>
+                        </li>
+
+                    <!-- Not Authenticated -->
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary btn-icon mt-2 pl-3 pr-3" href="{% url 'signup' %}">
+                                <span class="btn-inner--text">Create account</span>
+                                <span class="btn-inner--icon"><i data-feather="user"></i></span>
+                            </a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

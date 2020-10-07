@@ -26,27 +26,27 @@
                 <div class="card-body">
                     <div class="pb-4">
                         <div>
-                            <span class="avatar bg-dark text-white rounded-circle" style="text-transform: capitalize">
+                            <span class="avatar bg-dark text-white rounded-circle" style="text-transform: capitalize; font-size:2em">
                                 {{user.username.0}}
                             </span>
                         </div>
                     </div>
                     <div class="pt-2 pb-3">
                         <h4 style="text-transform: capitalize">{{user.username}}</h4>
-                        <!-- <p style="text-transform: capitalize" class="text-muted mb-0">
-                            First Name: {{user.first_name}}
-                        </p> -->
                         <p style="text-transform: capitalize" class="text-muted mb-0">
-                            First Name: Gbubemi
-                        </p>
-                        <!-- <p style="text-transform: capitalize" class="text-muted mb-0">
-                            Last Name: {{user.last_name}}
-                        </p> -->
+                            <strong>First Name:</strong> {{user.first_name}}
+                        </p> 
                         <p style="text-transform: capitalize" class="text-muted mb-0">
-                            Last Name: Makpokpomi
+                            <strong>Last Name:</strong> {{user.last_name}}
                         </p>
-                        <p style="text-transform: ''" class="text-muted mb-0">
-                            Email Address: {{user.email}}
+                        <p class="text-muted mb-0">
+                            <strong>Email Address:</strong> {{user.email}}
+                        </p>
+                        <p style="text-transform: capitalize" class="text-muted mb-0">
+                            <strong>Institution:</strong> {{user.institution}}
+                        </p>
+                        <p style="text-transform: capitalize" class="text-muted mb-0">
+                            <strong>Level:</strong> {{user.level}}
                         </p>
                     </div>
                 </div>

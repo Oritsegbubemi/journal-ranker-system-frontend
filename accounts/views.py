@@ -53,11 +53,7 @@ def signup(request):
             if User.objects.filter(email=email.lower()).exists():
                 messages.info(request, 'Email Address Alreasy Exist')
                 return redirect('signup')
-
-            elif User.objects.filter(username=user_name.lower()).exists():
-                messages.info(request, 'Username Alreasy Exist')
-                return redirect('signup')
-
+                
             else:
                 user = User.objects.create_user(
                     username=user_name.lower(),

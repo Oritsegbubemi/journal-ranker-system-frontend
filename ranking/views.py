@@ -24,17 +24,15 @@ def card(request):
 		card_name = request.POST.get('card_name')
 		card_descr = request.POST.get('card_descr')
 		card_details = RankingCard(name=card_name, description=card_descr)
-		# if (RankingCard.objects.filter(name=card_name).exists()):
-		# 	messages.info(request, 'Ranking Card Already Exist')
-		# 	return redirect('card')
-		# else:
-		card_details.save()
-		request.user.ranking_card.add(card_details)
+		if (RankingCard.objects.filter(name=card_name).exists()):
+			messages.info(request, 'Ranking Card Already Exist')
+			return redirect('card')
+		else:
+			card_details.save()
+			request.user.ranking_card.add(card_details)
 		return redirect("rank2")
 	
 	if request.method == 'GET':
-		# userh = User.username
-		# print(userh)
 		return render(request, "card.html")
 
 
@@ -209,20 +207,23 @@ def result(request):
 @login_required
 def viewrank(request, pk): 
 	if request.method == 'GET':
-		table_name = pk
-		postgreSQL_select_Query = sql.SQL("SELECT * FROM {}").format(sql.Identifier(table_name))
-		cur.execute(postgreSQL_select_Query)
-		details = cur.fetchall()
-		conn.commit()
+		try:
+			table_name = pk
+			postgreSQL_select_Query = sql.SQL("SELECT * FROM {}").format(sql.Identifier(table_name))
+			cur.execute(postgreSQL_select_Query)
+			details = cur.fetchall()
+			conn.commit()
 
-		psi_percent = []
-		for i in details:
-			x = "{:0.3f}%".format(float(i[-1])*100)
-			psi_percent.append(x)
+			psi_percent = []
+			for i in details:
+				x = "{:0.3f}%".format(float(i[-1])*100)
+				psi_percent.append(x)
 
-		details = details[:10]
-		foo = zip(details, psi_percent)
-		return render(request, "viewrank.html", {'content': foo})
+			details = details[:10]
+			foo = zip(details, psi_percent)
+			return render(request, "viewrank.html", {'content': foo})
+		except:
+			return render(request, "card.html")
 
 
 @login_required

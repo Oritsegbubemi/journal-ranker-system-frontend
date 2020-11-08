@@ -61,10 +61,8 @@ class User(AbstractUser):
     )
     username = models.CharField(max_length=100, blank=False)
     email = models.EmailField(max_length=250, unique=True)
-
     institution = models.CharField(choices=INSTITUTION, max_length=20, blank=True, null=True)
     level = models.CharField(choices=LEVEL, max_length=10, blank=True, null=True)
-
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

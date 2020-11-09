@@ -66,7 +66,7 @@ def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q
 	# percentile_function
 	def user_percentile():
 		#dict_percentile = {1: 1, 2: 2, 3: 3, 4: 4}
-		dict_percentile = {1: 10, 2: 20, 3: 30, 4: 40}
+		dict_percentile = {1: 100, 2: 200, 3: 300, 4: 400}
 		list_percentile = [k, l, m, n]
 		rank_percentile = np.linspace(1, 0.1, 4).round(2).tolist()
 		for (x, y) in zip(list_percentile, rank_percentile):

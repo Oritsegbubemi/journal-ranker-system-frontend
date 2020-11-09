@@ -41,8 +41,8 @@ def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q
 	
 	# index_function
 	def user_index():
-		# dict_index = {1: "Scopus", 2: "Others"}
-		dict_index = {2: "Scopus", 1: "Others"}
+		# dict_index = {1: "Scopus", 2: "SCIEISI"}
+		dict_index = {2: "Scopus", 1: "SCIEISI"}
 		list_index = [b, c]
 		rank_index = np.linspace(1, 0.1, 2).round(2).tolist()
 		for (x, y) in zip(list_index, rank_index):
@@ -66,7 +66,7 @@ def user_input_ranking_dataset(a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q
 	# percentile_function
 	def user_percentile():
 		#dict_percentile = {1: 1, 2: 2, 3: 3, 4: 4}
-		dict_percentile = {4: 4, 3: 3, 2: 2, 1: 1}
+		dict_percentile = {1: 100, 2: 200, 3: 300, 4: 400}
 		list_percentile = [k, l, m, n]
 		rank_percentile = np.linspace(1, 0.1, 4).round(2).tolist()
 		for (x, y) in zip(list_percentile, rank_percentile):

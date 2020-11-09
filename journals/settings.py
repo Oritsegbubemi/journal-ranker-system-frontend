@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY_JOURNAL')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'journal-ranker.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'journal-ranker.herokuapp.com', 'journalranker.netlify.app']
 
 
 # Application definition

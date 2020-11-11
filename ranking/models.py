@@ -5,7 +5,7 @@ User = settings.AUTH_USER_MODEL
 
 # Create your models here.
 class RankingCard(models.Model):
-	user = models.ForeignKey(User, null=True, related_name="ranking_card", on_delete=models.CASCADE)
+	user = models.ForeignKey(User, null=False, related_name="ranking_card", on_delete=models.CASCADE)
 	#card_name
 	name = models.CharField(max_length=100)
 	#card_description

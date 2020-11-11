@@ -23,8 +23,9 @@ def card(request):
 	if request.method == 'POST':
 		card_name = request.POST.get('card_name')
 		card_descr = request.POST.get('card_descr')
+		new_card_name = card_name+ "_" + request.user.username
 		card_details = RankingCard(name=card_name, description=card_descr)
-		if (RankingCard.objects.filter(name=card_name).exists()):
+		if (RankingCard.objects.filter(name=new_card_name).exists()):
 			messages.info(request, 'Ranking Card Already Exist')
 			return redirect('card')
 		else:

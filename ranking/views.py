@@ -149,6 +149,8 @@ def rank2(request):
 		#open access
 		open_access_first = request.POST.get('open-access-first')
 		open_access_second = request.POST.get('open-access-second')
+		if (open_access_first == open_access_second):
+			messages.info(request, 'The index rankings cannot have equal values')
 
 		user_input_ranking_dataset(int(subject_area), int(index_first), int(index_second), int(publisher_first), int(publisher_second), int(publisher_third), int(publisher_fourth), int(publisher_fifth), int(publisher_sixth), int(publisher_seventh), int(percentile_first), int(percentile_second), int(percentile_third), int(percentile_fourth), int(frequency_first), int(frequency_second), int(frequency_third), int(frequency_fourth), int(frequency_fifth), int(frequency_sixth), int(frequency_seventh), int(frequency_eighth), int(frequency_ninth), int(open_access_first), int(open_access_second))
 		user_ranking_dataset()

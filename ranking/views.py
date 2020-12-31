@@ -13,7 +13,7 @@ from psycopg2 import sql
 from django.conf import settings
 from ranking.models import RankingCard
 User = settings.AUTH_USER_MODEL
-DATABASE_URL = os.environ.get('DATABASE_URL')
+DATABASE_URL = os.environ['DATABASE_URL']
 conn = psycopg2.connect(DATABASE_URL)
 cur = conn.cursor()
 

@@ -2,7 +2,7 @@ from .settings import *
 
 print("Dev Settings")
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 

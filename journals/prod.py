@@ -4,7 +4,7 @@ import dj_database_url
 
 print('Production Settings')
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['journal-ranker.herokuapp.com']
 

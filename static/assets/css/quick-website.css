@@ -627,6 +627,20 @@ h6,
     }
 }
 
+.display-5
+{
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+@media (max-width: 1200px)
+{
+    .display-5
+    {
+        font-size: calc(1.425rem + 2.1vw) ;
+    }
+}
+
 hr
 {
     margin-top: 2rem;

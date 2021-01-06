@@ -82,9 +82,10 @@ def contact(request):
         contact_message = request.POST['contact_message']
         subject = 'Journal Ranker Message from ' + contact_name
         message = f"Name: {contact_name} \nEmail: {contact_email} \nMessage: {contact_message}"
-        recipients = [settings.EMAIL_HOST_USER]
+        #recipients = [settings.EMAIL_HOST_USER]
+        recipients = ['journalranker@gmail.com',]
         try:
-            send_mail(subject, message, contact_name, recipients, fail_silently=True)
+            send_mail(subject, message, contact_name, recipients) #, fail_silently=True)
         except BadHeaderError:
             messages.info(request, 'Invalid header found')
             return HttpResponse('Invalid header found')

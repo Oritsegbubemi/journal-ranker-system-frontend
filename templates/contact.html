@@ -201,7 +201,7 @@
             {% else %}
 
             <div class="row justify-content-center">
-                <div class="col-lg-6">
+                <div class="col-lg-6" id=>
                     <!-- Form -->
                     <form action="{% url 'contact' %}" method="post">
                         {% csrf_token %}
@@ -227,7 +227,6 @@
                         
                         <div class="text-center">
                             <div class="g-recaptcha" data-sitekey="6Lfs5ScUAAAAANAJwGrdfvWLFRRiVbKRE2vfoaFj"></div>
-                            <button type="reset" class="btn-reset d-none"></button>
                             <button type="submit" class="btn btn-block btn-lg btn-primary mt-4">Send your message</button>
                         </div>
                     </form>
@@ -237,7 +236,7 @@
             {% endif %}
         </div>
     </section>
-  
+
     <!-- Footer -->
     <footer class="position-relative" id="footer-main">
         <div class="footer pt-lg-7 footer-dark bg-dark">

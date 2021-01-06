@@ -254,7 +254,6 @@ def journals(request):
 		)
 		cur.execute(sql.SQL("SELECT COUNT(*) FROM {}").format(sql.Identifier(table_name)))
 		result = cur.fetchone()
-		# if (result[0] == 0):
 		if (len(result) != 3139):
 			csv_file = 'dataset/ranking_dataset.csv'
 			with open(csv_file, 'r') as f:

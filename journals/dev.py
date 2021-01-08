@@ -2,9 +2,7 @@ from .settings import *
 
 print("Dev Settings")
 
-DEBUG = False
-
-ALLOWED_HOSTS = []
+DEBUG = True
 
 DATABASES = {
     'default': {

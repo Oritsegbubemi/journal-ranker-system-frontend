@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from dataset.ranking_dataset import user_input_ranking_dataset, user_ranking_dataset
 from dataset.user_dataset import user_psi_dataset
 from .models import *
@@ -115,12 +116,13 @@ def rank2(request):
 		subject_area = request.POST.get('subject-area')
 
 		#index 
+		index = []
 		index_first = request.POST.get('index-first')
 		index_second = request.POST.get('index-second')
-		if (index_first == index_second):
-			messages.info(request, 'The index rankings cannot have equal values')
-
+		index.extend((index_first, index_second))
+		
 		#publisher
+		publisher = []
 		publisher_first = request.POST.get('publisher-first')
 		publisher_second = request.POST.get('publisher-second')
 		publisher_third = request.POST.get('publisher-third')
@@ -128,14 +130,18 @@ def rank2(request):
 		publisher_fifth = request.POST.get('publisher-fifth')
 		publisher_sixth = request.POST.get('publisher-sixth')
 		publisher_seventh = request.POST.get('publisher-seventh')
+		publisher.extend((publisher_first, publisher_second, publisher_third, publisher_fourth, publisher_fifth, publisher_sixth, publisher_seventh))
 
 		#percentile
+		percentile = []
 		percentile_first = request.POST.get('percentile-first')
 		percentile_second = request.POST.get('percentile-second')
 		percentile_third = request.POST.get('percentile-third')
 		percentile_fourth = request.POST.get('percentile-fourth')
+		percentile.extend((percentile_first, percentile_second, percentile_third, percentile_fourth))
 
 		#frequency
+		frequency = []
 		frequency_first = request.POST.get('frequency-first')
 		frequency_second = request.POST.get('frequency-second')
 		frequency_third = request.POST.get('frequency-third')
@@ -145,16 +151,38 @@ def rank2(request):
 		frequency_seventh = request.POST.get('frequency-seventh')
 		frequency_eighth = request.POST.get('frequency-eighth')
 		frequency_ninth = request.POST.get('frequency-ninth')
+		frequency.extend((frequency_first, frequency_second, frequency_third, frequency_fourth, frequency_fifth, frequency_sixth, frequency_seventh, frequency_eighth, frequency_ninth))
 
 		#open access
+		open_access = []
 		open_access_first = request.POST.get('open-access-first')
 		open_access_second = request.POST.get('open-access-second')
-		if (open_access_first == open_access_second):
-			messages.info(request, 'The index rankings cannot have equal values')
+		open_access.extend((open_access_first, open_access_second))
 
-		user_input_ranking_dataset(int(subject_area), int(index_first), int(index_second), int(publisher_first), int(publisher_second), int(publisher_third), int(publisher_fourth), int(publisher_fifth), int(publisher_sixth), int(publisher_seventh), int(percentile_first), int(percentile_second), int(percentile_third), int(percentile_fourth), int(frequency_first), int(frequency_second), int(frequency_third), int(frequency_fourth), int(frequency_fifth), int(frequency_sixth), int(frequency_seventh), int(frequency_eighth), int(frequency_ninth), int(open_access_first), int(open_access_second))
-		user_ranking_dataset()
-		return redirect("result")
+		if (len(list(index)) != len(set(index))):
+			messages.info(request, 'The index rankings cannot have equal values')
+			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+		elif (len(list(publisher)) != len(set(publisher))):
+			messages.info(request, 'The publisher rankings cannot have equal values')
+			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+		elif (len(list(percentile)) != len(set(percentile))):
+			messages.info(request, 'The percentile rankings cannot have equal values')
+			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+		elif (len(list(frequency)) != len(set(frequency))):
+			messages.info(request, 'The frequency rankings cannot have equal values')
+			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+			
+		elif (len(list(open_access)) != len(set(open_access))):
+			messages.info(request, 'The open access rankings cannot have equal values')
+			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+		else:
+			user_input_ranking_dataset(int(subject_area), int(index_first), int(index_second), int(publisher_first), int(publisher_second), int(publisher_third), int(publisher_fourth), int(publisher_fifth), int(publisher_sixth), int(publisher_seventh), int(percentile_first), int(percentile_second), int(percentile_third), int(percentile_fourth), int(frequency_first), int(frequency_second), int(frequency_third), int(frequency_fourth), int(frequency_fifth), int(frequency_sixth), int(frequency_seventh), int(frequency_eighth), int(frequency_ninth), int(open_access_first), int(open_access_second))
+			user_ranking_dataset()
+			return redirect("result")
 
 
 @login_required

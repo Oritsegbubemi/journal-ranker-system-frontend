@@ -32,8 +32,8 @@
                 
                 <!-- Show Message -->
                 <div>
-                    {% for message in messages %}
-                    <h6 class="text-center py-1" style="color: red;">{{message}}</h6>
+                    {% for messagecard in messages %}
+                    <h6 class="text-center py-1" style="color: red;">{{messagecard}}</h6>
                     {% endfor %}
                 </div>
 
@@ -41,7 +41,7 @@
                 <div class="mb-5">
                     <h5>Subject Area</h5>
                     <select class="custom-select" name="subject-area" style="width: 40%;" required> 
-                        <option class="dropdown-item" value="none" selected hidden>Select Subject Area</option>
+                        <option class="dropdown-item" value="" selected hidden>Select Subject Area</option>
                         <option class="dropdown-item" value="3"> Artificial Intelligence</option>
                         <option class="dropdown-item" value="4">Computational Theory and Mathematics</option>
                         <option class="dropdown-item" value="5">Computer Graphics and CAD</option>

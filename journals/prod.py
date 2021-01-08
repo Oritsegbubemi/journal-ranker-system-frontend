@@ -2,7 +2,7 @@ from .settings import *
 
 print('Production Settings')
 
-DEBUG = True
+DEBUG = False
 
 DATABASES = {
     'default': {

@@ -76,6 +76,7 @@ class User(AbstractUser):
         ('Others', 'Others'),
     )
 
+    id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=100, blank=False)
     email = models.EmailField(max_length=250, unique=True)
     institution = models.CharField(choices=INSTITUTION, max_length=100, blank=False)

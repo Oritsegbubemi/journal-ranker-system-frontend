@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="journal">
     <meta name="author" content="Gbubemi">
-    <title>User Result</title>
+    <title>Journal Ranker | Result</title>
     {% extends 'base.html' %}
     {% load static %}
 </head>
@@ -33,10 +33,10 @@
                         <th>Title</th>
                         <th>Citescore</th>
                         <th>Percentile</th>
+                        <th>Index</th>
                         <th>Publisher</th>
                         <th>Open Access</th>
-                        <th>Frequency</th>
-                        <th>ISSN</th>      
+                        <th>Print ISSN</th>
                         <th>Scopus Link</th>
                         <th>Ranking Percentage</th>
                     </tr>
@@ -47,14 +47,14 @@
                 <tbody>
                     <tr>
                         <th>{{forloop.counter}}</th>
-                        <td>{{feature.1}}</td>
-                        <td>{{feature.2}}</td>
-                        <td>{{feature.3}}</td>
+                        <td>{{feature.0}}</td>
+                        <td>{{feature.4}}</td>
+                        <td>{{feature.8}}</td>
+                        <td>{{feature.17}}</td>
                         <td>{{feature.11}}</td>
-                        <td>{{feature.13}}</td>
-                        <td>{{feature.22}}</td>
-                        <td>{{feature.26}}</td>
-                        <td><a href={{feature.18}} target="_blank">{{feature.18}}</a></td>
+                        <td>{{feature.12}}</td>
+                        <td>{{feature.15}}</td>
+                        <td><a href={{feature.4}} target="_blank">{{feature.14}}</a></td>
                         <td>{{psi}}</td>
                     </tr>                    
                 </tbody>

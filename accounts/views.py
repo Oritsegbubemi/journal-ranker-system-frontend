@@ -28,7 +28,7 @@ def login(request):
 		
 		if user is not None:
 			auth.login(request, user)
-			return redirect("/ranking/card")
+			return redirect("/")
 		
 		else:
 			messages.info(request, 'Invalid email address or password')

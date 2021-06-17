@@ -2,33 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="175acfc6-1255-4846-8851-1d09fbe0cf45" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/journal-ranker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/journal-ranker.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/ranking_dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ranking_dataset.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/ranking_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/ranking_dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/result_dataset.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/user_dataset.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/user_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/psi_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/psi_dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/psi_dataset.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/result_dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/result_dataset.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/journals/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/journals/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ranking/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ranking/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ranking/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ranking/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/user_table.csv" beforeDir="false" afterPath="$PROJECT_DIR$/static/user_table.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/card.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/card.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/journals.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/journals.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ranking1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ranking2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ranking.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/result.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/viewrank.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/viewrank.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +43,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../#GATES Inventory System/inventory-management-master" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">

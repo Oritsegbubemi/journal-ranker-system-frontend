@@ -68,9 +68,9 @@
         <div class="spinner-grow text-primary" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-        
+
     </div>
-    
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container">
@@ -85,7 +85,7 @@
             <!-- Collapse -->
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav mt-4 mt-lg-0 ml-auto">
-                    
+
                     <!-- Authenticated -->
                     {% if user.is_authenticated %}
                         <li class="nav-item">
@@ -130,7 +130,7 @@
     </nav>
 
     <!-- First Main content (Introduction) -->
-    <section class="slice py-7">
+    <section class="slice py-3">
         <div class="container">
             <div class="row row-grid align-items-center">
                 <div class="col-12 col-md-5 col-lg-6 order-md-2 text-center">
@@ -146,7 +146,7 @@
                     </h1>
                     <!-- Text -->
                     <p class="lead text-center text-md-left text-muted">
-                        Let's help you make better decision in selecting journals for publication
+                        Make better decision in selecting journals for publication
                     </p>
 
                     <!-- Buttons -->
@@ -192,10 +192,9 @@
                                 <p class="text-muted mb-0">Support users to create ranking cards that would store the results of the journal features.</p>
                             </div>
                         </div>
-                    </div>
                     </a>
                 </div>
-                
+
                 <div class="col-md-4">
                     <a href="{% url 'card' %}">
                     <div class="card">
@@ -204,7 +203,7 @@
                                 <img src="{% static 'assets/img/svg/illustrations/illustration-6.svg' %}" class="img-fluid img-center" style="height: 150px;" alt="Illustration" />
                             </div>
                             <h5 class="h4 lh-130 mb-3">Place Rankings</h5>
-                            <p class="text-muted mb-0">Journal Features included for ranking include Index, Publisher, Frequency, Percentile, etc.</p>
+                            <p class="text-muted mb-0">Journal Features included for ranking inlcude Index, Publisher, Frequency, Percentile, etc.</p>
                         </div>
                     </div>
                     </a>
@@ -227,12 +226,10 @@
     </section>
 
     <!-- Third Main content (Learn More)-->
-    <section class="slice slice-lg bg-section-dark pt-5 pt-lg-8">
+    <section class="slice slice-lg bg-section-dark pt-3 pt-lg-5">
         <!-- SVG separator -->
         <div class="shape-container shape-line shape-position-top shape-orientation-inverse">
-            <svg width="2560px" height="100px" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" x="0px"
-                 y="0px" viewBox="0 0 2560 100" style="enable-background:new 0 0 2560 100;" xml:space="preserve"
-                 class="">
+            <svg width="2560px" height="100px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" viewBox="0 0 2560 100" style="enable-background:new 0 0 2560 100;" xml:space="preserve" class="">
                 <polygon points="2560 0 2560 100 0 100"></polygon>
             </svg>
         </div>
@@ -268,7 +265,7 @@
                             <div class="pl-4">
                                 <h5 class="lh-130">Index</h5>
                                 <p class="text-muted mb-0">
-                                    This include the several databases where journals are gotten from.
+                                    This inlcude the several databases where journals are gotten from.
                                 </p>
                             </div>
                         </div>
@@ -299,7 +296,7 @@
                             <div class="pl-3">
                                 <h5 class="lh-130">Highest Percentile</h5>
                                 <p class="text-muted mb-0">
-                                    Indicates the relative standing of a serial title in its subject field. 
+                                    Indicates the relative standing of a serial title in its subject field.
                                 </p>
                             </div>
                         </div>
@@ -385,9 +382,7 @@
         <div class="footer pt-lg-7 footer-dark bg-dark">
             <!-- SVG shape -->
             <div class="shape-container shape-line shape-position-top shape-orientation-inverse">
-                <svg width="2560px" height="100px" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" x="0px"
-                     y="0px" viewBox="0 0 2560 100" style="enable-background:new 0 0 2560 100;" xml:space="preserve"
-                     class=" fill-section-secondary">
+                <svg width="2560px" height="100px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" viewBox="0 0 2560 100" style="enable-background:new 0 0 2560 100;" xml:space="preserve" class=" fill-section-secondary">
                     <polygon points="2560 0 2560 100 0 100"></polygon>
                 </svg>
             </div>
@@ -456,7 +451,7 @@
                 <div class="row align-items-center justify-content-md-between pb-4">
                     <div class="col-md-6">
                         <div class="copyright text-sm font-weight-bold text-center text-md-left">
-                            &copy; 2020 Journal Ranker. All rights reserved
+                            &copy; <a href="https://github.com/Oritsegbubemi/journal-ranker">2021 Journal Ranker</a>. All rights reserved
                         </div>
                     </div>
                     <div class="col-md-6">

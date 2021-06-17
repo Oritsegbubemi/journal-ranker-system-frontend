@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import auth
 from django.contrib.auth.decorators import login_required
-from django.core.mail import send_mail, BadHeaderError, EmailMultiAlternatives
+from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 from django.contrib.auth import get_user_model
-from django.conf import settings
 User = get_user_model()
+
 
 def index(request):
     return render(request, "index.html")
@@ -17,25 +17,25 @@ def about(request):
 
 
 def login(request):
-	if request.method == 'POST':
-		email = request.POST['email']
-		password = request.POST['password']
-		try:
-			user = auth.authenticate(username=User.objects.get(email=email), password=password)
-		except:
-			messages.info(request, 'Invalid email address or password')
-			return redirect("login")
-		
-		if user is not None:
-			auth.login(request, user)
-			return redirect("/")
-		
-		else:
-			messages.info(request, 'Invalid email address or password')
-			return redirect("login")
-		
-	if request.method == 'GET':
-		return render(request, "login.html")
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        try:
+            user = auth.authenticate(username=User.objects.get(email=email), password=password)
+        except:
+            messages.info(request, 'Invalid email address or password')
+            return redirect("login")
+
+        if user is not None:
+            auth.login(request, user)
+            return redirect("/")
+
+        else:
+            messages.info(request, 'Invalid email address or password')
+            return redirect("login")
+
+    if request.method == 'GET':
+        return render(request, "login.html")
 
 
 def signup(request):
@@ -51,7 +51,7 @@ def signup(request):
 
         if password1 == password2:
             if User.objects.filter(email=email.lower()).exists():
-                messages.info(request, 'Email Address Alreasy Exist')
+                messages.info(request, 'Email Address Already Exist')
                 return redirect('signup')
                 
             else:
@@ -78,12 +78,10 @@ def contact(request):
     if request.method == "POST":
         contact_name = request.POST['contact_name']
         contact_email = request.POST['contact_email']
-        contact_phone = request.POST['contact_phone']
         contact_message = request.POST['contact_message']
         subject = 'Journal Ranker Message from ' + contact_name
         message = f"Name: {contact_name} \nEmail: {contact_email} \nMessage: {contact_message}"
-        #recipients = [settings.EMAIL_HOST_USER]
-        recipients = ['journalranker@gmail.com',]
+        recipients = ['journalranker@gmail.com', ]
         try:
             send_mail(subject, message, contact_name, recipients) #, fail_silently=True)
         except BadHeaderError:
@@ -98,7 +96,7 @@ def contact(request):
 
 @login_required
 def profile(request):
-	return render(request, "profile.html")
+    return render(request, "profile.html")
 
 
 @login_required  
